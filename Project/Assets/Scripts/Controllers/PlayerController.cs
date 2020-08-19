@@ -32,5 +32,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(horInput, 0f, verInput);
         Vector3 moveDestination = transform.position + movement;
         agent.destination = moveDestination;
+
+        InventoryOpenClose.Menu(); //Inventory Control
     }
 }
