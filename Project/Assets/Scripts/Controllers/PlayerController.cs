@@ -70,6 +70,11 @@ public class PlayerController : MonoBehaviour
 
         #endregion
 
-        InventoryOpenClose.Menu(); //Inventory Control
+        //InventoryOpenClose.Menu(); 
+        /* Removed TAB Key Event.
+         * Inventory now opens when you click on the Inventory Bag image on the UI. 
+         * 
+         * 
+         */
     }
 }
