@@ -20,7 +20,7 @@ public class inventorySlotController : MonoBehaviour
             displayText.text = item.itemName;
             displayImage.sprite = item.icon;
             displayImage.color = Color.white;
-            Debug.Log("You clicked: " + item.itemName);
+           // item.Use();
         }
         else
         {
@@ -30,9 +30,16 @@ public class inventorySlotController : MonoBehaviour
         }
     }
 
+    public void Use()
+    {
+        if (item)
+        {
+            item.Use();
+        }
+    }
     private void Start()
     {
-       // updateInfo();
+       updateInfo();
     }
 
 

@@ -1,34 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     //Prototype. Not Usable for now
     //-batur
-    public float currentHealth, maxHealth;
+    private Slider healthBar;
+    public float currentHealth=50, maxHealth=100;
+
+
+    void Awake()
+    {
+        healthBar = GetComponent<Slider>();
+
+        // IsTest = true;
+    }
 
     public void Heal(float amount)
     {
         currentHealth += amount;
 
-        if(currentHealth > maxHealth)
+        if (currentHealth > maxHealth)
         {
             maxHealth = currentHealth;
         }
 
-       // healthbar.value = currentHealth / maxHealth;
+        healthBar.value = currentHealth;
 
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        healthBar.value = currentHealth;
     }
+
 }
