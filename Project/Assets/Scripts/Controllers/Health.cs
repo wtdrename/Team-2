@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    //Prototype. Not Usable for now
-    //-batur
+
     private Slider healthBar;
     public float currentHealth=50, maxHealth=100;
-
 
     void Awake()
     {
         healthBar = GetComponent<Slider>();
-
-        // IsTest = true;
     }
 
+    void Update()
+    {
+        healthBar.value = currentHealth;
+    }
+    
     public void Heal(float amount)
     {
         currentHealth += amount;
@@ -29,14 +30,6 @@ public class Health : MonoBehaviour
 
         healthBar.value = currentHealth;
 
-    }
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        healthBar.value = currentHealth;
     }
 
 }
