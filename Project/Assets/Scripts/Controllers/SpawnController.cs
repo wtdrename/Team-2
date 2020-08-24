@@ -5,31 +5,42 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
 
-
-    public GameObject Enemy;
-    public int xPos;
-    public int zPos;
     public int enemyCount;
     //initialized in unity
     public float spawnDelay;
-    public int maxEnemys;
+    public int maxEnemies;
+    private int waveCount;
+    public GameObject[] enemies;
+    public GameObject[] spawnPoints;
+    
 
     void Start()
     {
-        StartCoroutine(EnemySpawnner());
+        if (enemies != null)
+        {
+            StartCoroutine(EnemySpawnner());
+            waveCount = 1;
+        }
+
+
     }
+   
 
 
     // find number of enemys spawned and increase by one every set number of seconds until max number of enemys are spawned
     IEnumerator EnemySpawnner()
     {
-        while (enemyCount < maxEnemys)
+        while (enemyCount < maxEnemies)
         {
-            xPos = Random.Range(-10, 10);
-            zPos = Random.Range(-10, 10);
-            Instantiate(Enemy, new Vector3(xPos, -1.13f, zPos), Quaternion.identity);
+            Vector3 spawnpoint = spawnPoints[Random.Range(0,2)].transform.position;
+            Instantiate(enemies[Random.Range(0,9)], spawnpoint, Quaternion.identity);
             yield return new WaitForSeconds(spawnDelay);
             enemyCount += 1;
         }
+    }
+
+    private void Update()
+    {
+        
     }
 }
