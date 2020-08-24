@@ -907,12 +907,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc442937bf667c44899d978fec8e9ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1154967129}
-  xPos: 0
-  zPos: 0
   enemyCount: 0
   spawnDelay: 1
-  maxEnemys: 5
+  maxEnemies: 0
+  enemies: []
+  spawnPoints: []
 --- !u!4 &567921329
 Transform:
   m_ObjectHideFlags: 0
