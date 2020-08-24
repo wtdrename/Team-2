@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class inventorySlotController : MonoBehaviour
 {
     public Item item;
-    //public Text displayText;
-   // public Image displayImage;
-
+    
     public void updateInfo()
     {
         
@@ -20,7 +18,7 @@ public class inventorySlotController : MonoBehaviour
             displayText.text = item.itemName;
             displayImage.sprite = item.icon;
             displayImage.color = Color.white;
-           // item.Use();
+
         }
         else
         {
