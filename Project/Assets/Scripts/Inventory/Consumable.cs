@@ -8,8 +8,18 @@ public class Consumable : Item
     public float heal=0;
     public override void Use()
     {
-        Health playerHealth = GameObject.Find("HealthBar").GetComponent<Health>();
-        playerHealth.Heal(heal);
-        _Inventory.instance.Remove(this);
+        
+
+        if (heal == 0)
+        {
+
+        }
+        else
+        {
+            Health playerHealth = GameObject.Find("HealthBar").GetComponent<Health>();
+            playerHealth.Heal(heal);
+            _Inventory.instance.Remove(this);
+        }
+       
     }
 }

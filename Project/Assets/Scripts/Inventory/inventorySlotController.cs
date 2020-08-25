@@ -18,7 +18,6 @@ public class inventorySlotController : MonoBehaviour
             displayText.text = item.itemName;
             displayImage.sprite = item.icon;
             displayImage.color = Color.white;
-
         }
         else
         {
