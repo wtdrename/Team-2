@@ -74,6 +74,12 @@ public class inventorySlotController : MonoBehaviour
                 {
                     break;
                 }
+
+
+            default:
+                {
+                    break;
+                }
         }
      
 

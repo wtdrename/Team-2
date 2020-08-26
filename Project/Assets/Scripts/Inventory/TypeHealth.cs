@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu (fileName = "New Item", menuName = "Items/Health")]
 public class TypeHealth : Item 
 {
-   
+
     public float heal=0;
     
     public override void Use()
