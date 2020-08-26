@@ -3,14 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+ 
 
 public class Item : ScriptableObject
 {
+
     public enum itemtype { WEAPON, ARMOR,HEALTH,AMMO,EMPTY }
     public itemtype ItemType;
     public string itemName;
     public Sprite icon;
     public int ItemAmount;
+    public bool isStackable;
+    public bool isConsumable;
 
 
 
@@ -19,10 +23,10 @@ public class Item : ScriptableObject
         return this;
     }
 
-    public itemtype CurrentItemType   // property
+    public itemtype CurrentItemType   
     {
-        get { return ItemType; }   // get method
-        set { ItemType = value; }  // set method
+        get { return ItemType; }   
+        set { ItemType = value; }  
     }
 
 
