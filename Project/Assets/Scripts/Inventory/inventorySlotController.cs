@@ -62,7 +62,13 @@ public class inventorySlotController : MonoBehaviour
                 }
             case itemtype.AMMO:
                 {
+                    if (item)
+                    {
+                        item.Use();
+                        updateInfo();
+                    }
                     break;
+                    
                 }
             case itemtype.EMPTY:
                 {
