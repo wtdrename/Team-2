@@ -41,7 +41,6 @@ public class inventorySlotController : MonoBehaviour
         {
             case itemtype.WEAPON:
                 {
-
                     if (item)
                     {
                         item.Use();
@@ -51,8 +50,7 @@ public class inventorySlotController : MonoBehaviour
                 }
 
             case itemtype.HEALTH:
-                {
-                    
+                {             
                     if (item)
                     {
                         item.Use();
@@ -77,8 +75,7 @@ public class inventorySlotController : MonoBehaviour
                         item.Use();
                         updateInfo();
                     }
-                    break;
-                    
+                    break;                 
                 }
             case itemtype.EMPTY:
                 {
@@ -100,6 +97,7 @@ public class inventorySlotController : MonoBehaviour
 
         
     }
+
     private void Start()
     {
        updateInfo();
