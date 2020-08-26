@@ -33,66 +33,69 @@ public class inventorySlotController : MonoBehaviour
 
   
     
-    public void Use()
+    public void InventoryClickEvent()
     {
 
-        Debug.Log(item.CurrentItemType);
-        switch (item.CurrentItemType)
+        if (item)
         {
-            case itemtype.WEAPON:
-                {
-                    if (item)
+            switch (item.CurrentItemType)
+            {
+                case itemtype.WEAPON:
                     {
-                        item.Use();
-                        updateInfo();
+                        if (item)
+                        {
+                            item.Use();
+                            updateInfo();
+                        }
+                        break;
                     }
-                    break;
-                }
 
-            case itemtype.HEALTH:
-                {             
-                    if (item)
+                case itemtype.HEALTH:
                     {
-                        item.Use();
-                        updateInfo();
+                        if (item)
+                        {
+                            item.Use();
+                            updateInfo();
+                        }
+                        break;
                     }
-                    break;                 
-                }
 
-            case itemtype.ARMOR:
-                {
-                    if (item)
+                case itemtype.ARMOR:
                     {
-                        item.Use();
-                        updateInfo();
+                        if (item)
+                        {
+                            item.Use();
+                            updateInfo();
+                        }
+                        break;
                     }
-                    break;
-                }
-            case itemtype.AMMO:
-                {
-                    if (item)
+                case itemtype.AMMO:
                     {
-                        item.Use();
-                        updateInfo();
+                        if (item)
+                        {
+                            item.Use();
+                            updateInfo();
+                        }
+                        break;
                     }
-                    break;                 
-                }
-            case itemtype.EMPTY:
-                {
-                    if (item)
+                case itemtype.EMPTY:
                     {
-                        item.Use();
-                        updateInfo();
+                        if (item)
+                        {
+                            item.Use();
+                            updateInfo();
+                        }
+                        break;
                     }
-                    break;
-                }
 
 
-            default:
-                {
-                    break;
-                }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
+
      
 
         

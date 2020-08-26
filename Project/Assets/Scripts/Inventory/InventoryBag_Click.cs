@@ -15,6 +15,8 @@ public class InventoryBag_Click : MonoBehaviour
         
         Button btn = UI_InventoryBag.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
+        GameObject isOpen = _Inventory.instance.inventoryPanel;
+        isOpen.SetActive(false);
     }
 
     public void TaskOnClick()

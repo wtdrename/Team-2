@@ -12,7 +12,7 @@ public class TypeAmmo : Item
         //playerHealth.Heal(heal);
         //_Inventory.instance.Remove(this);
 
-        Debug.Log("This worked - ammo");
+        Debug.Log("You used Ammo Item.");
 
     }
 }

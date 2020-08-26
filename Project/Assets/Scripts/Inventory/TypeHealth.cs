@@ -10,9 +10,18 @@ public class TypeHealth : Item
     
     public override void Use()
     {
+        Debug.Log("You used Health Item.");
         Health playerHealth = GameObject.Find("HealthBar").GetComponent<Health>();
-        playerHealth.Heal(heal);
-        _Inventory.instance.Remove(this);
+        if(playerHealth.currentHealth >= 100)
+        {
+            Debug.Log("You have full health. You cant use Medkit");
+        }
+        else
+        {
+            playerHealth.Heal(heal);
+            _Inventory.instance.Remove(this);
+        }
+       
 
     }
 }

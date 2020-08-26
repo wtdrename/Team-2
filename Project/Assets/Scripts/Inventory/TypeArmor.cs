@@ -9,6 +9,7 @@ public class TypeArmor : Item
 
     public override void Use() //Armor Use Effect
     {
+        Debug.Log("You used Armor Item.");
         Armor playerArmor = GameObject.Find("ArmorBar").GetComponent<Armor>();
         playerArmor.GiveArmor(givearmor);
         _Inventory.instance.Remove(this);
