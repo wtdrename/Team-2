@@ -9,9 +9,18 @@ public class TypeArmor : Item
 
     public override void Use() //Armor Use Effect
     {
-        Debug.Log("You used Armor Item.");
+        Debug.Log("You used Armor Item."); //will be removed after tests and bugfixes
+
         Armor playerArmor = GameObject.Find("ArmorBar").GetComponent<Armor>();
-        playerArmor.GiveArmor(givearmor);
-        _Inventory.instance.Remove(this);
+        if(playerArmor.currentArmor >= 100)
+        {
+            Debug.Log("You have full armor. You cant use Armor");
+        }
+        else
+        {
+            playerArmor.GiveArmor(givearmor);
+            _Inventory.instance.Remove(this);
+        }
+        
     }
 }

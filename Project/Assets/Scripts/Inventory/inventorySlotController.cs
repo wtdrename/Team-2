@@ -17,8 +17,7 @@ public class inventorySlotController : MonoBehaviour
         Image displayImage = transform.Find("ItemImage").GetComponent<Image>();
        
         if (item)
-        {
-            
+        {            
             displayText.text = item.itemName;
             displayImage.sprite = item.icon;
             displayImage.color = Color.white;

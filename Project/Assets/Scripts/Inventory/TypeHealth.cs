@@ -10,7 +10,10 @@ public class TypeHealth : Item
     
     public override void Use()
     {
+        //will be removed after tests and bugfixes
         Debug.Log("You used Health Item.");
+
+
         Health playerHealth = GameObject.Find("HealthBar").GetComponent<Health>();
         if(playerHealth.currentHealth >= 100)
         {
