@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Item; //Accessing Item.cs
+
 
 public class inventorySlotController : MonoBehaviour
 {
     public Item item;
-    
+
+
     public void updateInfo()
     {
         
         Text displayText = transform.Find("ItemText").GetComponent<Text>();
         Image displayImage = transform.Find("ItemImage").GetComponent<Image>();
-
+       
         if (item)
         {
+            
             displayText.text = item.itemName;
             displayImage.sprite = item.icon;
             displayImage.color = Color.white;
@@ -27,12 +31,47 @@ public class inventorySlotController : MonoBehaviour
         }
     }
 
+  
+    
     public void Use()
     {
-        if (item)
+
+        Debug.Log(item.CurrentItemType);
+        switch (item.CurrentItemType)
         {
-            item.Use();
+            case itemtype.WEAPON:
+                {
+
+                    break;
+                }
+
+            case itemtype.HEALTH:
+                {
+                    
+                    if (item)
+                    {
+                        item.Use();
+                        updateInfo();
+                    }
+                    break;                 
+                }
+
+            case itemtype.ARMOR:
+                {
+                    break;
+                }
+            case itemtype.AMMO:
+                {
+                    break;
+                }
+            case itemtype.EMPTY:
+                {
+                    break;
+                }
         }
+     
+
+        
     }
     private void Start()
     {
