@@ -42,6 +42,11 @@ public class inventorySlotController : MonoBehaviour
             case itemtype.WEAPON:
                 {
 
+                    if (item)
+                    {
+                        item.Use();
+                        updateInfo();
+                    }
                     break;
                 }
 
@@ -58,6 +63,11 @@ public class inventorySlotController : MonoBehaviour
 
             case itemtype.ARMOR:
                 {
+                    if (item)
+                    {
+                        item.Use();
+                        updateInfo();
+                    }
                     break;
                 }
             case itemtype.AMMO:
@@ -72,6 +82,11 @@ public class inventorySlotController : MonoBehaviour
                 }
             case itemtype.EMPTY:
                 {
+                    if (item)
+                    {
+                        item.Use();
+                        updateInfo();
+                    }
                     break;
                 }
 
