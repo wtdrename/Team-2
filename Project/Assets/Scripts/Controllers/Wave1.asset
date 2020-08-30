@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f54b95e378b29d47aa37674ef6226a1, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  enemyCount: 0
-  spawnDelay: 0
-  maxEnemies: 0
-  waveCount: 0
-  enemies: []
-  spawnPoints: []
+  enemyCount: 10
+  spawnDelay: 1
+  maxEnemies: 10
+  waveCount: 1
+  enemies:
+  - {fileID: 6139510741434673845, guid: 6c6d86617bf1bf743a98fbaf69d4f5e6, type: 3}
+  spawnPoints:
+  - {fileID: 5365577599645335367, guid: 2b40246c55fb735418a8c8fa769389f0, type: 3}

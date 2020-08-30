@@ -5,16 +5,19 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    #region Initializers
+
     public NavMeshAgent agent;
     public Joystick joystick;
     public float speed = 6f;
     public float rotationSpeed = 10f;
-    public Camera camera;
+    public new Camera camera;
 
     float horizontalMove = 0f;
     float verticalMove = 0f;
 
+    #endregion
 
     void Start()
     {
@@ -23,7 +26,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -70,11 +72,5 @@ public class PlayerController : MonoBehaviour
 
         #endregion
 
-        //InventoryOpenClose.Menu(); 
-        /* Removed TAB Key Event.
-         * Inventory now opens when you click on the Inventory Bag image on the UI. 
-         * 
-         * 
-         */
     }
 }
