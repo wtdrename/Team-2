@@ -18,6 +18,7 @@ public class SpawnController : MonoBehaviour
             enemyInfo.waveCount = 1;
         }
 
+        enemyInfo.enemyCount = 1;
 
     }
    

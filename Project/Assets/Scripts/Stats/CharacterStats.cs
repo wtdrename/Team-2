@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CharacterStats : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class CharacterStats : MonoBehaviour
     {
         if(stats.currentHealth - amount <= 0)
         {
-            //dies
+            SceneManager.LoadSceneAsync("GameOver");
         }
         else
         {

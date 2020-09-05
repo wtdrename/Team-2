@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
 
     public Rigidbody rb;
     public NavMeshAgent agent;
@@ -18,16 +18,17 @@ public class EnemyController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, player.transform.position);
 
         if(distance <= aggroDistance)
         {
-            agent.SetDestination(player.position);
+            agent.SetDestination(player.transform.position);
         }
     }
 
