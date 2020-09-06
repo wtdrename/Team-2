@@ -12,15 +12,18 @@ public class CharacterStats_SO : ScriptableObject
     public int currentExp = 0;
     public int maxExp = 100;
 
-    public int currentHealth;
+
     public int maxHealth;
-    public int currentShield;
+    public int currentHealth;
     public int maxShield;
+    public int currentShield;
 
-    public int baseRange;
-
+    public int baseArmor;
+    public int currentArmor;
     public int baseDamage;
     public int currentDamage;
+
+    public float criticalChance;
 
     public int currentCredit;
 

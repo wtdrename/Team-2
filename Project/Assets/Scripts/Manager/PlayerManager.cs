@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Security.Permissions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
@@ -34,12 +35,19 @@ public class PlayerManager : MonoBehaviour
     public CharacterStats playerStats;
     public StatusBar healthBar;
 
+    public Button attackButton;
+    public AttackDefenition baseAttack;
+
+    public ProjectileManager projectileManager;
+
     #endregion
 
     #region Start and Update
     void Start()
     {
         playerStats = GetComponent<CharacterStats>();
+        projectileManager = GetComponent<ProjectileManager>();
+
         //onTakingDamage += TakingDamage;
         //onHealing += IncreasingHealth;
 
@@ -76,11 +84,53 @@ public class PlayerManager : MonoBehaviour
     {
 
     }
-    
-    /*public void IncreasingHealth(int amount)
+
+    #endregion
+
+
+    #region Increasers
+    public void GiveHealth(int amount)
     {
-        healthBar.IncreasingHealth(amount, playerStats.stats);
-    }*/
+        playerStats.GiveHealth(amount);
+    }
+    public void GiveShield(int amount)
+    {
+        playerStats.GiveShield(amount);
+    }
+    public void GiveCredit(int amount)
+    {
+        playerStats.GiveCredit(amount);
+    }
+    #endregion
+
+
+    #region Decreasers
+    public void TakeDamage(int amount)
+    {
+        playerStats.TakeDamage(amount);
+        UpdateHealthSlider();
+    }
+
+    public void TakeCredit(int amount)
+    {
+        playerStats.TakeCredit(amount);
+        //update inventory event
+    }
+    #endregion
+
+    #region Attacking
+
+    public void OnProjectileCollided(GameObject target)
+    {
+        var attack = baseAttack.CreateAttack(playerStats, target.GetComponent<CharacterStats>());
+
+        var attackable = target.GetComponentsInChildren<IAttackable>();
+
+        foreach (IAttackable e in attackable)
+        {
+            e.OnAttack(gameObject, attack);
+        }
+    }
 
     #endregion
 }

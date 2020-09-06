@@ -1,18 +1,22 @@
-﻿using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 
 public class CharacterStats : MonoBehaviour
 {
     #region Defenitions
 
+    public CharacterStats_SO stats_Template;
     public CharacterStats_SO stats;
 
     #endregion
 
+    private void Start()
+    {
+        if(stats_Template != null)
+        {
+            stats = Instantiate(stats_Template);
+        }
+    }
     #region Increasers
     public void GiveHealth(int amount)
     {
@@ -31,9 +35,9 @@ public class CharacterStats : MonoBehaviour
     #region Decreasers
     public void TakeDamage(int amount)
     {
-        if(stats.currentHealth - amount <= 0)
+        if(stats.currentShield > 0)
         {
-            SceneManager.LoadSceneAsync("GameOver");
+            LoseShield(amount);
         }
         else
         {
@@ -59,6 +63,23 @@ public class CharacterStats : MonoBehaviour
     {
         stats.TakeCredit(amount);
         //update inventory event
+    }
+    #endregion
+
+    #region Getters
+
+    public int GetDamage()
+    {
+        return stats.currentDamage;
+    }
+    public int GetArmor()
+    {
+        return stats.currentArmor;
+    }
+    
+    public float GetCriticalChance()
+    {
+        return stats.criticalChance;
     }
     #endregion
 }

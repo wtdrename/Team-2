@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
@@ -9,6 +7,9 @@ public class EnemyController : MonoBehaviour
 
     public Rigidbody rb;
     public NavMeshAgent agent;
+
+    public CharacterStats enemyStats;
+    public StatusBar healthBar;
 
     public float aggroDistance;
     float distance;
@@ -19,6 +20,9 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
+
+        enemyStats = GetComponent<CharacterStats>();
+        UpdateHealthSlider();
     }
 
     // Update is called once per frame
@@ -30,6 +34,31 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(player.transform.position);
         }
+        else if (distance > aggroDistance * 1.5)
+        {
+            agent.SetDestination(transform.position);
+        }
+    }
+
+    #region Decreasers
+    public void TakeDamage(int amount)
+    {
+        enemyStats.TakeDamage(amount);
+        UpdateHealthSlider();
+    }
+
+    public void TakeCredit(int amount)
+    {
+        enemyStats.TakeCredit(amount);
+    }
+    #endregion
+
+
+    public void UpdateHealthSlider()
+    {
+        healthBar.UpdateSlider((float)enemyStats.stats.currentHealth / (float)enemyStats.stats.maxHealth);
+        //add an if for armor / shield
+        //healthBar.TakingDamage(amount, playerStats.stats);
     }
 
     private void OnDrawGizmos()
