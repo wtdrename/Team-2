@@ -30,6 +30,17 @@ public class CharacterStats : MonoBehaviour
     {
         stats.GiveCredit(amount);
     }
+
+    public void GiveExp(int amount)
+    {
+        stats.GiveExp(amount);
+    }
+
+    public void IncreaseStats()
+    {
+        stats.IncreaseStats();
+    }
+
     #endregion
 
     #region Decreasers
@@ -80,6 +91,21 @@ public class CharacterStats : MonoBehaviour
     public float GetCriticalChance()
     {
         return stats.criticalChance;
+    }
+
+    public int GetLevel()
+    {
+        return stats.level;
+    }
+
+    public int GetActualExp()
+    {
+        return stats.currentExp;
+    }
+
+    public int GetMaxExp()
+    {
+        return stats.maxExp;
     }
     #endregion
 }

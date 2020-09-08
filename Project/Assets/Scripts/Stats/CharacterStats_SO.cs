@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class CharacterStats_SO : ScriptableObject
     public int level = 1;
     public int currentExp = 0;
     public int maxExp = 100;
+    public float expMaxlvlMultiplier = 1.25f; //how much the maxExp will increase on each level
 
 
     public int maxHealth;
@@ -56,6 +58,34 @@ public class CharacterStats_SO : ScriptableObject
     {
         currentCredit += amount;
     }
+
+    public void GiveExp(int amount)
+    {
+        currentExp += amount;
+        if (currentExp >= maxExp)
+        {
+            while (currentExp >= maxExp) //level up
+            {
+                level++;
+                currentExp -= maxExp;
+                maxExp = (int) (maxExp * expMaxlvlMultiplier);
+                PlayerManager.instance.LevelUpEventCall();
+            }
+        }else
+        {
+            PlayerManager.instance.ExpChangeEventCall();
+        }
+    }
+
+    public void IncreaseStats() //method that will be called on level up
+    {
+        //temporal values
+        maxHealth += 10;
+        maxShield += 8;
+        baseArmor += 3;
+    }
+    
+    
     #endregion
 
     #region Decreasers
