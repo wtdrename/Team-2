@@ -123,4 +123,37 @@ public class CharacterStats_SO : ScriptableObject
         currentCredit -= amount;
     }
     #endregion
+
+    #region Save and Load
+
+    public void LoadStats()
+    {
+        if (PlayerPrefs.HasKey("Level"))
+        {
+            level = PlayerPrefs.GetInt("Level");
+            maxShield = PlayerPrefs.GetInt("MaxShield");
+            maxHealth = PlayerPrefs.GetInt("MaxHealth");
+            maxExp = PlayerPrefs.GetInt("MaxExp");
+            currentExp = PlayerPrefs.GetInt("CurrentExp");
+            currentCredit = PlayerPrefs.GetInt("Credits");
+            baseArmor = PlayerPrefs.GetInt("BaseArmor");
+            criticalChance = PlayerPrefs.GetFloat("CriticalChance");
+            baseDamage = PlayerPrefs.GetInt("BaseDamage");
+        }
+    }
+
+    public void SaveStats()
+    {
+        PlayerPrefs.SetInt("Level",level);
+        PlayerPrefs.SetInt("MaxShield",maxShield);
+        PlayerPrefs.SetInt("MaxHealth",maxHealth);
+        PlayerPrefs.SetInt("MaxExp",maxExp);
+        PlayerPrefs.SetInt("CurrentExp",currentExp);
+        PlayerPrefs.SetInt("Credits",currentCredit);
+        PlayerPrefs.SetInt("BaseArmor",baseArmor);
+        PlayerPrefs.SetFloat("CriticalChance",criticalChance);
+        PlayerPrefs.SetInt("BaseDamage",baseDamage);
+    }
+
+    #endregion
 }
