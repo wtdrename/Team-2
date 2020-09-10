@@ -12,11 +12,13 @@ public class CharacterStats : MonoBehaviour
 
     private void Start()
     {
+        LoadStats();
         if(stats_Template != null)
         {
             stats = Instantiate(stats_Template);
         }
     }
+
     #region Increasers
     public void GiveHealth(int amount)
     {
@@ -30,6 +32,17 @@ public class CharacterStats : MonoBehaviour
     {
         stats.GiveCredit(amount);
     }
+
+    public void GiveExp(int amount)
+    {
+        stats.GiveExp(amount);
+    }
+
+    public void IncreaseStats()
+    {
+        stats.IncreaseStats();
+    }
+
     #endregion
 
     #region Decreasers
@@ -81,5 +94,34 @@ public class CharacterStats : MonoBehaviour
     {
         return stats.criticalChance;
     }
+
+    public int GetLevel()
+    {
+        return stats.level;
+    }
+
+    public int GetActualExp()
+    {
+        return stats.currentExp;
+    }
+
+    public int GetMaxExp()
+    {
+        return stats.maxExp;
+    }
+    #endregion
+
+    #region Save and Load
+
+    public void SaveStats()
+    {
+        stats.SaveStats();
+    }
+
+    public void LoadStats()
+    {
+        stats_Template.LoadStats();
+    }
+    
     #endregion
 }
