@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class waveSpawnnerTest : MonoBehaviour
+using UnityEngine.UI;
+public class Store : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public Button[] guns;
+
+
+
+
+    
     void Start()
     {
         
