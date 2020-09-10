@@ -12,11 +12,13 @@ public class CharacterStats : MonoBehaviour
 
     private void Start()
     {
+        LoadStats();
         if(stats_Template != null)
         {
             stats = Instantiate(stats_Template);
         }
     }
+
     #region Increasers
     public void GiveHealth(int amount)
     {
@@ -107,5 +109,19 @@ public class CharacterStats : MonoBehaviour
     {
         return stats.maxExp;
     }
+    #endregion
+
+    #region Save and Load
+
+    public void SaveStats()
+    {
+        stats.SaveStats();
+    }
+
+    public void LoadStats()
+    {
+        stats_Template.LoadStats();
+    }
+    
     #endregion
 }
