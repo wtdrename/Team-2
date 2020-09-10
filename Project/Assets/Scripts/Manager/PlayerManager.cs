@@ -184,13 +184,4 @@ public class PlayerManager : MonoBehaviour
     }
 
     #endregion
-
-    #region Save 
-
-    public void SaveStats()
-    {
-        playerStats.SaveStats();
-    }
-
-    #endregion
 }
