@@ -3583,12 +3583,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d386f8832054e9c4ebb7feebef84fb0c, type: 3}
---- !u!4 &319711048 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-    type: 3}
-  m_PrefabInstance: {fileID: 702075046}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &322127482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6731,75 +6725,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 798203706}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &702075046
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.557072
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.1091375
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 25.33394
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553662118135877951, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6555430187946697450, guid: 2a89a4a130b6c7c46b8cb6fefeee1007,
-        type: 3}
-      propertyPath: m_Name
-      value: Sphere
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2a89a4a130b6c7c46b8cb6fefeee1007, type: 3}
 --- !u!1001 &703103179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22628,7 +22553,8 @@ PrefabInstance:
     - target: {fileID: 1794017324, guid: ed08e8c51a9e08b4b9d9089eded6c4c8, type: 3}
       propertyPath: pfBullet
       value: 
-      objectReference: {fileID: 319711048}
+      objectReference: {fileID: 3566997256527299591, guid: 3684d32bffeaaef40b5cd8b0b55a2375,
+        type: 3}
     - target: {fileID: 8677077844600963176, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
         type: 3}
       propertyPath: m_Name
@@ -22704,6 +22630,16 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 663932946}
+    - target: {fileID: 8677077845011682373, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
+        type: 3}
+      propertyPath: speed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677077845011682373, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9034490475034499573, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
         type: 3}
       propertyPath: healthBar

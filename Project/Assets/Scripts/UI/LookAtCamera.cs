@@ -3,7 +3,7 @@
 public class LookAtCamera : MonoBehaviour
 {
 
-    public Transform camera;
+    public new Transform camera;
 
     // Start is called before the first frame update
     void Start()
