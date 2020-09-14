@@ -67,13 +67,18 @@ public class GameManager : MonoBehaviour
         Scene sceneToUnload = SceneManager.GetActiveScene();
         if (SceneManager.GetSceneByName("Scene") == sceneToUnload)
             yield break;
-        
+
+        if(sceneName == "GameOver")
+        {
+            SceneManager.LoadSceneAsync(sceneName);
+            yield break;
+        }
         isChangingToLoadScene = true;
-        
+
         SceneManager.LoadScene("LoadScene");
-        
+
         isChangingToLoadScene = false;
-        
+
         yield return null; //wait one frame so the singleton can be loaded in the StatusBar script
         
         LoadSceneBar.Instance.LoadScene(sceneName);

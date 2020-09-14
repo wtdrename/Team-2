@@ -7,9 +7,14 @@ public class EnemyController : MonoBehaviour
 
     public Rigidbody rb;
     public NavMeshAgent agent;
+    private Animator animator;
 
     public CharacterStats enemyStats;
     public StatusBar healthBar;
+
+    public AttackDefenition attack;
+
+    private float timeOfLastAttack;
 
     public float aggroDistance;
     float distance;
@@ -20,9 +25,12 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
 
         enemyStats = GetComponent<CharacterStats>();
         UpdateHealthSlider();
+
+        timeOfLastAttack = float.MinValue;
     }
 
     // Update is called once per frame
@@ -38,8 +46,23 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(transform.position);
         }
+
+        float timeSinceLastAttack = Time.time - timeOfLastAttack;
+        bool attackOnCoolDown = timeSinceLastAttack < attack.coolDown;
+        bool attackInRange = distance < attack.range;
+        agent.isStopped = attackOnCoolDown;
+        if(!attackOnCoolDown && attackInRange)
+        {
+            transform.LookAt(player.transform);
+            timeOfLastAttack = Time.time;
+            animator.SetTrigger("Attack");
+        }
     }
 
+    public void Hit()
+    {
+        attack.ExecuteAttack(gameObject, player);
+    }
     #region Decreasers
     public void TakeDamage(int amount)
     {

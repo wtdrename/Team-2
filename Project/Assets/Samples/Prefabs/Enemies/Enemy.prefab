@@ -1312,6 +1312,7 @@ MonoBehaviour:
   agent: {fileID: 922951247575886791}
   enemyStats: {fileID: 4099952972346826202}
   healthBar: {fileID: 4278773653326531529}
+  attack: {fileID: 11400000, guid: 2908e18e2b9a8104dba9a0a24cf6dc95, type: 2}
   aggroDistance: 10
   gizmoRadius: 10
 --- !u!114 &9146754746461051384

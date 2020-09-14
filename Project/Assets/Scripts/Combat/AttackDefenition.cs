@@ -29,4 +29,30 @@ public class AttackDefenition : ScriptableObject
 
         return new Attack((int)baseDamage, isCritical);
     }
+
+    public int ExecuteAttack(GameObject attacker, GameObject target)
+    {
+        if (target == null)
+            return 0;
+
+        // check if target is in range of player
+        if (Vector3.Distance(attacker.transform.position, target.transform.position) > range)
+            return 0;
+
+        // check if target is in front of the player
+        if (!attacker.transform.IsFacingTarget(target.transform))
+            return 0;
+
+        // at this point the attack will connect
+        var attack = CreateAttack(attacker.GetComponent<CharacterStats>(), target.GetComponent<CharacterStats>());
+
+        var attackables = target.GetComponents<IAttackable>();
+
+        foreach (var a in attackables)
+        {
+            ((IAttackable)a).OnAttack(attacker.gameObject, attack);
+        }
+
+        return attack.Damage;
+    }
 }

@@ -20,4 +20,5 @@ public class Attack
     {
         get { return _critical; }
     }
+
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour, IAttackable
+public class BasicAttack : MonoBehaviour, IAttackable
 {
     public void OnAttack(GameObject attacker, Attack attack)
     {

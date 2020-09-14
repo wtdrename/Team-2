@@ -40,6 +40,8 @@ public class PlayerManager : MonoBehaviour
     public StatusBar healthBar;
     public StatusBar expBar; //needs to be assigned
 
+    public Animator animator;
+
     public Button attackButton;
     public AttackDefenition baseAttack;
 
@@ -135,7 +137,10 @@ public class PlayerManager : MonoBehaviour
         playerStats.TakeDamage(amount);
         if(playerStats.GetHealth() <= 0)
         {
+            Debug.Log("Player Died");
+
             GameManager.instance.DeathEventCall();
+
         }
         UpdateHealthSlider();
     }
