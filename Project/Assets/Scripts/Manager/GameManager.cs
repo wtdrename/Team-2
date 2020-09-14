@@ -56,11 +56,11 @@ public class GameManager : MonoBehaviour
     {
         //button animation and other things
         
-        if(!isChangingScene)
+        if(!isChangingToLoadScene)
             StartCoroutine(ChangeSceneOnLoad(SceneName));
     }
 
-    private bool isChangingScene;
+    private bool isChangingToLoadScene;
     
     IEnumerator ChangeSceneOnLoad(string sceneName)
     {
@@ -68,11 +68,15 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetSceneByName("Scene") == sceneToUnload)
             yield break;
         
-        isChangingScene = true;
+        isChangingToLoadScene = true;
         
-        yield return SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadScene("LoadScene");
         
-        isChangingScene = false;
+        isChangingToLoadScene = false;
+        
+        yield return null; //wait one frame so the singleton can be loaded in the StatusBar script
+        
+        LoadSceneBar.Instance.LoadScene(sceneName);
     }
 
     private void OnPlayerDeath(object sender, EventArgs e)
