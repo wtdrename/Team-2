@@ -30,6 +30,8 @@ public class PlayerManager : MonoBehaviour
     public event EventHandler OnLevelChanged;
     public event EventHandler OnExpChanged;
     
+    
+
     #endregion
 
     #region Initializations
@@ -67,7 +69,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.K))
         {
-            playerStats.TakeDamage(10);
+            TakeDamage(10);
             UpdateHealthSlider();
         }
 
@@ -131,6 +133,10 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(int amount)
     {
         playerStats.TakeDamage(amount);
+        if(playerStats.GetHealth() <= 0)
+        {
+            GameManager.instance.DeathEventCall();
+        }
         UpdateHealthSlider();
     }
 
@@ -168,7 +174,8 @@ public class PlayerManager : MonoBehaviour
     {
         OnExpChanged?.Invoke(this, EventArgs.Empty);
     }
-    
+
+
     private void OnLevelChange(object sender, EventArgs e) //Method called onlevelchanged event
     {
         //Visual effects or things that happen on the event of leveling up
@@ -182,6 +189,7 @@ public class PlayerManager : MonoBehaviour
         //Visual effects or things that happen on the event of getting exp
         UpdateExpSlider();
     }
+
 
     #endregion
 

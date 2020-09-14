@@ -81,6 +81,11 @@ public class CharacterStats : MonoBehaviour
 
     #region Getters
 
+    public int GetHealth()
+    {
+        return stats.currentHealth;
+    }
+    
     public int GetDamage()
     {
         return stats.currentDamage;

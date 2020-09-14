@@ -5,9 +5,6 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
 
- 
-    
-
     public EnemyInfoSO enemyInfo;
 
     void Start()

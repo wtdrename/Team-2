@@ -6,31 +6,36 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     
-    public static GameManager Instance { private set; get; }
+    public static GameManager instance { private set; get; }
+
+
+    public event EventHandler OnPlayerDeathEvent;
+
 
     private void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Debug.Log("[GameManager] There is more than one GM instance");
             return;
         }
-        Instance = this;
+        instance = this;
     }
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        
+
         /*  Start on restart
          *  GoToRestartScene();
          */
-        
+
         /* Start ingame
          *  GotoGameScene();
          */
+        OnPlayerDeathEvent += OnPlayerDeath;
     }
-    
+
 
     public void GoToRestartScene()
     {
@@ -39,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToGameScene()
     {
-       SceneChange("SampleScene");   
+       SceneChange("Level1");   
     }
 
     public void GoToMainMenu()
@@ -69,6 +74,14 @@ public class GameManager : MonoBehaviour
         
         isChangingScene = false;
     }
-    
-    
+
+    private void OnPlayerDeath(object sender, EventArgs e)
+    {
+        SceneChange("GameOver");
+    }
+    public void DeathEventCall()
+    {
+        OnPlayerDeathEvent?.Invoke(this, EventArgs.Empty);
+    }
+
 }
