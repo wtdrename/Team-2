@@ -15,11 +15,14 @@ MonoBehaviour:
   level: 1
   currentExp: 0
   maxExp: 100
-  currentHealth: 100
+  expMaxlvlMultiplier: 1.25
   maxHealth: 100
-  currentShield: 0
+  currentHealth: 100
   maxShield: 0
-  baseRange: 0
-  baseDamage: 0
-  currentDamage: 0
+  currentShield: 0
+  baseArmor: 1
+  currentArmor: 1
+  baseDamage: 5
+  currentDamage: 5
+  criticalChance: 0
   currentCredit: 0
