@@ -1,5 +1,4 @@
-# Blaze-Team
-Blaze Team Repository
+# Allier Team
 
 Welcome!
 
