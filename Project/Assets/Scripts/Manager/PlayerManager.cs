@@ -186,6 +186,7 @@ public class PlayerManager : MonoBehaviour
         //Visual effects or things that happen on the event of leveling up
         playerStats.IncreaseStats();
         UpdateExpSlider();
+        SkillTreeManager.Instance.AddSkillPoints(3);
         Debug.Log($"LEVEL UP! \n New Stats:  MAXHEALTH = {playerStats.stats.maxHealth} MAXSHIELD = {playerStats.stats.maxShield} BASEARMOR = {playerStats.stats.baseArmor}  "); //Debug purposes, can be removed at any time
     }
 
