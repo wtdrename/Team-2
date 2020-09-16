@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -79,7 +80,15 @@ public class EnemyController : MonoBehaviour
 
     public void UpdateHealthSlider()
     {
-        healthBar.UpdateSlider((float)enemyStats.stats.currentHealth / (float)enemyStats.stats.maxHealth);
+        if (healthBar != null)
+        {
+            healthBar.UpdateSlider((float)enemyStats.stats.currentHealth / (float)enemyStats.stats.maxHealth);
+        }
+        else
+        {
+            healthBar = GetComponentInChildren<StatusBar>();
+            healthBar.UpdateSlider((float)enemyStats.stats.currentHealth / (float)enemyStats.stats.maxHealth);
+        }
         //add an if for armor / shield
         //healthBar.TakingDamage(amount, playerStats.stats);
     }

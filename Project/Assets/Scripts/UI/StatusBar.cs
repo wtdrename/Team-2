@@ -12,7 +12,11 @@ public class StatusBar : MonoBehaviour
 
     public void UpdateSlider(float value)
     {
-        if(value <= 0)
+        if(slider == null)
+        {
+            slider = GetComponent<Slider>();
+        }
+        if (value <= 0)
         {
             gameObject.SetActive(false);
             slider.value = 0;
