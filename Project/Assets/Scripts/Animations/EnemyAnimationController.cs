@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAnimationController : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    public EnemyController enemyController;
     public Animator animator;
 
     
@@ -13,12 +13,19 @@ public class EnemyAnimationController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
+        enemyController = GetComponent<EnemyController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnemyAttackAnimation()
     {
-        animator.SetFloat("Speed", agent.velocity.magnitude / agent.speed);
+        animator.SetTrigger("Attack");
+    }
+    public void EnemyDiesAnimation()
+    {
+        animator.SetTrigger("Dying");
+    }
+    public void EnemyMovement()
+    {
+        animator.SetFloat("Speed", enemyController.agent.velocity.magnitude / enemyController.agent.speed);
     }
 }

@@ -18,4 +18,9 @@ public class PlayerAnimator : MonoBehaviour
     {
         animator.SetFloat("Speed", agent.velocity.magnitude / agent.speed);
     }
+
+    public void Shooting()
+    {
+        animator.SetTrigger("Shooting");
+    }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class EnemyController : MonoBehaviour
 
     public Rigidbody rb;
     public NavMeshAgent agent;
-    private Animator animator;
+    public EnemyAnimationController animationController;
 
     public CharacterStats enemyStats;
     public StatusBar healthBar;
@@ -17,6 +18,7 @@ public class EnemyController : MonoBehaviour
 
     private float timeOfLastAttack;
 
+    private bool isAlive = true;
     public float aggroDistance;
     float distance;
     public float gizmoRadius = 5f;
@@ -26,44 +28,72 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
-        animator = GetComponent<Animator>();
+        animationController = GetComponent<EnemyAnimationController>();
 
         enemyStats = GetComponent<CharacterStats>();
         UpdateHealthSlider();
 
-        timeOfLastAttack = float.MinValue;
+        timeOfLastAttack = 0.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(transform.position, player.transform.position);
+        if (agent.enabled == true)
+        {
+            distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if(distance <= aggroDistance)
-        {
-            agent.SetDestination(player.transform.position);
-        }
-        else if (distance > aggroDistance * 1.5)
-        {
-            agent.SetDestination(transform.position);
+            if (distance <= aggroDistance)
+            {
+                agent.SetDestination(player.transform.position);
+                animationController.EnemyMovement();
+            }
+            else if (distance > aggroDistance * 1.5)
+            {
+                agent.SetDestination(transform.position);
+                animationController.EnemyMovement();
+            }
+
+
+            float timeSinceLastAttack = Time.time - timeOfLastAttack;
+            bool attackOnCoolDown = timeSinceLastAttack < attack.coolDown;
+            bool attackInRange = distance < attack.range;
+            agent.isStopped = attackOnCoolDown;
+            if (!attackOnCoolDown && attackInRange)
+            {
+                agent.velocity = Vector3.zero;
+
+                animationController.EnemyAttackAnimation();
+                transform.LookAt(player.transform);
+                timeOfLastAttack = Time.time;
+            }
         }
 
-        float timeSinceLastAttack = Time.time - timeOfLastAttack;
-        bool attackOnCoolDown = timeSinceLastAttack < attack.coolDown;
-        bool attackInRange = distance < attack.range;
-        agent.isStopped = attackOnCoolDown;
-        if(!attackOnCoolDown && attackInRange)
-        {
-            transform.LookAt(player.transform);
-            timeOfLastAttack = Time.time;
-            animator.SetTrigger("Attack");
-        }
     }
 
+    #region Attack and Defence
+
+    //executed by the animation event "Hit"
     public void Hit()
     {
         attack.ExecuteAttack(gameObject, player);
     }
+
+    //called on DestroyObject script
+    public void Dying()
+    {
+        if (isAlive)
+        {
+            isAlive = false;
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            animationController.EnemyDiesAnimation();
+            agent.enabled = false;
+        }
+    }
+
+    #endregion
+
+
     #region Decreasers
     public void TakeDamage(int amount)
     {

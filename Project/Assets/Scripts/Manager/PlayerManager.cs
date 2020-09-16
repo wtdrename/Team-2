@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
     public StatusBar healthBar;
     public StatusBar expBar; //needs to be assigned
 
-    public Animator animator;
+    public PlayerAnimator playerAnimator;
 
     public Button attackButton;
     public AttackDefenition baseAttack;
@@ -86,6 +86,16 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
+    #region Animations
+        
+    public void ShootingAnimation()
+    {
+        playerAnimator.Shooting();
+    }
+
+
+    #endregion
+
     #region Slider Updates
 
     public void UpdateHealthSlider()
@@ -108,7 +118,6 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
-
     #region Increasers
     public void GiveHealth(int amount)
     {
@@ -129,7 +138,6 @@ public class PlayerManager : MonoBehaviour
     }
     
     #endregion
-
 
     #region Decreasers
     public void TakeDamage(int amount)

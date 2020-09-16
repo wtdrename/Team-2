@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Attack.asset", menuName ="Attack/New Attack")]
 public class AttackDefenition : ScriptableObject
 {
-    public float coolDown;
+    public float coolDown = 1;
 
     public float range;
 
