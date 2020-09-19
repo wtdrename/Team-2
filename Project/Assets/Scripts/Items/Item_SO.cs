@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
 
  
@@ -18,6 +19,14 @@ public class Item_SO : ScriptableObject
     public int itemAmount = 0;
     public bool isStackable = true;
     public bool isConsumable = true;
+
+    //weapon stats
+    public int maxAmmo = 0;
+    public int currentAmmo = 0;
+    public float reloadTime;
+    public float shotsPerSec;
+    public int magazineSize;
+    public int ammoAmountInInv;
 
     #endregion
 
@@ -40,22 +49,31 @@ public class Item_SO : ScriptableObject
             //needs to add remove item
             case ItemType.HEALTH:
                 PlayerManager.instance.playerStats.GiveHealth(item.itemAmount);
-                RemoveItem(item);
                 break;
             case ItemType.ARMOR:
                 //eqiping armor
-                RemoveItem(item);
                 break;
             case ItemType.WEAPON:
                 //eqiping weapon
-                RemoveItem(item);
                 break;
             case ItemType.AMMO:
-                //giving ammo
-                RemoveItem(item);
+                if(item.currentAmmo == item.maxAmmo)
+                {
+                    Debug.Log("Ammo is full");
+                    break;
+                }
+                else if(item.currentAmmo + item.itemAmount >= maxAmmo)
+                {
+                    item.currentAmmo = item.maxAmmo;
+                }
+                else
+                {
+                    item.currentAmmo += item.itemAmount;
+                }
                 break;
         }
     }
+
     public void RemoveItem(Item_SO item)
     {
 
@@ -64,7 +82,14 @@ public class Item_SO : ScriptableObject
     {
 
     }
+    public void EquipItem(Item_SO item)
+    {
 
+    }
+    public void UnequipItem()
+    {
+
+    }
 
     /*use items
      *     public float givearmor = 0;

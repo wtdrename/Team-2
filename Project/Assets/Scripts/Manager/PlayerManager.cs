@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Security.Permissions;
+using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -47,6 +49,13 @@ public class PlayerManager : MonoBehaviour
 
     public ProjectileManager projectileManager;
 
+    public Item_SO weapon;
+    public TextMeshProUGUI ammoAmountText;
+
+    //shooting variables
+    bool readyToShoot = true;
+    bool reloading = false;
+
     #endregion
 
     #region Start and Update
@@ -61,7 +70,9 @@ public class PlayerManager : MonoBehaviour
 
         //onTakingDamage += TakingDamage;
         //onHealing += IncreasingHealth;
+        attackButton.onClick.AddListener(Shooting);
 
+        UpdateAmmoText();
         UpdateHealthSlider();
     }
     
@@ -96,7 +107,7 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
-    #region Slider Updates
+    #region UI Updates
 
     public void UpdateHealthSlider()
     {
@@ -114,6 +125,11 @@ public class PlayerManager : MonoBehaviour
     {
        // expBar.UpdateSlider((float)playerStats.GetActualExp() / (float)playerStats.GetMaxExp());
        // remove the "//" after having the slider assigned
+    }
+
+    public void UpdateAmmoText()
+    {
+        ammoAmountText.text = weapon.currentAmmo + " / " + weapon.magazineSize + " (" + weapon.ammoAmountInInv + ") ";
     }
 
     #endregion
@@ -172,6 +188,75 @@ public class PlayerManager : MonoBehaviour
         {
             e.OnAttack(gameObject, attack);
         }
+    }
+
+    public void Shooting()
+    {
+        if(readyToShoot == false || reloading == true)
+        {
+            return;
+        }
+
+        readyToShoot = false;
+        if(weapon.currentAmmo > 0)
+        {
+            weapon.currentAmmo--;
+            if(weapon.ammoAmountInInv != 0)
+            {
+                weapon.ammoAmountInInv--;
+            }
+
+            projectileManager.ShootingProjectile();
+            UpdateAmmoText();
+            Invoke("ResetShot", weapon.shotsPerSec);
+        }
+        else if (weapon.currentAmmo == 0 && weapon.ammoAmountInInv != 0)
+        {
+            Invoke("Reload", weapon.reloadTime);
+        }
+        else if (weapon.currentAmmo == 0 && weapon.ammoAmountInInv == 0)
+        {
+            Debug.Log("[Player Manager] There is not enough ammo in the inventory");
+            ResetShot();
+            return;
+        }
+        else
+        {
+            Debug.Log("[Player Manager] You dont have enought ammo!");
+            ResetShot();
+            return;
+        }
+    }
+    private void ResetShot()
+    {
+        readyToShoot = true;
+    }
+    private void Reload()
+    {
+        reloading = true;
+        Invoke("ReloadFinished", weapon.reloadTime);
+    }
+
+    private void ReloadFinished()
+    {
+        //if there is not enough ammo in the inventory, only load the amount u have 
+        if(weapon.ammoAmountInInv < weapon.magazineSize)
+        {
+            weapon.currentAmmo = weapon.ammoAmountInInv;
+            weapon.ammoAmountInInv -= weapon.currentAmmo;
+            UpdateAmmoText();
+            reloading = false;
+            ResetShot();
+            return;
+        }
+
+        //reset magazine and remove the ammo from the inventory
+        weapon.currentAmmo = weapon.magazineSize;
+        weapon.ammoAmountInInv -= weapon.magazineSize;
+        UpdateAmmoText();
+        reloading = false;
+        ResetShot();
+
     }
 
     #endregion

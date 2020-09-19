@@ -15,7 +15,6 @@ public class ProjectileManager : MonoBehaviour
 
     public void ShootingProjectile()
     {
-        
         Transform bullet = Instantiate(pfBullet, gunEndPosition.position, Quaternion.identity);
         shootDir = gunEndPosition.forward;
         bullet.localRotation = Quaternion.LookRotation(gunEndPosition.forward);
