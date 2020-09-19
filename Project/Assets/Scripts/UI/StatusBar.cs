@@ -18,18 +18,14 @@ public class StatusBar : MonoBehaviour
         }
         if (value <= 0)
         {
-            gameObject.SetActive(false);
             slider.value = 0;
         }
         else if(value >= 1)
         {
-            gameObject.SetActive(false);
             slider.value = 1;
         }
         else
         {
-            if(gameObject.activeSelf == false)
-                gameObject.SetActive(true);
             slider.value = value;
         }
     }

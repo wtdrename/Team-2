@@ -12,5 +12,4 @@ public class EnemyInfoSO : ScriptableObject
     public int maxEnemies;
     public int waveCount;
     public GameObject[] enemies;
-    public GameObject[] spawnPoints;
 }

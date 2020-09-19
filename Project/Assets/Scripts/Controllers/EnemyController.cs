@@ -112,12 +112,33 @@ public class EnemyController : MonoBehaviour
     {
         if (healthBar != null)
         {
-            healthBar.UpdateSlider((float)enemyStats.stats.currentHealth / (float)enemyStats.stats.maxHealth);
+            healthBar.UpdateSlider((float)enemyStats.GetHealth() / (float)enemyStats.GetMaxHealth());
         }
         else
         {
             healthBar = GetComponentInChildren<StatusBar>();
-            healthBar.UpdateSlider((float)enemyStats.stats.currentHealth / (float)enemyStats.stats.maxHealth);
+            healthBar.UpdateSlider((float)enemyStats.GetHealth() / (float)enemyStats.GetMaxHealth());
+        }
+        if(enemyStats.GetHealth() == enemyStats.GetMaxHealth())
+        {
+            if (healthBar.gameObject.activeSelf == true)
+            {
+                healthBar.gameObject.SetActive(false);
+            }
+        }
+        else if(enemyStats.GetHealth() == 0)
+        {
+            if (healthBar.gameObject.activeSelf == true)
+            {
+                healthBar.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if(healthBar.gameObject.activeSelf == false)
+            {
+                healthBar.gameObject.SetActive(true);
+            }
         }
         //add an if for armor / shield
         //healthBar.TakingDamage(amount, playerStats.stats);

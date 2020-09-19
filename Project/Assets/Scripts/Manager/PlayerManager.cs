@@ -38,9 +38,17 @@ public class PlayerManager : MonoBehaviour
 
     #region Initializations
 
-    public CharacterStats playerStats;
+    [Header("Health Bar")]
     public StatusBar healthBar;
+    public TextMeshProUGUI healthBarText;
+
+    [Header("Exp Bar")]
     public StatusBar expBar; //needs to be assigned
+    public TextMeshProUGUI expBarText;
+
+    [Header("Level and Stats")]
+    public CharacterStats playerStats;
+    public TextMeshProUGUI levelText;
 
     public PlayerAnimator playerAnimator;
 
@@ -72,8 +80,12 @@ public class PlayerManager : MonoBehaviour
         //onHealing += IncreasingHealth;
         attackButton.onClick.AddListener(Shooting);
         weapon = Instantiate(weapon);
+
+        //updates all the UI
         UpdateAmmoText();
         UpdateHealthSlider();
+        UpdateExpSlider();
+        UpdateLevelText();
     }
     
 
@@ -111,7 +123,8 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateHealthSlider()
     {
-        healthBar.UpdateSlider((float)playerStats.stats.currentHealth / (float)playerStats.stats.maxHealth);
+        UpdateStatusBarText(healthBarText, playerStats.GetHealth().ToString(), playerStats.GetMaxHealth().ToString());
+        healthBar.UpdateSlider((float)playerStats.GetHealth() / (float)playerStats.GetMaxHealth());
         //add an if for armor / shield
         //healthBar.TakingDamage(amount, playerStats.stats);
     }
@@ -123,13 +136,23 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateExpSlider()
     {
-       // expBar.UpdateSlider((float)playerStats.GetActualExp() / (float)playerStats.GetMaxExp());
-       // remove the "//" after having the slider assigned
+        UpdateStatusBarText(expBarText, playerStats.GetActualExp().ToString(), playerStats.GetMaxExp().ToString());
+        expBar.UpdateSlider((float)playerStats.GetActualExp() / (float)playerStats.GetMaxExp());
+    }
+
+    public void UpdateLevelText()
+    {
+        levelText.text = "Level " + playerStats.GetLevel().ToString();
     }
 
     public void UpdateAmmoText()
     {
         ammoAmountText.text = weapon.currentAmmo + " / " + weapon.magazineSize + " (" + weapon.ammoAmountInInv + ") ";
+    }
+
+    public void UpdateStatusBarText(TextMeshProUGUI barText, string min, string max)
+    {
+        barText.text = min + " / " + max;
     }
 
     #endregion

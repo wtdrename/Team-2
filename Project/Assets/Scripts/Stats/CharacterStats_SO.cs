@@ -9,24 +9,28 @@ public class CharacterStats_SO : ScriptableObject
 
     #region Defenitions
 
+
+    [Header("Level")]
     public int level = 1;
     public int currentExp = 0;
     public int maxExp = 100;
     public float expMaxlvlMultiplier = 1.25f; //how much the maxExp will increase on each level
 
-
+    [Header("Status Stats")]
     public int maxHealth;
     public int currentHealth;
     public int maxShield;
     public int currentShield;
 
+
+    [Header("Attributes")]
     public int baseArmor;
     public int currentArmor;
     public int baseDamage;
     public int currentDamage;
-
     public float criticalChance;
 
+    [Header("Inventory")]
     public int currentCredit;
 
     #endregion

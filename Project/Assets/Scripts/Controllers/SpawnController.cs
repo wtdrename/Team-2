@@ -6,7 +6,7 @@ public class SpawnController : MonoBehaviour
 {
 
     public EnemyInfoSO enemyInfo;
-
+    public GameObject[] spawnPoints;
     void Start()
     {
         if (enemyInfo.enemies != null)
@@ -26,7 +26,7 @@ public class SpawnController : MonoBehaviour
     {
         while (enemyInfo.enemyCount < enemyInfo.maxEnemies)
         {
-            Vector3 spawnpoint = enemyInfo.spawnPoints[Random.Range(0,enemyInfo.spawnPoints.Length)].transform.position;
+            Vector3 spawnpoint = spawnPoints[Random.Range(0,spawnPoints.Length)].transform.position;
             Instantiate(enemyInfo.enemies[Random.Range(0,enemyInfo.enemies.Length)], spawnpoint, Quaternion.identity);
             yield return new WaitForSeconds(enemyInfo.spawnDelay);
             enemyInfo.enemyCount += 1;

@@ -85,7 +85,11 @@ public class CharacterStats : MonoBehaviour
     {
         return stats.currentHealth;
     }
-    
+    public int GetMaxHealth()
+    {
+        return stats.maxHealth;
+    }
+
     public int GetDamage()
     {
         return stats.currentDamage;
