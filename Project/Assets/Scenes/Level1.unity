@@ -26845,6 +26845,16 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 663932946}
+    - target: {fileID: 8677077845011682373, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
+        type: 3}
+      propertyPath: speed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677077845011682373, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9034490475034499573, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
         type: 3}
       propertyPath: healthBar

@@ -19,8 +19,8 @@ MonoBehaviour:
   isStackable: 0
   isConsumable: 0
   maxAmmo: 100
-  currentAmmo: 99
+  currentAmmo: 30
   reloadTime: 2
   shotsPerSec: 0.3
   magazineSize: 30
-  ammoAmountInInv: 58
+  ammoAmountInInv: 60

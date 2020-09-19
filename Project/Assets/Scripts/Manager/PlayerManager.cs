@@ -71,7 +71,7 @@ public class PlayerManager : MonoBehaviour
         //onTakingDamage += TakingDamage;
         //onHealing += IncreasingHealth;
         attackButton.onClick.AddListener(Shooting);
-
+        weapon = Instantiate(weapon);
         UpdateAmmoText();
         UpdateHealthSlider();
     }
@@ -201,7 +201,7 @@ public class PlayerManager : MonoBehaviour
         if(weapon.currentAmmo > 0)
         {
             weapon.currentAmmo--;
-            if(weapon.ammoAmountInInv != 0)
+            if(weapon.ammoAmountInInv > 0)
             {
                 weapon.ammoAmountInInv--;
             }
