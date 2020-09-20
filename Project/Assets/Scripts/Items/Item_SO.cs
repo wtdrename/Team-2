@@ -15,10 +15,12 @@ public class Item_SO : ScriptableObject
     public string itemName;
     public Sprite itemSprite;
 
-
     public int itemAmount = 0;
     public bool isStackable = true;
     public bool isConsumable = true;
+
+    public int stackSize = 0;
+    public int maxStackSize = 20;
 
     //weapon stats
     public int maxAmmo = 0;
@@ -43,12 +45,18 @@ public class Item_SO : ScriptableObject
 
     public void UseItem(Item_SO item)
     {
+        if(item == null)
+        {
+            return;
+        }
         Debug.Log("[Item_SO] Using the item: " + item.itemName);
         switch (item.itemType)
         {
             //needs to add remove item
             case ItemType.HEALTH:
+                Debug.Log("Gave Health");
                 PlayerManager.instance.playerStats.GiveHealth(item.itemAmount);
+                PlayerManager.instance.UpdateHealthSlider();
                 break;
             case ItemType.ARMOR:
                 //eqiping armor
@@ -71,6 +79,10 @@ public class Item_SO : ScriptableObject
                     item.currentAmmo += item.itemAmount;
                 }
                 break;
+        }
+        if(item.stackSize >= 1)
+        {
+            item.stackSize--;
         }
     }
 

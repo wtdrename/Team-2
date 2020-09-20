@@ -6,22 +6,33 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     Item_SO item;
+    public Item_SO GetItem()
+    {
+        return item;
+    }
     public Image icon;
 
     public Text itemAmount;
 
+    public bool isEmptySlot;
+
 
     public void AddItemToSlot(Item_SO newItem)
     {
+        if(item != null && item.isStackable)
+        {
+            UpdateStackSize();
+            return;
+        }
+        else if(item != null && !item.isStackable)
+        {
+            return;
+        }
         item = newItem;
         icon.sprite = item.itemSprite;
         icon.enabled = true;
-        if(item.isStackable == true)
-        {
-            itemAmount.text = "1";
-            itemAmount.enabled = true;
-        }
-
+        UpdateStackSize();
+        isEmptySlot = false;
     }
     public void ClearSlot()
     {
@@ -33,40 +44,28 @@ public class InventorySlot : MonoBehaviour
             itemAmount.text = "0";
             itemAmount.enabled = false;
         }
+        isEmptySlot = true;
     }
     public void UseItem()
     {
         if(item != null)
         {
             item.UseItem(item);
+            UpdateStackSize();
+        }
+        if(item.stackSize == 0)
+        {
+            ClearSlot();
+        }
+
+    }
+
+    public void UpdateStackSize()
+    {
+        if (item.isStackable == true && item.stackSize >= 1)
+        {
+            itemAmount.text = item.stackSize.ToString();
+            itemAmount.enabled = true;
         }
     }
 }
-/*public Button UI_InventoryBag;
-    
-
-
-    void Start()
-    {
-        
-        Button btn = UI_InventoryBag.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
-        GameObject isOpen = _Inventory.instance.inventoryPanel;
-        isOpen.SetActive(false);
-    }
-
-    public void TaskOnClick()
-    {
-        GameObject isOpen = _Inventory.instance.inventoryPanel;
-
-        if (!isOpen.activeSelf)
-        {
-            isOpen.SetActive(true);
-        }
-        else
-        {
-            isOpen.SetActive(false);
-        }
-    }
-       
-*/

@@ -119,6 +119,20 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
+    public void OnTriggerEnter(Collider other)
+    {
+        var item = other.GetComponent<ItemPickup>();
+        if (item != null)
+        {
+            var pickup = InventoryManager.instance.AddItemToInventory(item.item);
+            if (pickup)
+            {
+                Debug.Log("[Player Manager] Item " + item.item.itemName + " picked up");
+                Destroy(other.gameObject);
+            }
+        }
+    }
+
     #region UI Updates
 
     public void UpdateHealthSlider()
@@ -308,11 +322,14 @@ public class PlayerManager : MonoBehaviour
         OnExpChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    #endregion
+
+    #region Leveling Up and EXP
 
     private void OnLevelChange(object sender, EventArgs e) //Method called onlevelchanged event
     {
         //Visual effects or things that happen on the event of leveling up
-        playerStats.IncreaseStats();
+        playerStats.LevelUpStatsChange();
         UpdateExpSlider();
         UpdateLevelText();
         RefreshStats();

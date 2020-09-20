@@ -22,8 +22,9 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 
-    public int maxSlots = 12;
-
+    //needs to be max slots -1 because of 0 in lists
+    public int maxSlots = 11;
+    public int emptySlots = 11;
 
 
     #region Events
@@ -42,24 +43,38 @@ public class InventoryManager : MonoBehaviour
     {
         onChangedItemCall += UpdateInventorySlots;
         inventorySlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>();
+        UpdateInventorySlots();
     }
 
     #region Item Handling
 
     public bool AddItem(Item_SO item)
     {
-        items.Add(item);
-        if(items.Count >= maxSlots)
+        if (emptySlots > 0)
+        {
+            foreach (InventorySlot slot in inventorySlots)
+            {
+                var tmp = slot.GetComponent<InventorySlot>();
+                if (tmp.isEmptySlot)
+                {
+                    tmp.AddItemToSlot(item);
+                    emptySlots--;
+                    Debug.Log("[Inventory Manager] Item added to inventory");
+                    break;
+                }
+            }
+        }
+        else
         {
             Debug.Log("[InventoryManager - AddItem] Inventory is full.");
             return false;
         }
-        item.AddItem(item);
 
-        if(onChangedItemCall != null)
+        if (onChangedItemCall != null)
         {
             onChangedItemCall.Invoke();
         }
+        item.stackSize++;
         return true;
     }
     public void RemoveItem(Item_SO item)
@@ -82,24 +97,26 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            if(i < items.Count)
-            {
-                inventorySlots[i].AddItemToSlot(items[i]);
-            }
-            else
+            
+            if(inventorySlots[i].GetItem() == null)
             {
                 inventorySlots[i].ClearSlot();
-            }
-            /* option 2
-            if(items[i] == null)
-            {
-                inventorySlots[i].ClearSlot();
+
+                emptySlots++;
             }
             else
             {
                 inventorySlots[i].AddItemToSlot(items[i]);
+                emptySlots--;
             }
-            */
+        }
+        if (emptySlots > 12)
+        {
+            emptySlots = 12;
+        }
+        if (emptySlots < 0)
+        {
+            emptySlots = 0;
         }
     }
 
@@ -115,12 +132,65 @@ public class InventoryManager : MonoBehaviour
             inventoryUI.SetActive(true);
         }
     }
+
+    public bool AddItemToInventory(Item_SO item)
+    {
+        bool itemAdded = false;
+        if (item.isStackable)
+        {
+            foreach (InventorySlot slot in inventorySlots)
+            {
+                var tmp = slot.GetComponent<InventorySlot>();
+                var itemTmp = tmp.GetItem();
+                if (itemTmp != null && itemTmp.isStackable && itemTmp.stackSize < item.maxStackSize)
+                {
+                    tmp.AddItemToSlot(item);
+                    itemTmp.stackSize++;
+                    Debug.Log("[Inventory Manager] Item added to the stack of " + item.itemName);
+                    itemAdded = true;
+                    break;
+                }
+            }
+            if (itemAdded)
+            {
+                if (onChangedItemCall != null)
+                {
+                    onChangedItemCall.Invoke();
+                }
+                return true;
+            }
+        }
+        if(emptySlots > 0)
+        {
+            return AddItem(item);
+        }
+        else
+        {
+            Debug.Log("[Inventory Manager] inventory is full");
+            return false;
+        }
+
+    }
+
+    public void RemoveItemFromInventory(Item_SO item)
+    {
+        if(item.stackSize == 0)
+        {
+            items.Remove(item);
+        }
+        else
+        {
+            Debug.Log("[Inventory Manager] There is a call to remove item with more than one stack size");
+        }
+        UpdateInventorySlots();
+
+    }
     #endregion
 }
 
 /*
  * 
-    public void Add(Item item)
+    public void AddItemToInventory(Item item)
     {
         if(list.Count < 9)
         {
@@ -136,29 +206,4 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    void Start()
-    {
-        instance = this;
-        updatePanelSlots();
-       
-
-    }
-    public static void Menu()
-    {    
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-
-            GameObject isOpen = _Inventory.instance.inventoryPanel;
-
-            if (!isOpen.activeSelf)
-            {
-                isOpen.SetActive(true);
-            }
-            else
-            {
-                isOpen.SetActive(false);
-            }
-        }
-    }
 */

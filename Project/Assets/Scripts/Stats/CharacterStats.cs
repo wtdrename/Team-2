@@ -38,9 +38,9 @@ public class CharacterStats : MonoBehaviour
         stats.GiveExp(amount);
     }
 
-    public void IncreaseStats()
+    public void LevelUpStatsChange()
     {
-        stats.IncreaseStats();
+        stats.LevelUpStatsChange();
     }
 
     #endregion

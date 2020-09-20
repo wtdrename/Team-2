@@ -82,12 +82,14 @@ public class CharacterStats_SO : ScriptableObject
         }
     }
 
-    public void IncreaseStats() //method that will be called on level up
+    public void LevelUpStatsChange() //method that will be called on level up
     {
         //temporal values
         maxHealth += 10;
         maxShield += 8;
         baseArmor += 3;
+
+        currentHealth = maxHealth;
     }
     
     
