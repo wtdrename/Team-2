@@ -157,6 +157,15 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
+    #region Stats Updates
+
+    public void RefreshStats()
+    {
+
+    }
+
+    #endregion
+
     #region Increasers
     public void GiveHealth(int amount)
     {
@@ -302,6 +311,7 @@ public class PlayerManager : MonoBehaviour
         //Visual effects or things that happen on the event of leveling up
         playerStats.IncreaseStats();
         UpdateExpSlider();
+        UpdateLevelText();
         SkillTreeManager.Instance.AddSkillPoints(3);
         Debug.Log($"LEVEL UP! \n New Stats:  MAXHEALTH = {playerStats.stats.maxHealth} MAXSHIELD = {playerStats.stats.maxShield} BASEARMOR = {playerStats.stats.baseArmor}  "); //Debug purposes, can be removed at any time
     }

@@ -15,6 +15,7 @@ public class CharacterStats_SO : ScriptableObject
     public int currentExp = 0;
     public int maxExp = 100;
     public float expMaxlvlMultiplier = 1.25f; //how much the maxExp will increase on each level
+    public int expGivenOnDeath;
 
     [Header("Status Stats")]
     public int maxHealth;

@@ -118,6 +118,11 @@ public class CharacterStats : MonoBehaviour
     {
         return stats.maxExp;
     }
+
+    public int GetExpOnDeath()
+    {
+        return stats.expGivenOnDeath;
+    }
     #endregion
 
     #region Save and Load
