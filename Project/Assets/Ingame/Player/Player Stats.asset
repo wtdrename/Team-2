@@ -16,6 +16,7 @@ MonoBehaviour:
   currentExp: 0
   maxExp: 100
   expMaxlvlMultiplier: 1.25
+  expGivenOnDeath: 0
   maxHealth: 100
   currentHealth: 70
   maxShield: 100
@@ -23,6 +24,6 @@ MonoBehaviour:
   baseArmor: 0
   currentArmor: 0
   baseDamage: 10
-  currentDamage: 25
+  currentDamage: 10
   criticalChance: 0
   currentCredit: 0

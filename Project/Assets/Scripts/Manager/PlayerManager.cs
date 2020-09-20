@@ -161,7 +161,10 @@ public class PlayerManager : MonoBehaviour
 
     public void RefreshStats()
     {
-
+        playerStats.stats.currentDamage = playerStats.stats.baseDamage;
+        UpdateArmorSlider();
+        UpdateExpSlider();
+        UpdateHealthSlider();
     }
 
     #endregion
@@ -312,7 +315,8 @@ public class PlayerManager : MonoBehaviour
         playerStats.IncreaseStats();
         UpdateExpSlider();
         UpdateLevelText();
-        SkillTreeManager.Instance.AddSkillPoints(3);
+        RefreshStats();
+        SkillTreeManager.instance.AddSkillPoints(3);
         Debug.Log($"LEVEL UP! \n New Stats:  MAXHEALTH = {playerStats.stats.maxHealth} MAXSHIELD = {playerStats.stats.maxShield} BASEARMOR = {playerStats.stats.baseArmor}  "); //Debug purposes, can be removed at any time
     }
 

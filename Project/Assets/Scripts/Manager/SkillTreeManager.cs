@@ -25,16 +25,16 @@ public class SkillTreeManager : MonoBehaviour
 
     #region Singleton
     
-    public static SkillTreeManager Instance { private set; get; }
+    public static SkillTreeManager instance { private set; get; }
     
     void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Debug.Log("[SkillTreeManager] There is more than one skill tree instance");
             return;
         }
-        Instance = this;
+        instance = this;
     }
     
     #endregion
@@ -51,6 +51,11 @@ public class SkillTreeManager : MonoBehaviour
         {
             skillPanel.SetActive(!skillPanel.activeSelf);
         }
+    }
+
+    public void ToggleSkillPanel()
+    {
+        skillPanel.SetActive(!skillPanel.activeSelf);
     }
 
     public void AddSkillPoints(byte numberOfPoints)
@@ -118,6 +123,7 @@ public class SkillTreeManager : MonoBehaviour
         }
 
         UpdateStatsText();
+        PlayerManager.instance.RefreshStats();
     }
 
     private void UpdateStatsText()
