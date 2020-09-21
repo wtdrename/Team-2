@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public NavMeshAgent agent;
     public Joystick joystick;
-    public float speed = 6f;
+    public float speed = .5f;
     public float rotationSpeed = 10f;
     public new Camera camera;
 
