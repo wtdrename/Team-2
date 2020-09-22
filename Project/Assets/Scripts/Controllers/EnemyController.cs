@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IPooledObject
 {
     public GameObject player;
 
@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (agent.enabled == true)
+        if (agent.enabled)
         {
             distance = Vector3.Distance(transform.position, player.transform.position);
 
@@ -85,6 +85,7 @@ public class EnemyController : MonoBehaviour
         if (isAlive)
         {
             isAlive = false;
+            SpawnController.Instance.actualEnemiesAlive--;
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
             animationController.EnemyDiesAnimation();
             agent.enabled = false;
@@ -149,6 +150,13 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, gizmoRadius);
     }
-
-
+    
+    
+    //the method called when the enemy is spawned via the object pooling
+    public void OnObjectSpawn() 
+    {
+        gameObject.SetActive(true);
+        isAlive = true;
+        agent.enabled = true;
+    }
 }
