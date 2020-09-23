@@ -28794,6 +28794,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1794017324, guid: ed08e8c51a9e08b4b9d9089eded6c4c8, type: 3}
+      propertyPath: pfBullet
+      value: 
+      objectReference: {fileID: 3750964084033061584, guid: 3684d32bffeaaef40b5cd8b0b55a2375,
+        type: 3}
     - target: {fileID: 8677077844600963176, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
         type: 3}
       propertyPath: m_Name
