@@ -119,6 +119,8 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 
+    #region Pickup via Collision
+
     public void OnTriggerEnter(Collider other)
     {
         var item = other.GetComponent<ItemPickup>();
@@ -132,6 +134,8 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+
+    #endregion
 
     #region UI Updates
 
