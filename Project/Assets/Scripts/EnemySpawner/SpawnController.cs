@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(ObjectPooler))]
@@ -12,6 +13,13 @@ public class SpawnController : MonoBehaviour
     
     private int actualWave = 0;
     [HideInInspector]public int actualEnemiesAlive = 0;
+
+    #region Text messages
+
+    public TextMeshProUGUI waitingWaveStartText;
+    public TextMeshProUGUI waveState;
+
+    #endregion
     
     void Start()
     {
@@ -28,6 +36,10 @@ public class SpawnController : MonoBehaviour
     private int difficultyRate = 0;
     IEnumerator StartWave()
     {
+        waveState.enabled = true;
+        waveState.text = $"Wave {actualWave + 1} starting";
+        yield return new WaitForSeconds(2f);
+        waveState.enabled = false;
         EnemySpawnerSO wave = waveList[actualWave];
         actualWave++;
         while (wave.enemyCount < wave.maxEnemies)
@@ -60,15 +72,47 @@ public class SpawnController : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
         }
-
+        
+        waveState.enabled = enabled;
+        waveState.text = "Wave finished";
+        
         if (actualWave < waveList.Length - 1)
         {
+            StartCoroutine(StartingWave());
+            yield return new WaitForSeconds(6f);
             StartCoroutine(StartWave());
             if (actualWave % 3 == 0)
             {
                 difficultyRate++;
             }
-        }
 
+            waveState.text = $"Wave {actualWave + 1}";
+            yield return new WaitForSeconds(2);
+            waveState.enabled = false;
+        }
+        else
+        {
+            waveState.text = "Stage finished!";
+            waveState.enabled = false;
+        }
     }
+
+    IEnumerator StartingWave()
+    {
+        waitingWaveStartText.enabled = false;
+        waitingWaveStartText.text = "Time left: 5";
+        yield return new WaitForSeconds(1);
+        waitingWaveStartText.text = "Time left: 4";
+        yield return new WaitForSeconds(1);
+        waitingWaveStartText.text = "Time left: 3";
+        yield return new WaitForSeconds(1);
+        waitingWaveStartText.text = "Time left: 2";
+        yield return new WaitForSeconds(1);
+        waitingWaveStartText.text = "Time left: 1";
+        yield return new WaitForSeconds(1);
+        waitingWaveStartText.text = "Time left: 0";
+        yield return new WaitForSeconds(1);
+        waitingWaveStartText.enabled = false;
+    }
+    
 }
