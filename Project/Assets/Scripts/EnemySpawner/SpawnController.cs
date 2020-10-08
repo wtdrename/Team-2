@@ -76,7 +76,9 @@ public class SpawnController : MonoBehaviour
         waveState.enabled = enabled;
         waveState.text = "Wave finished";
         
-        if (actualWave < waveList.Length - 1)
+        Debug.Log("Salio");
+        
+        if (actualWave < waveList.Length)
         {
             StartCoroutine(StartingWave());
             yield return new WaitForSeconds(6f);
@@ -99,7 +101,7 @@ public class SpawnController : MonoBehaviour
 
     IEnumerator StartingWave()
     {
-        waitingWaveStartText.enabled = false;
+        waitingWaveStartText.enabled = true;
         waitingWaveStartText.text = "Time left: 5";
         yield return new WaitForSeconds(1);
         waitingWaveStartText.text = "Time left: 4";

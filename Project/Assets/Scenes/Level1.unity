@@ -7117,8 +7117,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 37.02
+  m_fontSizeBase: 37.02
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7198,7 +7198,7 @@ RectTransform:
   m_GameObject: {fileID: 579986174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1796085, y: 1.1796085, z: 1.1796085}
   m_Children: []
   m_Father: {fileID: 178353118}
   m_RootOrder: 1
@@ -29131,7 +29131,7 @@ PrefabInstance:
     - target: {fileID: 1794017324, guid: ed08e8c51a9e08b4b9d9089eded6c4c8, type: 3}
       propertyPath: pfBullet
       value: 
-      objectReference: {fileID: 3566997256527299591, guid: 3684d32bffeaaef40b5cd8b0b55a2375,
+      objectReference: {fileID: 5200339341221061392, guid: fbdb851b9c705074b9454fc8729a8cc8,
         type: 3}
     - target: {fileID: 8677077844600963176, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
         type: 3}
