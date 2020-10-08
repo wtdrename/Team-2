@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 	
-	//You can use method below to play a song / sound effect (calling it like AudioManager.instance.Play("Sound effect"); for example)
+	//You can use method below to play a song / sound effect (calling it like AudioManager.Instance.Play("Sound effect"); for example)
 	//The parameter should be the sound name that is in the Audio manager in the hierarchy
 	public void Play(string sound) 
 	{

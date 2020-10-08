@@ -8,16 +8,16 @@ public class InventoryManager : MonoBehaviour
 
     #region Singleton
 
-    public static InventoryManager instance;
+    public static InventoryManager Instance;
 
     private void Awake()
     {
-        if(instance != null)
+        if(Instance != null)
         {
-            Debug.Log("[InventoryManager] There is more then one inventory instance");
+            Debug.Log("[InventoryManager] There is more then one inventory Instance");
             return;
         }
-        instance = this;
+        Instance = this;
     }
 
     #endregion

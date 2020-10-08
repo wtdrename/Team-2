@@ -20,7 +20,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 70
   maxShield: 100
-  currentShield: 100
+  currentShield: 0
   baseArmor: 0
   currentArmor: 0
   baseDamage: 10

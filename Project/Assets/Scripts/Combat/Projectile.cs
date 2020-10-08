@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     public void Setup(Vector3 shootDirection)
     {
         this.shootDir = shootDirection;
-        playerManager = PlayerManager.instance;
+        playerManager = PlayerManager.Instance;
         if(vfxMuzzle != null)
         {
             var muzzle = Instantiate(vfxMuzzle, transform.position, Quaternion.identity);

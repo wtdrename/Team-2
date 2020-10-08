@@ -11,18 +11,18 @@ public class PlayerManager : MonoBehaviour
 
     #region Singleton
 
-    public static PlayerManager instance;
+    public static PlayerManager Instance;
 
     public int maxSlots = 12;
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
-            Debug.Log("[PlayerManager] There is more then one player instance");
+            Debug.Log("[PlayerManager] There is more then one player Instance");
             return;
         }
-        instance = this;
+        Instance = this;
     }
 
     #endregion
@@ -60,6 +60,7 @@ public class PlayerManager : MonoBehaviour
     public Item_SO weapon;
     public TextMeshProUGUI ammoAmountText;
 
+
     //shooting variables
     bool readyToShoot = true;
     bool reloading = false;
@@ -83,9 +84,10 @@ public class PlayerManager : MonoBehaviour
 
         //updates all the UI
         UpdateAmmoText();
-        UpdateHealthSlider();
-        UpdateExpSlider();
+        RefreshStats();
         UpdateLevelText();
+
+        SkillTreeManager.Instance.UpdateAvailablePoints();
     }
     
 
@@ -126,7 +128,7 @@ public class PlayerManager : MonoBehaviour
         var item = other.GetComponent<ItemPickup>();
         if (item != null)
         {
-            var pickup = InventoryManager.instance.AddItemToInventory(item.item);
+            var pickup = InventoryManager.Instance.AddItemToInventory(item.item);
             if (pickup)
             {
                 Debug.Log("[Player Manager] Item " + item.item.itemName + " picked up");
@@ -180,6 +182,7 @@ public class PlayerManager : MonoBehaviour
     public void RefreshStats()
     {
         playerStats.stats.currentDamage = playerStats.stats.baseDamage;
+        playerStats.stats.currentArmor = playerStats.stats.baseArmor;
         UpdateArmorSlider();
         UpdateExpSlider();
         UpdateHealthSlider();
@@ -337,7 +340,7 @@ public class PlayerManager : MonoBehaviour
         UpdateExpSlider();
         UpdateLevelText();
         RefreshStats();
-        SkillTreeManager.instance.AddSkillPoints(3);
+        SkillTreeManager.Instance.AddSkillPoints(3);
         Debug.Log($"LEVEL UP! \n New Stats:  MAXHEALTH = {playerStats.stats.maxHealth} MAXSHIELD = {playerStats.stats.maxShield} BASEARMOR = {playerStats.stats.baseArmor}  "); //Debug purposes, can be removed at any time
     }
 

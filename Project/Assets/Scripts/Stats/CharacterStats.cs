@@ -17,6 +17,10 @@ public class CharacterStats : MonoBehaviour
         {
             stats = Instantiate(stats_Template);
         }
+        else
+        {
+            Debug.Log("[Character Stats] There is no stats template attacked to " + gameObject.name);
+        }
     }
 
     #region Increasers
@@ -61,7 +65,7 @@ public class CharacterStats : MonoBehaviour
     {
         int leftOverAmount;
 
-        if (stats.currentShield - amount < 0)
+        if (stats.currentShield - amount <= 0)
         {
             leftOverAmount = amount - stats.currentShield;
             stats.LoseShield(stats.currentShield);
@@ -69,7 +73,7 @@ public class CharacterStats : MonoBehaviour
         }
         else
         {
-            stats.TakeDamage(amount);
+            stats.LoseShield(amount);
         }
     }
     public void TakeCredit(int amount)
@@ -88,6 +92,14 @@ public class CharacterStats : MonoBehaviour
     public int GetMaxHealth()
     {
         return stats.maxHealth;
+    }
+    public int GetShield()
+    {
+        return stats.currentShield;
+    }
+    public int GetMaxShield()
+    {
+        return stats.maxShield;
     }
 
     public int GetDamage()

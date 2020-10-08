@@ -19,7 +19,7 @@ public class ProjectileManager : MonoBehaviour
         shootDir = gunEndPosition.forward;
         bullet.localRotation = Quaternion.LookRotation(gunEndPosition.forward);
         bullet.GetComponent<Projectile>().Setup(shootDir);
-        PlayerManager.instance.ShootingAnimation();
+        PlayerManager.Instance.ShootingAnimation();
     }
 
 }
