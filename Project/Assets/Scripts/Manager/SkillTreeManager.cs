@@ -5,134 +5,90 @@ public class SkillTreeManager : MonoBehaviour
 {
     #region Initializations
 
-    private byte actualSkillPoints;
+    private byte availableAttributePoints;
 
-    public GameObject skillPanel;
+    public GameObject attributePanel;
 
-    public GameObject[] increaseStatsButtons;
     public TextMeshProUGUI availablePointsText;
 
-    private CharacterStats_SO characterStatsSO;
+    public AttributeUI[] attributePFs;
 
-    [Header("Actual stats points text variables")]
-    public TextMeshProUGUI armor;
-    public TextMeshProUGUI health;
-    public TextMeshProUGUI shield;
-    public TextMeshProUGUI damage;
-    public TextMeshProUGUI critChance;
     
     #endregion
 
     #region Singleton
     
-    public static SkillTreeManager instance { private set; get; }
+    public static SkillTreeManager Instance { private set; get; }
     
     void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
-            Debug.Log("[SkillTreeManager] There is more than one skill tree instance");
+            Debug.Log("[SkillTreeManager] There is more than one skill tree Instance");
             return;
         }
-        instance = this;
+        Instance = this;
     }
     
     #endregion
 
-    private void Start()
-    {
-        characterStatsSO = PlayerManager.instance.playerStats.stats;
-        UpdateAvailablePoints();
-    }
-
-    private void Update()  //Listener
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            skillPanel.SetActive(!skillPanel.activeSelf);
-        }
-    }
-
     public void ToggleSkillPanel()
     {
-        skillPanel.SetActive(!skillPanel.activeSelf);
+        attributePanel.SetActive(!attributePanel.activeSelf);
     }
 
     public void AddSkillPoints(byte numberOfPoints)
     {
-        actualSkillPoints += numberOfPoints;
+        availableAttributePoints += numberOfPoints;
         UpdateAvailablePoints();
     }
 
     #region Methods used on the buttons in the skill panel
 
-    public void AddPointsToHealth()
+    public void AddAttribute(AttributeUI attribute)
     {
-        characterStatsSO.maxHealth += 5;
-        actualSkillPoints--;
-        UpdateAvailablePoints();
-    }
+        if(attribute == null)
+        {
+            return;
+        }
 
-    public void AddPointsToArmor()
-    {
-        characterStatsSO.baseArmor += 5;
-        actualSkillPoints--;
-        UpdateAvailablePoints();
-    }
+        attribute.AddAttribute();
 
-    public void AddPointsToShield()
-    {
-        characterStatsSO.maxShield += 10;
-        actualSkillPoints--;
-        UpdateAvailablePoints();
-    }
+        availableAttributePoints--;
 
-    public void AddPointsToDamage()
-    {
-        characterStatsSO.baseDamage += 5;
-        actualSkillPoints--;
         UpdateAvailablePoints();
     }
-
-    public void AddPointsToCritChance()
-    {
-        characterStatsSO.criticalChance += 1f;
-        actualSkillPoints--;
-        UpdateAvailablePoints();
-    }
-    
     #endregion
 
     #region Update UI
 
-    private void UpdateAvailablePoints()
+    public void UpdateAvailablePoints()
     {
-        availablePointsText.text = actualSkillPoints.ToString();
-        if (actualSkillPoints > 0)
+        availablePointsText.text = availableAttributePoints.ToString();
+
+        for (int i = 0; i < attributePFs.Length; i++)
         {
-            foreach (GameObject button in increaseStatsButtons)
+            if (availableAttributePoints > 0)
             {
-                button.SetActive(true);
+                attributePFs[i].IsActive(true);
             }
-        }else
-        {
-            foreach (GameObject button in increaseStatsButtons)
+            else
             {
-                button.SetActive(false);
+                attributePFs[i].IsActive(false);
             }
+
         }
 
+        PlayerManager.Instance.RefreshStats();
         UpdateStatsText();
-        PlayerManager.instance.RefreshStats();
     }
 
     private void UpdateStatsText()
     {
-        armor.text = characterStatsSO.baseArmor.ToString();
-        health.text = characterStatsSO.maxHealth.ToString();
-        shield.text = characterStatsSO.maxShield.ToString();
-        damage.text = characterStatsSO.baseDamage.ToString();
-        critChance.text = characterStatsSO.criticalChance.ToString("#.00") +" %";
+        foreach(AttributeUI ui in attributePFs)
+        {
+            ui.UpdateText();
+        }
     }
     
     #endregion

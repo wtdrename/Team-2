@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("[GameManager] There is more than one GM instance");
+            Debug.Log("[GameManager] There is more than one GM Instance");
             return;
         }
         instance = this;

@@ -10,10 +10,10 @@ public class TopMenuController : MonoBehaviour
 
     public void InventoryToggle()
     {
-        InventoryManager.instance.ToggleInventory();
+        InventoryManager.Instance.ToggleInventory();
     }
     public void SkillPointsToggle()
     {
-        SkillTreeManager.instance.ToggleSkillPanel();
+        SkillTreeManager.Instance.ToggleSkillPanel();
     }
 }

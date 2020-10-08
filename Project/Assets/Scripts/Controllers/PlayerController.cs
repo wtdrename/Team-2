@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
 
     public NavMeshAgent agent;
     public Joystick joystick;
+
+    public TouchFieldDrag touchField;
+    public float touchPlayerRotation = 0.2f;
+
     public float speed = .5f;
     public float rotationSpeed = 10f;
     public new Camera camera;
@@ -22,6 +26,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        if (touchField == null)
+        {
+            touchField = FindObjectOfType<TouchFieldDrag>();
+        }
         camera = Camera.main;
 
     }
@@ -72,5 +80,16 @@ public class PlayerController : MonoBehaviour
 
         #endregion
 
+        #region Rotation
+
+        if (touchField.Pressed)
+        {
+            Vector3 dir = touchField.TouchDist;
+            Vector3 rot = new Vector3 (0, dir.x);
+            transform.Rotate(rot);
+        }
+
+
+        #endregion
     }
 }

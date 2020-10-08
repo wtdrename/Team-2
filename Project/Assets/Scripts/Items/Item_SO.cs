@@ -55,8 +55,8 @@ public class Item_SO : ScriptableObject
             //needs to add remove item
             case ItemType.HEALTH:
                 Debug.Log("Gave Health");
-                PlayerManager.instance.playerStats.GiveHealth(item.itemAmount);
-                PlayerManager.instance.UpdateHealthSlider();
+                PlayerManager.Instance.playerStats.GiveHealth(item.itemAmount);
+                PlayerManager.Instance.UpdateHealthSlider();
                 break;
             case ItemType.ARMOR:
                 //eqiping armor
@@ -117,7 +117,7 @@ public class Item_SO : ScriptableObject
         else
         {
             playerArmor.GiveArmor(givearmor);
-            _Inventory.instance.Remove(this);
+            _Inventory.Instance.Remove(this);
         }
 
     }    public float heal=0;
@@ -136,7 +136,7 @@ public class Item_SO : ScriptableObject
         else
         {
             playerHealth.Heal(heal);
-            _Inventory.instance.Remove(this);
+            _Inventory.Instance.Remove(this);
         }
        
 
@@ -145,7 +145,7 @@ public class Item_SO : ScriptableObject
     {
         //Health playerHealth = GameObject.Find("HealthBar").GetComponent<Health>();
         //playerHealth.Heal(heal);
-        //_Inventory.instance.Remove(this);
+        //_Inventory.Instance.Remove(this);
 
         Debug.Log("You used Ammo Item.");
 

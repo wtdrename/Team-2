@@ -74,11 +74,11 @@ public class CharacterStats_SO : ScriptableObject
                 level++;
                 currentExp -= maxExp;
                 maxExp = (int) (maxExp * expMaxlvlMultiplier);
-                PlayerManager.instance.LevelUpEventCall();
+                PlayerManager.Instance.LevelUpEventCall();
             }
         }else
         {
-            PlayerManager.instance.ExpChangeEventCall();
+            PlayerManager.Instance.ExpChangeEventCall();
         }
     }
 

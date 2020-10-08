@@ -24,7 +24,15 @@ public class AttackDefenition : ScriptableObject
         }
         if(defender != null)
         {
-            baseDamage -= defender.GetArmor();
+            float defenderArmor = defender.GetArmor();
+            if(defenderArmor >= baseDamage)
+            {
+                baseDamage = 1;
+            }
+            else
+            {
+                baseDamage -= defenderArmor;
+            }
         }
 
         return new Attack((int)baseDamage, isCritical);
