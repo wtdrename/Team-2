@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f54b95e378b29d47aa37674ef6226a1, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  enemyCount: 10
+  enemyCount: 3
   spawnDelay: 1
-  maxEnemies: 10
+  maxEnemies: 3
