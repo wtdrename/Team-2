@@ -27,8 +27,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.06, y: 0.06, z: 0.07}
-  m_Center: {x: 0, y: 0, z: 0.03}
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0, y: 0.06, z: 3.01}
 --- !u!114 &262720514785680508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,29 +108,28 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d3da67b5f6f2dcb44bcd5343c69ea5eb,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3da67b5f6f2dcb44bcd5343c69ea5eb,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3da67b5f6f2dcb44bcd5343c69ea5eb,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: d3da67b5f6f2dcb44bcd5343c69ea5eb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -876546973899608171, guid: 488abf7b9150d4744923348fc06ada5d,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 780f7d1dda484f74a9f7981562c38048, type: 2}
     - target: {fileID: -5754084199372789682, guid: d3da67b5f6f2dcb44bcd5343c69ea5eb,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -7204647971529134275, guid: 488abf7b9150d4744923348fc06ada5d,
+      objectReference: {fileID: -7204647971529134275, guid: 74f3a49b1e8f39d49923bb8a1b9c930a,
         type: 3}
     - target: {fileID: 919132149155446097, guid: d3da67b5f6f2dcb44bcd5343c69ea5eb,
         type: 3}

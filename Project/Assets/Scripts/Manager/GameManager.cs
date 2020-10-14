@@ -36,7 +36,36 @@ public class GameManager : MonoBehaviour
         OnPlayerDeathEvent += OnPlayerDeath;
     }
 
+    private void Update()
+    {
+        #region Scene Sound
 
+        Scene currentScene = SceneManager.GetActiveScene();
+        PlaySceneSound(currentScene.name);
+        #endregion
+    }
+
+    private void PlaySceneSound(string sceneName)
+    {
+        var sound = AudioManager.instance.IsPlayingSound(sceneName + "Sound_1");
+        if (!sound)
+        {
+            sound = AudioManager.instance.IsPlayingSound(sceneName + "Sound_2");
+            if (!sound)
+            {
+                var random = UnityEngine.Random.Range(0, 1);
+                if (random < 0.5f)
+                {
+                    AudioManager.instance.Play(sceneName + "Sound_1");
+                }
+                else
+                {
+                    AudioManager.instance.Play(sceneName + "Sound_2");
+                }
+
+            }
+        }
+    }
     public void GoToRestartScene()
     {
         SceneChange("GameOver");
@@ -44,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToGameScene()
     {
-       SceneChange("Level1");   
+       SceneChange("Desert");   
     }
 
     public void GoToMainMenu()

@@ -263,12 +263,13 @@ public class PlayerManager : MonoBehaviour
             }
 
             projectileManager.ShootingProjectile();
+            AudioManager.instance.Play("Shoot");
             UpdateAmmoText();
             Invoke("ResetShot", weapon.shotsPerSec);
         }
         else if (weapon.currentAmmo == 0 && weapon.ammoAmountInInv != 0)
         {
-            Invoke("Reload", weapon.reloadTime);
+            Invoke("Reload", 0f);
         }
         else if (weapon.currentAmmo == 0 && weapon.ammoAmountInInv == 0)
         {
@@ -290,6 +291,7 @@ public class PlayerManager : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        AudioManager.instance.Play("Reload");
         Invoke("ReloadFinished", weapon.reloadTime);
     }
 

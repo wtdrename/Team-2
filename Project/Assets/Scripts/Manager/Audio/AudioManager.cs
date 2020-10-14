@@ -17,7 +17,9 @@ public class AudioManager : MonoBehaviour
 	{
 		if (instance != null)
 		{
+			Debug.Log("[Audio Manager] There is more than one Audio Manager!");
 			Destroy(gameObject);
+			return;
 		}
 		else
 		{
@@ -32,8 +34,11 @@ public class AudioManager : MonoBehaviour
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 		}
+
+		DontDestroyOnLoad(gameObject);
+
 	}
-	
+
 	//You can use method below to play a song / sound effect (calling it like AudioManager.Instance.Play("Sound effect"); for example)
 	//The parameter should be the sound name that is in the Audio manager in the hierarchy
 	public void Play(string sound) 
@@ -63,6 +68,17 @@ public class AudioManager : MonoBehaviour
 		}
 		
 		s.source.Stop();
+	}
+
+	public bool IsPlayingSound(string soundName)
+    {
+		Sound s = Array.Find(sounds, item => item.name == soundName);
+		if (s == null)
+		{
+			return true;
+		}
+
+		return s.source.isPlaying;
 	}
 
 }
