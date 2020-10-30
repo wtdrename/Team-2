@@ -26,9 +26,13 @@ public class SpawnController : MonoBehaviour
         Instance = this;
         
         objPooler = ObjectPooler.Instance;
-
         waveList[0].enemyCount = 0;
         StartCoroutine(StartWave());
+
+        foreach(GameObject o in spawnPoints)
+        {
+            o.GetComponent<Renderer>().enabled = false;
+        }
     }
 
 
