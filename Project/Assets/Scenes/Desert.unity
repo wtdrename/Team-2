@@ -27403,7 +27403,7 @@ PrefabInstance:
     - target: {fileID: 4201297222242044416, guid: cb0c064da3d784d43b249b582b09d9c6,
         type: 3}
       propertyPath: m_Name
-      value: Cube
+      value: MedKitDropTest
       objectReference: {fileID: 0}
     - target: {fileID: 5045718169758048017, guid: cb0c064da3d784d43b249b582b09d9c6,
         type: 3}
