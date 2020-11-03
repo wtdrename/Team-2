@@ -40,7 +40,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
     // Update is called once per frame
     void Update()
     {
-
         if (agent.enabled)
         {
             distance = Vector3.Distance(transform.position, player.transform.position);
@@ -56,7 +55,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
                 animationController.EnemyMovement();
             }
 
-
             float timeSinceLastAttack = Time.time - timeOfLastAttack;
             bool attackOnCoolDown = timeSinceLastAttack < attack.coolDown;
             bool attackInRange = distance < attack.range;
@@ -70,7 +68,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
                 timeOfLastAttack = Time.time;
             }
         }
-
     }
 
     #region Attack and Defence
@@ -95,7 +92,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
     }
 
     #endregion
-
 
     #region Decreasers
     public void TakeDamage(int amount)
@@ -152,7 +148,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, gizmoRadius);
     }
-    
     
     //the method called when the enemy is spawned via the object pooling
     public void OnObjectSpawn() 

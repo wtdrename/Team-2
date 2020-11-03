@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-
     #region Singleton
 
     public static PlayerManager Instance;
@@ -59,7 +58,6 @@ public class PlayerManager : MonoBehaviour
 
     public Item_SO weapon;
     public TextMeshProUGUI ammoAmountText;
-
 
     //shooting variables
     bool readyToShoot = true;
@@ -117,7 +115,6 @@ public class PlayerManager : MonoBehaviour
     {
         playerAnimator.Shooting();
     }
-
 
     #endregion
 
