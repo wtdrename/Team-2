@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   enemyCount: 3
-  spawnDelay: 1
-  maxEnemies: 3
+  spawnDelay: 0
+  maxEnemies: 20
