@@ -35,7 +35,6 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-
     // Choose which enemy to spawn from the object pool
     private int difficultyRate = 0;
     IEnumerator StartWave()
@@ -111,5 +110,5 @@ public class SpawnController : MonoBehaviour
         }
         waitingWaveStartText.enabled = false;
     }
-    
+
 }

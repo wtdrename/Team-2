@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AttackedScrollingText : MonoBehaviour, IAttackable
 {
-
     public ScrollingText Text;
     public Color textColor;
+
     public void OnAttack(GameObject attacker, Attack attack)
     {
         var text = attack.Damage.ToString() + " DMG";

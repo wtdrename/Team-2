@@ -8,5 +8,4 @@ public class EnemySpawnerSO : ScriptableObject
     //initialized in unity
     public float spawnDelay;
     public int maxEnemies;
-    
 }
