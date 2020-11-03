@@ -5,21 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
-    public static GameManager instance { private set; get; }
-
+    public static GameManager Instance { private set; get; }
 
     public event EventHandler OnPlayerDeathEvent;
 
-
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.Log("[GameManager] There is more than one GM Instance");
             return;
         }
-        instance = this;
+        Instance = this;
     }
 
     void Start()

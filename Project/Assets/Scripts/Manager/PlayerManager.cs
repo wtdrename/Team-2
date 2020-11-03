@@ -219,9 +219,9 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Player Died");
 
-            GameManager.instance.DeathEventCall();
-
+            GameManager.Instance.DeathEventCall();
         }
+
         UpdateHealthSlider();
     }
 
