@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 559311495}
   - component: {fileID: 1043355204070634698}
   - component: {fileID: 4484190140071061815}
+  - component: {fileID: -6221431887817386992}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -1399,6 +1400,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601448ef7f32b4a4eb8dea76ecff9e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6221431887817386992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343845956413101915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82dadc2a60783c84dacdbdccedd0f6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmmoDrop:
+  - {fileID: 3860041742961117215, guid: 0ab1b2fddb168604e84f0f551291d5d1, type: 3}
+  WeaponDrop:
+  - {fileID: 3931435338988175708, guid: 392593a411691e74e967965c1a650702, type: 3}
+  MedkitDrop:
+  - {fileID: 4201297222242044416, guid: cb0c064da3d784d43b249b582b09d9c6, type: 3}
 --- !u!1 &4481370899377459146
 GameObject:
   m_ObjectHideFlags: 0
