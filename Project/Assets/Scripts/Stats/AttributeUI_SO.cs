@@ -12,4 +12,14 @@ public class AttributeUI_SO : ScriptableObject
     public TypeOfAttributes attributeType = TypeOfAttributes.HP;
 
 }
-public enum TypeOfAttributes { HP, SHIELD, DAMAGE, DEFENCE, CRITCHANCE, CRITMULTIPLIER, EMPTY}
+
+public enum TypeOfAttributes 
+{
+    HP,
+    SHIELD,
+    DAMAGE,
+    DEFENCE,
+    CRITCHANCE,
+    CRITMULTIPLIER,
+    EMPTY
+}

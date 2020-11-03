@@ -6,9 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Character Stats", menuName ="Character Stats/Stats")]
 public class CharacterStats_SO : ScriptableObject
 {
-
-    #region Defenitions
-
+    #region Definitions
 
     [Header("Level")]
     public int level = 1;
@@ -22,7 +20,6 @@ public class CharacterStats_SO : ScriptableObject
     public int currentHealth;
     public int maxShield;
     public int currentShield;
-
 
     [Header("Attributes")]
     public int baseArmor;
