@@ -8,7 +8,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="New Item",menuName ="Items/New Item")]
 public class Item_SO : ScriptableObject
 {
-
     #region Initializers
 
     public ItemType itemType = ItemType.HEALTH;
@@ -67,7 +66,6 @@ public class Item_SO : ScriptableObject
                 if(item.currentAmmo == item.maxAmmo)
                 {
                     Debug.Log("Ammo is full");
-                    break;
                 }
                 else if(item.currentAmmo + item.itemAmount >= maxAmmo)
                 {
@@ -153,4 +151,12 @@ public class Item_SO : ScriptableObject
 
 */
 }
-public enum ItemType { WEAPON, ARMOR, HEALTH, AMMO, EMPTY }
+
+public enum ItemType 
+{ 
+    WEAPON, 
+    ARMOR, 
+    HEALTH, 
+    AMMO, 
+    EMPTY 
+}
