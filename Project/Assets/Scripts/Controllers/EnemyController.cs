@@ -22,8 +22,8 @@ public class EnemyController : MonoBehaviour, IPooledObject
     public float aggroDistance;
     float distance;
     public float gizmoRadius = 5f;
+
     // Start is called before the first frame update
-   
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -35,7 +35,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
         UpdateHealthSlider();
 
         timeOfLastAttack = 0.1f;
-
     }
 
     // Update is called once per frame

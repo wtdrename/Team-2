@@ -42,7 +42,6 @@ public class Item_SO : ScriptableObject
         get { return itemType; }
     }
 
-
     public void UseItem(Item_SO item)
     {
         if(item == null)

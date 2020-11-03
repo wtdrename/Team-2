@@ -9,6 +9,7 @@ public class DestroyObject : MonoBehaviour, IDestructable
     {
         animator = GetComponent<EnemyController>();
     }
+
     public void OnDestruct(GameObject destroyer)
     {
         if(animator != null)
