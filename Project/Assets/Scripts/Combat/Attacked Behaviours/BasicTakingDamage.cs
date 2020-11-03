@@ -9,13 +9,14 @@ public class BasicTakingDamage : MonoBehaviour, IAttackable
     {
         stats = GetComponent<CharacterStats>();
     }
+
     public void OnAttack(GameObject attacker, Attack attack)
     {
-        if (gameObject.GetComponent<PlayerManager>())
+        if (PlayerManager.Instance)
         {
-            gameObject.GetComponent<PlayerManager>().TakeDamage(attack.Damage);
-
+            PlayerManager.Instance.TakeDamage(attack.Damage);
         }
+
         if (gameObject.GetComponent<EnemyController>())
         {
             gameObject.GetComponent<EnemyController>().TakeDamage(attack.Damage);
@@ -28,6 +29,6 @@ public class BasicTakingDamage : MonoBehaviour, IAttackable
             {
                 d.OnDestruct(attacker);
             }
-            }
+        }
     }
 }
