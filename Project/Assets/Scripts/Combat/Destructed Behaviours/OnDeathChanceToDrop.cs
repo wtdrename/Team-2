@@ -19,11 +19,11 @@ public class OnDeathChanceToDrop : MonoBehaviour, IDestructable
         }
         else if (dropChance > 75)
         {
-            Instantiate(MedkitDrop[0], gameObject.transform.position + new Vector3(0, WeaponDrop[0].transform.position.y / 2), Quaternion.identity);
+            Instantiate(MedkitDrop[0], gameObject.transform.position + new Vector3(0, MedkitDrop[0].transform.position.y / 2), Quaternion.identity);
         }
         else if (dropChance > 50)
         {
-            Instantiate(AmmoDrop[0], gameObject.transform.position + new Vector3(0, WeaponDrop[0].transform.position.y / 2), Quaternion.identity);
+            Instantiate(AmmoDrop[0], gameObject.transform.position + new Vector3(0, AmmoDrop[0].transform.position.y / 2), Quaternion.identity);
         }
     }
 }
