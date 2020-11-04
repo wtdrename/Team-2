@@ -19,16 +19,16 @@ public class EnemyController : MonoBehaviour, IPooledObject
     private float timeOfLastAttack;
 
     private bool isAlive = true;
-    public float aggroDistance;
-    float distance;
-    public float gizmoRadius = 5f;
+    public  float aggroDistance;
+    private float distanceFromPlayer;
+    public  float gizmoRadius = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerManager.Instance.gameObject;
         animationController = GetComponent<EnemyAnimationController>();
 
         enemyStats = GetComponent<CharacterStats>();
@@ -42,14 +42,14 @@ public class EnemyController : MonoBehaviour, IPooledObject
     {
         if (agent.enabled)
         {
-            distance = Vector3.Distance(transform.position, player.transform.position);
+            distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            if (distance <= aggroDistance)
+            if (distanceFromPlayer <= aggroDistance)
             {
                 agent.SetDestination(player.transform.position);
                 animationController.EnemyMovement();
             }
-            else if (distance > aggroDistance * 1.5)
+            else if (distanceFromPlayer > aggroDistance * 1.5)
             {
                 agent.SetDestination(transform.position);
                 animationController.EnemyMovement();
@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour, IPooledObject
 
             float timeSinceLastAttack = Time.time - timeOfLastAttack;
             bool attackOnCoolDown = timeSinceLastAttack < attack.coolDown;
-            bool attackInRange = distance < attack.range;
+            bool attackInRange = distanceFromPlayer < attack.range;
             agent.isStopped = attackOnCoolDown;
             if (!attackOnCoolDown && attackInRange)
             {
