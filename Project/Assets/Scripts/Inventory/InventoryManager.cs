@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-
     #region Singleton
 
     public static InventoryManager Instance;
@@ -26,15 +25,16 @@ public class InventoryManager : MonoBehaviour
     public int maxSlots = 11;
     public int emptySlots = 11;
 
-
     #region Events
+
     //whenever a change in the items occur, call this function
     public delegate void OnChangedItem();
     public OnChangedItem onChangedItemCall;
+
     #endregion
 
-    public Transform inventorySlotsParent;
-    InventorySlot[] inventorySlots;
+    public  Transform inventorySlotsParent;
+    private InventorySlot[] inventorySlots;
 
     public GameObject inventoryUI;
 
@@ -77,6 +77,7 @@ public class InventoryManager : MonoBehaviour
         item.stackSize++;
         return true;
     }
+
     public void RemoveItem(Item_SO item)
     {
         items.Remove(item);
@@ -98,7 +99,7 @@ public class InventoryManager : MonoBehaviour
         for(int i = 0; i < inventorySlots.Length; i++)
         {
             
-            if(inventorySlots[i].GetItem() == null)
+            if(inventorySlots[i].Item == null)
             {
                 inventorySlots[i].ClearSlot();
 
@@ -141,7 +142,7 @@ public class InventoryManager : MonoBehaviour
             foreach (InventorySlot slot in inventorySlots)
             {
                 var tmp = slot.GetComponent<InventorySlot>();
-                var itemTmp = tmp.GetItem();
+                var itemTmp = tmp.Item;
                 if (itemTmp != null && itemTmp.isStackable && itemTmp.stackSize < item.maxStackSize)
                 {
                     tmp.AddItemToSlot(item);
@@ -160,6 +161,7 @@ public class InventoryManager : MonoBehaviour
                 return true;
             }
         }
+
         if(emptySlots > 0)
         {
             return AddItem(item);
