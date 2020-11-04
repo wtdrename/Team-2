@@ -752,7 +752,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 10
   m_Acceleration: 100
-  avoidancePriority: 50
+  avoidancePriority: 49
   m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -801,6 +801,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   joystick: {fileID: 0}
+  touchField: {fileID: 0}
+  touchPlayerRotation: 0.2
   speed: 0.4
   rotationSpeed: 8
   camera: {fileID: 0}
@@ -831,6 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlots: 12
+  emptySlots: 11
   inventorySlotsParent: {fileID: 0}
   inventoryUI: {fileID: 0}
   items:
