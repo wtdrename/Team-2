@@ -31,8 +31,6 @@ public class PlayerManager : MonoBehaviour
     public event EventHandler OnLevelChanged;
     public event EventHandler OnExpChanged;
     
-    
-
     #endregion
 
     #region Initializations
@@ -103,8 +101,7 @@ public class PlayerManager : MonoBehaviour
             GiveExp(40);
             Debug.Log($"Actual level:{playerStats.GetLevel()} \n Actual Exp:{playerStats.GetActualExp()}   Actual Max EXP:{playerStats.GetMaxExp()}");
             //Remember to delete the Debug.log in the OnLevelChange() method when you are not longer going to use this debug tool.
-        }
-        
+        }  
     }
 
     #endregion
@@ -281,10 +278,12 @@ public class PlayerManager : MonoBehaviour
             return;
         }
     }
+
     private void ResetShot()
     {
         readyToShoot = true;
     }
+
     private void Reload()
     {
         reloading = true;
@@ -311,7 +310,6 @@ public class PlayerManager : MonoBehaviour
         UpdateAmmoText();
         reloading = false;
         ResetShot();
-
     }
 
     #endregion
@@ -320,7 +318,7 @@ public class PlayerManager : MonoBehaviour
 
     public void LevelUpEventCall()
     {
-        OnLevelChanged?.Invoke(this,EventArgs.Empty);
+        OnLevelChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void ExpChangeEventCall()
@@ -348,7 +346,6 @@ public class PlayerManager : MonoBehaviour
         //Visual effects or things that happen on the event of getting exp
         UpdateExpSlider();
     }
-
 
     #endregion
 

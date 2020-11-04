@@ -110,5 +110,4 @@ public class SpawnController : MonoBehaviour
         }
         waitingWaveStartText.enabled = false;
     }
-
 }

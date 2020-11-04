@@ -10,5 +10,4 @@ public class MenuController : MonoBehaviour
     {
         GameManager.Instance.GoToMainMenu();
     }
-    
 }

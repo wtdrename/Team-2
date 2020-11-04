@@ -12,7 +12,6 @@ public class SkillTreeManager : MonoBehaviour
     public TextMeshProUGUI availablePointsText;
 
     public AttributeUI[] attributePFs;
-
     
     #endregion
 

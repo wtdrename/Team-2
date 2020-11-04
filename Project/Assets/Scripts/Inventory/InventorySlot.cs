@@ -51,11 +51,11 @@ public class InventorySlot : MonoBehaviour
             Item.UseItem(Item);
             UpdateStackSize();
         }
+
         if(Item.stackSize == 0)
         {
             ClearSlot();
         }
-
     }
 
     public void UpdateStackSize()
