@@ -17,13 +17,15 @@ public class InventoryManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     #endregion
 
     //needs to be max slots -1 because of 0 in lists
-    public int maxSlots = 11;
-    public int emptySlots = 11;
+    public int maxSlots = 12;
+    public int emptySlots = 0;
 
     #region Events
 
@@ -33,16 +35,21 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 
-    public  Transform inventorySlotsParent;
+    private GameObject inventoryUI;
     private InventorySlot[] inventorySlots;
 
-    public GameObject inventoryUI;
-
-    public List<Item_SO> items = new List<Item_SO>();
-    void Start()
+    [SerializeField]
+    private List<Item_SO> items = new List<Item_SO>();
+    private void Start()
     {
         onChangedItemCall += UpdateInventorySlots;
-        inventorySlots = inventorySlotsParent.GetComponentsInChildren<InventorySlot>();
+    }
+
+    public void LoadInventory(Transform invetoryTransform)
+    {
+        // Inventory should be first child object for "Menu Items" game object (you can find it in Scene via UI Canvas -> Top Menu -> Menu Items)
+        inventoryUI = invetoryTransform.GetChild(0).gameObject;
+        inventorySlots = invetoryTransform.GetComponentsInChildren<InventorySlot>(true);
         UpdateInventorySlots();
     }
 
@@ -58,6 +65,7 @@ public class InventoryManager : MonoBehaviour
                 if (tmp.isEmptySlot)
                 {
                     tmp.AddItemToSlot(item);
+                    items.Add(item);
                     emptySlots--;
                     Debug.Log("[Inventory Manager] Item added to inventory");
                     break;
@@ -87,7 +95,6 @@ public class InventoryManager : MonoBehaviour
         {
             onChangedItemCall.Invoke();
         }
-
     }
 
     #endregion
@@ -98,11 +105,9 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
-            
             if(inventorySlots[i].Item == null)
             {
                 inventorySlots[i].ClearSlot();
-
                 emptySlots++;
             }
             else
@@ -111,11 +116,12 @@ public class InventoryManager : MonoBehaviour
                 emptySlots--;
             }
         }
+
         if (emptySlots > 12)
         {
             emptySlots = 12;
         }
-        if (emptySlots < 0)
+        else if (emptySlots < 0)
         {
             emptySlots = 0;
         }
@@ -141,11 +147,11 @@ public class InventoryManager : MonoBehaviour
         {
             foreach (InventorySlot slot in inventorySlots)
             {
-                var tmp = slot.GetComponent<InventorySlot>();
-                var itemTmp = tmp.Item;
-                if (itemTmp != null && itemTmp.isStackable && itemTmp.stackSize < item.maxStackSize)
+                InventorySlot tmpSlot = slot.GetComponent<InventorySlot>();
+                var itemTmp = tmpSlot.Item;
+                if (itemTmp != null && itemTmp.itemType == item.itemType && itemTmp.stackSize < item.maxStackSize)
                 {
-                    tmp.AddItemToSlot(item);
+                    tmpSlot.AddItemToSlot(item);
                     itemTmp.stackSize++;
                     Debug.Log("[Inventory Manager] Item added to the stack of " + item.itemName);
                     itemAdded = true;
@@ -187,6 +193,7 @@ public class InventoryManager : MonoBehaviour
         UpdateInventorySlots();
 
     }
+
     #endregion
 }
 
