@@ -23,9 +23,8 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 
-    //needs to be max slots -1 because of 0 in lists
-    public int maxSlots = 12;
-    public int emptySlots = 0;
+    public int maxSlots   = 12;
+    public int emptySlots = 12;
 
     #region Events
 
@@ -35,7 +34,7 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 
-    private GameObject inventoryUI;
+    private GameObject      inventoryUI;
     private InventorySlot[] inventorySlots;
 
     [SerializeField]
@@ -50,7 +49,7 @@ public class InventoryManager : MonoBehaviour
         // Inventory should be first child object for "Menu Items" game object (you can find it in Scene via UI Canvas -> Top Menu -> Menu Items)
         inventoryUI = invetoryTransform.GetChild(0).gameObject;
         inventorySlots = invetoryTransform.GetComponentsInChildren<InventorySlot>(true);
-        UpdateInventorySlots();
+        onChangedItemCall?.Invoke();
     }
 
     #region Item Handling
@@ -61,12 +60,10 @@ public class InventoryManager : MonoBehaviour
         {
             foreach (InventorySlot slot in inventorySlots)
             {
-                var tmp = slot.GetComponent<InventorySlot>();
-                if (tmp.isEmptySlot)
+                if (slot.isEmptySlot)
                 {
-                    tmp.AddItemToSlot(item);
+                    slot.AddItemToSlot(item);
                     items.Add(item);
-                    emptySlots--;
                     Debug.Log("[Inventory Manager] Item added to inventory");
                     break;
                 }
@@ -78,10 +75,7 @@ public class InventoryManager : MonoBehaviour
             return false;
         }
 
-        if (onChangedItemCall != null)
-        {
-            onChangedItemCall.Invoke();
-        }
+        onChangedItemCall?.Invoke();
         item.stackSize++;
         return true;
     }
@@ -91,10 +85,7 @@ public class InventoryManager : MonoBehaviour
         items.Remove(item);
         item.RemoveItem(item);
 
-        if (onChangedItemCall != null)
-        {
-            onChangedItemCall.Invoke();
-        }
+        onChangedItemCall?.Invoke();
     }
 
     #endregion
@@ -103,33 +94,20 @@ public class InventoryManager : MonoBehaviour
 
     public void UpdateInventorySlots()
     {
-        for(int i = 0; i < inventorySlots.Length; i++)
+        emptySlots = 0;
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if(inventorySlots[i].Item == null)
             {
                 inventorySlots[i].ClearSlot();
                 emptySlots++;
             }
-            else
-            {
-                inventorySlots[i].AddItemToSlot(items[i]);
-                emptySlots--;
-            }
-        }
-
-        if (emptySlots > 12)
-        {
-            emptySlots = 12;
-        }
-        else if (emptySlots < 0)
-        {
-            emptySlots = 0;
         }
     }
 
     public void ToggleInventory()
     {
-        UpdateInventorySlots();
+        onChangedItemCall?.Invoke();
         if (inventoryUI.activeSelf == true)
         {
             inventoryUI.SetActive(false);
@@ -158,16 +136,14 @@ public class InventoryManager : MonoBehaviour
                     break;
                 }
             }
+
             if (itemAdded)
             {
-                if (onChangedItemCall != null)
-                {
-                    onChangedItemCall.Invoke();
-                }
+                onChangedItemCall?.Invoke();
                 return true;
             }
         }
-
+        
         if(emptySlots > 0)
         {
             return AddItem(item);
@@ -175,9 +151,9 @@ public class InventoryManager : MonoBehaviour
         else
         {
             Debug.Log("[Inventory Manager] inventory is full");
-            return false;
         }
 
+        return false;
     }
 
     public void RemoveItemFromInventory(Item_SO item)
@@ -188,10 +164,10 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("[Inventory Manager] There is a call to remove item with more than one stack size");
+            Debug.LogWarning("[Inventory Manager] There is a call to remove item with more than one stack size");
         }
-        UpdateInventorySlots();
 
+        onChangedItemCall?.Invoke();
     }
 
     #endregion
