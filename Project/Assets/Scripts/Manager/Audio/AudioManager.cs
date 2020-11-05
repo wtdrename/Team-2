@@ -52,7 +52,6 @@ public class AudioManager : MonoBehaviour
 		s.source.Play();
 	}
 	
-	
 	//If you wish a sound stops playing you should use this one, also calling the name of the sound
 	public void Stop(string sound)
 	{

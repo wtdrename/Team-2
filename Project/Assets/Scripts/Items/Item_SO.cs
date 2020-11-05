@@ -43,10 +43,8 @@ public class Item_SO : ScriptableObject
 
     public void UseItem(Item_SO item)
     {
-        if(item == null)
-        {
-            return;
-        }
+        if (item == null) return;
+
         Debug.Log("[Item_SO] Using the item: " + item.itemName);
         switch (item.itemType)
         {
@@ -57,10 +55,10 @@ public class Item_SO : ScriptableObject
                 PlayerManager.Instance.UpdateHealthSlider();
                 break;
             case ItemType.ARMOR:
-                //eqiping armor
+                //equiping armor
                 break;
             case ItemType.WEAPON:
-                //eqiping weapon
+                //equiping weapon
                 break;
             case ItemType.AMMO:
                 if(item.currentAmmo == item.maxAmmo)
@@ -77,6 +75,7 @@ public class Item_SO : ScriptableObject
                 }
                 break;
         }
+
         if(item.stackSize >= 1)
         {
             item.stackSize--;

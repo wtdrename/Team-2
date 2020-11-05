@@ -6,6 +6,7 @@ public class MenuController : MonoBehaviour
     {
         GameManager.Instance.GoToGameScene();
     }
+
     public void ChangeSceneMainMenu()
     {
         GameManager.Instance.GoToMainMenu();
