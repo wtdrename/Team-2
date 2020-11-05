@@ -15,15 +15,15 @@ public class InventorySlot : MonoBehaviour
 
     public void AddItemToSlot(Item_SO newItem)
     {
-        if(Item != null && Item.isStackable)
+        if (Item != null)
         {
-            UpdateStackSize();
+            if (Item.isStackable)
+            {
+                UpdateStackSize();
+            }
             return;
         }
-        else if(Item != null && !Item.isStackable)
-        {
-            return;
-        }
+
         Item = newItem;
         icon.sprite = Item.itemSprite;
         icon.enabled = true;
