@@ -257,7 +257,7 @@ public class PlayerManager : MonoBehaviour
             }
 
             projectileManager.ShootingProjectile();
-            AudioManager.instance.Play("Shoot");
+            AudioManager.Instance.Play("Shoot");
             UpdateAmmoText();
             Invoke("ResetShot", weapon.shotsPerSec);
         }
@@ -287,7 +287,7 @@ public class PlayerManager : MonoBehaviour
     private void Reload()
     {
         reloading = true;
-        AudioManager.instance.Play("Reload");
+        AudioManager.Instance.Play("Reload");
         Invoke("ReloadFinished", weapon.reloadTime);
     }
 

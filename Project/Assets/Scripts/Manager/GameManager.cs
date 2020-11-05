@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { private set; get; }
+    #region Singleton
 
-    public event EventHandler OnPlayerDeathEvent;
+    public static GameManager Instance { private set; get; }
 
     private void Awake()
     {
@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
     }
+
+    #endregion
+
+    public event EventHandler OnPlayerDeathEvent;
 
     void Start()
     {
@@ -39,30 +43,31 @@ public class GameManager : MonoBehaviour
 
         Scene currentScene = SceneManager.GetActiveScene();
         PlaySceneSound(currentScene.name);
+
         #endregion
     }
 
     private void PlaySceneSound(string sceneName)
     {
-        var sound = AudioManager.instance.IsPlayingSound(sceneName + "Sound_1");
+        var sound = AudioManager.Instance.IsPlayingSound(sceneName + "Sound_1");
         if (!sound)
         {
-            sound = AudioManager.instance.IsPlayingSound(sceneName + "Sound_2");
+            sound = AudioManager.Instance.IsPlayingSound(sceneName + "Sound_2");
             if (!sound)
             {
                 var random = UnityEngine.Random.Range(0, 1);
                 if (random < 0.5f)
                 {
-                    AudioManager.instance.Play(sceneName + "Sound_1");
+                    AudioManager.Instance.Play(sceneName + "Sound_1");
                 }
                 else
                 {
-                    AudioManager.instance.Play(sceneName + "Sound_2");
+                    AudioManager.Instance.Play(sceneName + "Sound_2");
                 }
-
             }
         }
     }
+
     public void GoToRestartScene()
     {
         SceneChange("GameOver");
@@ -114,9 +119,9 @@ public class GameManager : MonoBehaviour
     {
         SceneChange("GameOver");
     }
+
     public void DeathEventCall()
     {
         OnPlayerDeathEvent?.Invoke(this, EventArgs.Empty);
     }
-
 }

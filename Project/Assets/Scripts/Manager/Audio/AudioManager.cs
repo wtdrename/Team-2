@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-	
 	//Audio manager should be in a empty game object in the scene and should be filled with all the songs and sound effects you want
 
-	public static AudioManager instance;
+	public static AudioManager Instance;
 
 	public AudioMixerGroup mixerGroup;
 
@@ -15,16 +14,14 @@ public class AudioManager : MonoBehaviour
 
 	void Awake()
 	{
-		if (instance != null)
+		if (Instance != null)
 		{
 			Debug.Log("[Audio Manager] There is more than one Audio Manager!");
 			Destroy(gameObject);
 			return;
 		}
-		else
-		{
-			instance = this;
-		}
+
+		Instance = this;
 
 		foreach (Sound s in sounds)
 		{
@@ -36,7 +33,6 @@ public class AudioManager : MonoBehaviour
 		}
 
 		DontDestroyOnLoad(gameObject);
-
 	}
 
 	//You can use method below to play a song / sound effect (calling it like AudioManager.Instance.Play("Sound effect"); for example)
@@ -80,5 +76,4 @@ public class AudioManager : MonoBehaviour
 
 		return s.source.isPlaying;
 	}
-
 }
