@@ -24,11 +24,11 @@ public PlayerManager playerManager;
         if (isRaycast)
             ShootRaycastBullet();
         else if(!isRaycast)
-            ShootingProjectileBullet();
+            ShootProjectileBullet();
     }
 
 
-    public void ShootingProjectileBullet()
+    public void ShootProjectileBullet()
     {
         Transform bullet = Instantiate(pfBullet, gunEndPosition.position, Quaternion.identity);
         shootDir = gunEndPosition.forward;
