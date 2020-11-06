@@ -64,6 +64,7 @@ public class PlayerManager : MonoBehaviour
     //shooting variables
     bool readyToShoot = true;
     bool reloading = false;
+    public bool isWeaponRaycast;
 
     #endregion
 
@@ -262,7 +263,7 @@ public class PlayerManager : MonoBehaviour
                 weapon.ammoAmountInInv--;
             }
 
-            projectileManager.ShootingProjectile();
+            projectileManager.ShootWeapon(isWeaponRaycast);
             AudioManager.instance.Play("Shoot");
             UpdateAmmoText();
             Invoke("ResetShot", weapon.shotsPerSec);
