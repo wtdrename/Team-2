@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-
     #region Singleton
 
     public static PlayerManager Instance;
@@ -32,8 +31,6 @@ public class PlayerManager : MonoBehaviour
     public event EventHandler OnLevelChanged;
     public event EventHandler OnExpChanged;
     
-    
-
     #endregion
 
     #region Initializations
@@ -59,7 +56,6 @@ public class PlayerManager : MonoBehaviour
 
     public Item_SO weapon;
     public TextMeshProUGUI ammoAmountText;
-
 
     //shooting variables
     bool readyToShoot = true;
@@ -105,8 +101,7 @@ public class PlayerManager : MonoBehaviour
             GiveExp(40);
             Debug.Log($"Actual level:{playerStats.GetLevel()} \n Actual Exp:{playerStats.GetActualExp()}   Actual Max EXP:{playerStats.GetMaxExp()}");
             //Remember to delete the Debug.log in the OnLevelChange() method when you are not longer going to use this debug tool.
-        }
-        
+        }  
     }
 
     #endregion
@@ -117,7 +112,6 @@ public class PlayerManager : MonoBehaviour
     {
         playerAnimator.Shooting();
     }
-
 
     #endregion
 
@@ -219,9 +213,9 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Player Died");
 
-            GameManager.instance.DeathEventCall();
-
+            GameManager.Instance.DeathEventCall();
         }
+
         UpdateHealthSlider();
     }
 
@@ -263,7 +257,7 @@ public class PlayerManager : MonoBehaviour
             }
 
             projectileManager.ShootingProjectile();
-            AudioManager.instance.Play("Shoot");
+            AudioManager.Instance.Play("Shoot");
             UpdateAmmoText();
             Invoke("ResetShot", weapon.shotsPerSec);
         }
@@ -284,14 +278,16 @@ public class PlayerManager : MonoBehaviour
             return;
         }
     }
+
     private void ResetShot()
     {
         readyToShoot = true;
     }
+
     private void Reload()
     {
         reloading = true;
-        AudioManager.instance.Play("Reload");
+        AudioManager.Instance.Play("Reload");
         Invoke("ReloadFinished", weapon.reloadTime);
     }
 
@@ -314,7 +310,6 @@ public class PlayerManager : MonoBehaviour
         UpdateAmmoText();
         reloading = false;
         ResetShot();
-
     }
 
     #endregion
@@ -323,7 +318,7 @@ public class PlayerManager : MonoBehaviour
 
     public void LevelUpEventCall()
     {
-        OnLevelChanged?.Invoke(this,EventArgs.Empty);
+        OnLevelChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void ExpChangeEventCall()
@@ -351,7 +346,6 @@ public class PlayerManager : MonoBehaviour
         //Visual effects or things that happen on the event of getting exp
         UpdateExpSlider();
     }
-
 
     #endregion
 

@@ -663,7 +663,6 @@ GameObject:
   - component: {fileID: 9034490475034499573}
   - component: {fileID: 8677077845011682373}
   - component: {fileID: 8677077845011682370}
-  - component: {fileID: 8677077845011682371}
   - component: {fileID: 1724891631}
   - component: {fileID: 1794017324}
   - component: {fileID: 1283330145}
@@ -752,7 +751,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 10
   m_Acceleration: 100
-  avoidancePriority: 50
+  avoidancePriority: 49
   m_AngularSpeed: 0
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -801,6 +800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   joystick: {fileID: 0}
+  touchField: {fileID: 0}
+  touchPlayerRotation: 0.2
   speed: 0.4
   rotationSpeed: 8
   camera: {fileID: 0}
@@ -818,24 +819,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   animator: {fileID: 0}
---- !u!114 &8677077845011682371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8677077844600963176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870712d029d12b945bbf23a91fef48cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSlots: 12
-  inventorySlotsParent: {fileID: 0}
-  inventoryUI: {fileID: 0}
-  items:
-  - {fileID: 11400000, guid: 939f7cbb6ef88234abb7d8d9ec9c065b, type: 2}
-  - {fileID: 11400000, guid: 1edace708a035c841a760ad5550a95b0, type: 2}
 --- !u!114 &1724891631
 MonoBehaviour:
   m_ObjectHideFlags: 0

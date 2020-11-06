@@ -38,9 +38,7 @@ public class ObjectPooler : MonoBehaviour
             
             poolDictionary.Add(pool.tag, objectPool);
         }
-        
     }
-
 
     //called to spawn a object from the pool
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)

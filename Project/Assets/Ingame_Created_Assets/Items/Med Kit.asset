@@ -18,8 +18,8 @@ MonoBehaviour:
   itemAmount: 10
   isStackable: 1
   isConsumable: 1
-  stackSize: 0
-  maxStackSize: 20
+  stackSize: 1
+  maxStackSize: 5
   maxAmmo: 0
   currentAmmo: 0
   reloadTime: 0

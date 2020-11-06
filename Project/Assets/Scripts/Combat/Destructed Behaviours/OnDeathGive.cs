@@ -11,5 +11,4 @@ public class OnDeathGive : MonoBehaviour, IDestructable
 
         whoToGive.GiveExp(expToGive.GetExpOnDeath());
     }
-
 }

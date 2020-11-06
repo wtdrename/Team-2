@@ -7,7 +7,6 @@ public class EnemyAnimationController : MonoBehaviour
 {
     public EnemyController enemyController;
     public Animator animator;
-
     
     // Start is called before the first frame update
     void Start()
@@ -20,10 +19,12 @@ public class EnemyAnimationController : MonoBehaviour
     {
         animator.SetTrigger("Attack");
     }
+
     public void EnemyDiesAnimation()
     {
         animator.SetTrigger("Dying");
     }
+
     public void EnemyMovement()
     {
         animator.SetFloat("Speed", enemyController.agent.velocity.magnitude / enemyController.agent.speed);

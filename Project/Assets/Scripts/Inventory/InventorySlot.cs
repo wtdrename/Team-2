@@ -5,38 +5,35 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    Item_SO item;
-    public Item_SO GetItem()
-    {
-        return item;
-    }
+    public Item_SO Item { private set; get; }
+
     public Image icon;
 
     public Text itemAmount;
 
     public bool isEmptySlot;
 
-
     public void AddItemToSlot(Item_SO newItem)
     {
-        if(item != null && item.isStackable)
+        if (Item != null)
         {
-            UpdateStackSize();
+            if (Item.isStackable)
+            {
+                UpdateStackSize();
+            }
             return;
         }
-        else if(item != null && !item.isStackable)
-        {
-            return;
-        }
-        item = newItem;
-        icon.sprite = item.itemSprite;
+
+        Item = newItem;
+        icon.sprite = Item.itemSprite;
         icon.enabled = true;
         UpdateStackSize();
         isEmptySlot = false;
     }
+
     public void ClearSlot()
     {
-        item = null;
+        Item = null;
         icon.sprite = null;
         icon.enabled = false;
         if (itemAmount)
@@ -46,25 +43,26 @@ public class InventorySlot : MonoBehaviour
         }
         isEmptySlot = true;
     }
+
     public void UseItem()
     {
-        if(item != null)
+        if(Item != null)
         {
-            item.UseItem(item);
+            Item.UseItem(Item);
             UpdateStackSize();
         }
-        if(item.stackSize == 0)
+
+        if(Item.stackSize == 0)
         {
             ClearSlot();
         }
-
     }
 
     public void UpdateStackSize()
     {
-        if (item.isStackable == true && item.stackSize >= 1)
+        if (Item.isStackable == true && Item.stackSize >= 1)
         {
-            itemAmount.text = item.stackSize.ToString();
+            itemAmount.text = Item.stackSize.ToString();
             itemAmount.enabled = true;
         }
     }

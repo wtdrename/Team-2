@@ -19,48 +19,45 @@ public class EnemyController : MonoBehaviour, IPooledObject
     private float timeOfLastAttack;
 
     private bool isAlive = true;
-    public float aggroDistance;
-    float distance;
-    public float gizmoRadius = 5f;
+    public  float aggroDistance;
+    private float distanceFromPlayer;
+    public  float gizmoRadius = 5f;
+
     // Start is called before the first frame update
-   
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerManager.Instance.gameObject;
         animationController = GetComponent<EnemyAnimationController>();
 
         enemyStats = GetComponent<CharacterStats>();
         UpdateHealthSlider();
 
         timeOfLastAttack = 0.1f;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (agent.enabled)
         {
-            distance = Vector3.Distance(transform.position, player.transform.position);
+            distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            if (distance <= aggroDistance)
+            if (distanceFromPlayer <= aggroDistance)
             {
                 agent.SetDestination(player.transform.position);
                 animationController.EnemyMovement();
             }
-            else if (distance > aggroDistance * 1.5)
+            else if (distanceFromPlayer > aggroDistance * 1.5)
             {
                 agent.SetDestination(transform.position);
                 animationController.EnemyMovement();
             }
 
-
             float timeSinceLastAttack = Time.time - timeOfLastAttack;
             bool attackOnCoolDown = timeSinceLastAttack < attack.coolDown;
-            bool attackInRange = distance < attack.range;
+            bool attackInRange = distanceFromPlayer < attack.range;
             agent.isStopped = attackOnCoolDown;
             if (!attackOnCoolDown && attackInRange)
             {
@@ -71,7 +68,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
                 timeOfLastAttack = Time.time;
             }
         }
-
     }
 
     #region Attack and Defence
@@ -96,7 +92,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
     }
 
     #endregion
-
 
     #region Decreasers
     public void TakeDamage(int amount)
@@ -153,7 +148,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, gizmoRadius);
     }
-    
     
     //the method called when the enemy is spawned via the object pooling
     public void OnObjectSpawn() 

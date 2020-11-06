@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-
     #region Initializers
 
     public NavMeshAgent agent;
@@ -31,12 +30,10 @@ public class PlayerController : MonoBehaviour
             touchField = FindObjectOfType<TouchFieldDrag>();
         }
         camera = Camera.main;
-
     }
 
     void Update()
     {
-
         #region Joystick and Movement Controllers
 
         //gets the movement of the joystick
