@@ -11,15 +11,46 @@ public class ProjectileManager : MonoBehaviour
 
     public Transform shootPosition;
     public Vector3 shootDir;
+public PlayerManager playerManager;
+
+    private void Start()
+    {
+        playerManager = GetComponent<PlayerManager>();
+    }
+
+    public void ShootWeapon(bool isRaycast)
+    {
+
+        if (isRaycast)
+            ShootRaycastBullet();
+        else if(!isRaycast)
+            ShootProjectileBullet();
+    }
 
 
-    public void ShootingProjectile()
+    public void ShootProjectileBullet()
     {
         Transform bullet = Instantiate(pfBullet, gunEndPosition.position, Quaternion.identity);
         shootDir = gunEndPosition.forward;
         bullet.localRotation = Quaternion.LookRotation(gunEndPosition.forward);
         bullet.GetComponent<Projectile>().Setup(shootDir);
         PlayerManager.Instance.ShootingAnimation();
+
     }
 
+    public void ShootRaycastBullet()
+    {
+        shootDir = gunEndPosition.forward;
+        RaycastHit raycastHit;
+        if (Physics.Raycast(gunEndPosition.transform.position, shootDir, out raycastHit, 100f))
+        {
+            if (raycastHit.transform.gameObject.GetComponent<IAttackable>() != null)
+            {
+
+                playerManager.OnProjectileCollided(raycastHit.transform.gameObject);
+            }
+            
+        }
+
+    }
 }
