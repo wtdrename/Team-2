@@ -4,11 +4,11 @@ public class MenuController : MonoBehaviour
 {
     public void ChangeScenePlay()
     {
-        GameManager.instance.GoToGameScene();
+        GameManager.Instance.GoToGameScene();
     }
+
     public void ChangeSceneMainMenu()
     {
-        GameManager.instance.GoToMainMenu();
+        GameManager.Instance.GoToMainMenu();
     }
-    
 }
