@@ -259,7 +259,7 @@ public class PlayerManager : MonoBehaviour
 
 
             projectileManager.ShootWeapon(isWeaponRaycast);
-            AudioManager.instance.Play("Shoot");
+            AudioManager.Instance.Play("Shoot");
 
             UpdateAmmoText();
             Invoke("ResetShot", weapon.shotsPerSec);

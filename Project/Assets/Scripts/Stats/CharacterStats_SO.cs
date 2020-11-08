@@ -56,6 +56,14 @@ public class CharacterStats_SO : ScriptableObject
             currentShield += amount;
         }
     }
+    public void IncreaseArmour(int amount)
+    {
+        currentArmor += amount;
+    }
+    public void IncreaseDamage(int amount)
+    {
+        currentDamage += currentDamage;
+    }
     public void GiveCredit(int amount)
     {
         currentCredit += amount;
@@ -116,6 +124,14 @@ public class CharacterStats_SO : ScriptableObject
         {
             currentShield -= amount;
         }
+    }
+    public void DecreaseDamage(int amount)
+    {
+        currentDamage -= currentDamage;
+    }
+    public void DecreaseArmour(int amount)
+    {
+        currentArmor -= amount;
     }
     public void TakeCredit(int amount)
     {
