@@ -62,7 +62,7 @@ public class CharacterStats_SO : ScriptableObject
     }
     public void IncreaseDamage(int amount)
     {
-        currentDamage += currentDamage;
+        currentDamage += amount;
     }
     public void GiveCredit(int amount)
     {
@@ -127,7 +127,7 @@ public class CharacterStats_SO : ScriptableObject
     }
     public void DecreaseDamage(int amount)
     {
-        currentDamage -= currentDamage;
+        currentDamage -= amount;
     }
     public void DecreaseArmour(int amount)
     {
