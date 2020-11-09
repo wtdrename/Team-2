@@ -128,23 +128,23 @@ public class EquipmentManager : MonoBehaviour
 
     public void IncreaseDamageStat(int amount)
     {
-        GameManager.instance.stats.IncreaseDamage(amount);
+        GameManager.Instance.stats.IncreaseDamage(amount);
     }
 
     public void DecreaseDamageStat(int amount)
     {
-        GameManager.instance.stats.DecreaseDamage(amount);
+        GameManager.Instance.stats.DecreaseDamage(amount);
     }
 
 
     public void IncreaseArmourStat(int amount)
     {
-        GameManager.instance.stats.IncreaseArmour(amount);
+        GameManager.Instance.stats.IncreaseArmour(amount);
     }
 
     public void DecreaseArmourStat(int amount)
     {
-        GameManager.instance.stats.DecreaseArmour(amount);
+        GameManager.Instance.stats.DecreaseArmour(amount);
     }
 
     #endregion
