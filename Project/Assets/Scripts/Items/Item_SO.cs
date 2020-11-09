@@ -11,26 +11,11 @@ public class Item_SO : ScriptableObject
     #region Initializers
 
 
-    public enum ItemType
-    {
-        WEAPON, ARMOR,
-        HEALTH, AMMO, EMPTY
-    }
     public ItemType itemType = ItemType.HEALTH;
 
-    public enum ArmourType
-    {
-        HEAD_ITEM, CHEST_ITEM,
-        TORSO_ITEM, LEG_ITEM, HAND_ITEM, EMPTY
-    }
-    public ArmourType armourType;
+    public ArmourType armourType = ArmorType.EMPTY;
 
-    public enum WeaponType
-    {
-        PISTOL, RIFLE
-    }
-
-    public WeaponType weaponType;
+    public WeaponType weaponType = WeaponType.EMPTY;
 
 
 
@@ -177,3 +162,29 @@ public class Item_SO : ScriptableObject
 }
 
 */
+
+    public enum ArmourType
+    {
+        HEAD_ITEM,
+        CHEST_ITEM,
+        TORSO_ITEM,
+        LEG_ITEM,
+        HAND_ITEM,
+        EMPTY
+    }
+
+    public enum WeaponType
+    {
+        PISTOL,
+        RIFLE,
+        EMPTY
+    }
+
+    public enum ItemType
+    {
+        WEAPON,
+        ARMOR,
+        HEALTH, 
+        AMMO, 
+        EMPTY
+    }
