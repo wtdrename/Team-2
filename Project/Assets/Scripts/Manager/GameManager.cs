@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 {
     #region Singleton
     
-    public static GameManager instance { private set; get; }
-
     public CharacterStats_SO stats;
 
     public static GameManager Instance { private set; get; }
