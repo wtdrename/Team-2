@@ -4,13 +4,21 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.TerrainAPI;
 using UnityEngine;
 
- 
-[CreateAssetMenu(fileName ="New Item",menuName ="Items/New Item")]
+
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/New Item")]
 public class Item_SO : ScriptableObject
 {
     #region Initializers
 
+
     public ItemType itemType = ItemType.HEALTH;
+
+    public ArmourType armourType = ArmorType.EMPTY;
+
+    public WeaponType weaponType = WeaponType.EMPTY;
+
+
+
     public string itemName;
     public Sprite itemSprite;
 
@@ -28,6 +36,10 @@ public class Item_SO : ScriptableObject
     public float shotsPerSec;
     public int magazineSize;
     public int ammoAmountInInv;
+    public int weaponDamage;
+
+    //armour stats
+    public int armourAmount;
 
     #endregion
 
@@ -36,7 +48,7 @@ public class Item_SO : ScriptableObject
         return this;
     }
 
-    public ItemType CurrentItemType   
+    public ItemType CurrentItemType
     {
         get { return itemType; }
     }
@@ -61,11 +73,11 @@ public class Item_SO : ScriptableObject
                 //equiping weapon
                 break;
             case ItemType.AMMO:
-                if(item.currentAmmo == item.maxAmmo)
+                if (item.currentAmmo == item.maxAmmo)
                 {
                     Debug.Log("Ammo is full");
                 }
-                else if(item.currentAmmo + item.itemAmount >= maxAmmo)
+                else if (item.currentAmmo + item.itemAmount >= maxAmmo)
                 {
                     item.currentAmmo = item.maxAmmo;
                 }
@@ -76,7 +88,7 @@ public class Item_SO : ScriptableObject
                 break;
         }
 
-        if(item.stackSize >= 1)
+        if (item.stackSize >= 1)
         {
             item.stackSize--;
         }
@@ -98,6 +110,7 @@ public class Item_SO : ScriptableObject
     {
 
     }
+}
 
     /*use items
      *     public float givearmor = 0;
@@ -149,13 +162,29 @@ public class Item_SO : ScriptableObject
 }
 
 */
-}
 
-public enum ItemType 
-{ 
-    WEAPON, 
-    ARMOR, 
-    HEALTH, 
-    AMMO, 
-    EMPTY 
-}
+    public enum ArmourType
+    {
+        HEAD_ITEM,
+        CHEST_ITEM,
+        TORSO_ITEM,
+        LEG_ITEM,
+        HAND_ITEM,
+        EMPTY
+    }
+
+    public enum WeaponType
+    {
+        PISTOL,
+        RIFLE,
+        EMPTY
+    }
+
+    public enum ItemType
+    {
+        WEAPON,
+        ARMOR,
+        HEALTH, 
+        AMMO, 
+        EMPTY
+    }

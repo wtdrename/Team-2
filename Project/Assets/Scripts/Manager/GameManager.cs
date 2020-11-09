@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Singleton
+    
+    public CharacterStats_SO stats;
 
     public static GameManager Instance { private set; get; }
 
