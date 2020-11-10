@@ -13,7 +13,7 @@ public class Item_SO : ScriptableObject
 
     public ItemType itemType = ItemType.HEALTH;
 
-    public ArmourType armourType = ArmorType.EMPTY;
+    public ArmourType armourType = ArmourType.EMPTY;
 
     public WeaponType weaponType = WeaponType.EMPTY;
 
