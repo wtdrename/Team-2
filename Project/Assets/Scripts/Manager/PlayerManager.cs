@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Security.Permissions;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
@@ -24,27 +21,31 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
     }
 
-    #endregion
+    #endregion Singleton
 
     #region Events
 
     public event EventHandler OnLevelChanged;
+
     public event EventHandler OnExpChanged;
-    
-    #endregion
+
+    #endregion Events
 
     #region Initializations
 
     [Header("Health Bar")]
     public StatusBar healthBar;
+
     public TextMeshProUGUI healthBarText;
 
     [Header("Exp Bar")]
     public StatusBar expBar; //needs to be assigned
+
     public TextMeshProUGUI expBarText;
 
     [Header("Level and Stats")]
     public CharacterStats playerStats;
+
     public TextMeshProUGUI levelText;
 
     public PlayerAnimator playerAnimator;
@@ -58,18 +59,20 @@ public class PlayerManager : MonoBehaviour
     public TextMeshProUGUI ammoAmountText;
 
     //shooting variables
-    bool readyToShoot = true;
-    bool reloading = false;
+    private bool readyToShoot = true;
+
+    private bool reloading = false;
     public bool isWeaponRaycast;
 
-    #endregion
+    #endregion Initializations
 
     #region Start and Update
-    void Start()
+
+    private void Start()
     {
         playerStats = GetComponent<CharacterStats>();
         projectileManager = GetComponent<ProjectileManager>();
-        
+
         //Initialize the two events with their method
         OnLevelChanged += OnLevelChange;
         OnExpChanged += OnExpChange;
@@ -86,12 +89,11 @@ public class PlayerManager : MonoBehaviour
 
         SkillTreeManager.Instance.UpdateAvailablePoints();
     }
-    
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(10);
             UpdateHealthSlider();
@@ -102,37 +104,44 @@ public class PlayerManager : MonoBehaviour
             GiveExp(40);
             Debug.Log($"Actual level:{playerStats.GetLevel()} \n Actual Exp:{playerStats.GetActualExp()}   Actual Max EXP:{playerStats.GetMaxExp()}");
             //Remember to delete the Debug.log in the OnLevelChange() method when you are not longer going to use this debug tool.
-        }  
+        }
+
+        //I dont have Smaprthone so I am shooting with mouse click
+        if (Input.GetMouseButtonDown(0))
+            projectileManager.ShootWeapon(isWeaponRaycast);
     }
 
-    #endregion
+    #endregion Start and Update
 
     #region Animations
-        
+
     public void ShootingAnimation()
     {
         playerAnimator.Shooting();
     }
 
-    #endregion
+    #endregion Animations
 
     #region Pickup via Collision
 
     public void OnTriggerEnter(Collider other)
     {
-        var item = other.GetComponent<ItemPickup>();
-        if (item != null)
+        if (other.tag == "ColectableItem")
         {
-            var pickup = InventoryManager.Instance.AddItemToInventory(item.item);
-            if (pickup)
+            var item = other.GetComponent<ItemPickup>();
+            if (item != null)
             {
-                Debug.Log("[Player Manager] Item " + item.item.itemName + " picked up");
-                Destroy(other.gameObject);
+                var pickup = InventoryManager.Instance.AddItemToInventory(item.item);
+                if (pickup)
+                {
+                    Debug.Log("[Player Manager] Item " + item.item.itemName + " picked up");
+                    Destroy(other.gameObject);
+                }
             }
         }
     }
 
-    #endregion
+    #endregion Pickup via Collision
 
     #region UI Updates
 
@@ -143,10 +152,9 @@ public class PlayerManager : MonoBehaviour
         //add an if for armor / shield
         //healthBar.TakingDamage(amount, playerStats.stats);
     }
-    
+
     public void UpdateArmorSlider()
     {
-
     }
 
     public void UpdateExpSlider()
@@ -170,7 +178,7 @@ public class PlayerManager : MonoBehaviour
         barText.text = min + " / " + max;
     }
 
-    #endregion
+    #endregion UI Updates
 
     #region Stats Updates
 
@@ -183,17 +191,20 @@ public class PlayerManager : MonoBehaviour
         UpdateHealthSlider();
     }
 
-    #endregion
+    #endregion Stats Updates
 
     #region Increasers
+
     public void GiveHealth(int amount)
     {
         playerStats.GiveHealth(amount);
     }
+
     public void GiveShield(int amount)
     {
         playerStats.GiveShield(amount);
     }
+
     public void GiveCredit(int amount)
     {
         playerStats.GiveCredit(amount);
@@ -203,14 +214,15 @@ public class PlayerManager : MonoBehaviour
     {
         playerStats.GiveExp(amount);
     }
-    
-    #endregion
+
+    #endregion Increasers
 
     #region Decreasers
+
     public void TakeDamage(int amount)
     {
         playerStats.TakeDamage(amount);
-        if(playerStats.GetHealth() <= 0)
+        if (playerStats.GetHealth() <= 0)
         {
             Debug.Log("Player Died");
 
@@ -225,7 +237,8 @@ public class PlayerManager : MonoBehaviour
         playerStats.TakeCredit(amount);
         //update inventory event
     }
-    #endregion
+
+    #endregion Decreasers
 
     #region Attacking
 
@@ -243,20 +256,19 @@ public class PlayerManager : MonoBehaviour
 
     public void Shooting()
     {
-        if(readyToShoot == false || reloading == true)
+        if (readyToShoot == false || reloading == true)
         {
             return;
         }
 
         readyToShoot = false;
-        if(weapon.currentAmmo > 0)
+        if (weapon.currentAmmo > 0)
         {
             weapon.currentAmmo--;
-            if(weapon.ammoAmountInInv > 0)
+            if (weapon.ammoAmountInInv > 0)
             {
                 weapon.ammoAmountInInv--;
             }
-
 
             projectileManager.ShootWeapon(isWeaponRaycast);
             AudioManager.Instance.Play("Shoot");
@@ -296,8 +308,8 @@ public class PlayerManager : MonoBehaviour
 
     private void ReloadFinished()
     {
-        //if there is not enough ammo in the inventory, only load the amount u have 
-        if(weapon.ammoAmountInInv < weapon.magazineSize)
+        //if there is not enough ammo in the inventory, only load the amount u have
+        if (weapon.ammoAmountInInv < weapon.magazineSize)
         {
             weapon.currentAmmo = weapon.ammoAmountInInv;
             weapon.ammoAmountInInv -= weapon.currentAmmo;
@@ -315,7 +327,7 @@ public class PlayerManager : MonoBehaviour
         ResetShot();
     }
 
-    #endregion
+    #endregion Attacking
 
     #region Event Calls
 
@@ -329,7 +341,7 @@ public class PlayerManager : MonoBehaviour
         OnExpChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    #endregion
+    #endregion Event Calls
 
     #region Leveling Up and EXP
 
@@ -350,14 +362,14 @@ public class PlayerManager : MonoBehaviour
         UpdateExpSlider();
     }
 
-    #endregion
+    #endregion Leveling Up and EXP
 
-    #region Save 
+    #region Save
 
     public void SaveStats()
     {
         playerStats.SaveStats();
     }
 
-    #endregion
+    #endregion Save
 }
