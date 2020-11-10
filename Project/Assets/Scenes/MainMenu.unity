@@ -1208,8 +1208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1903bef21139df44cb75806fe3d68f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 1951503064}
-  inventory: {fileID: 4376455314688921771}
 --- !u!1001 &718186034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2589,8 +2587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870712d029d12b945bbf23a91fef48cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSlots: 12
   emptySlots: 0
+  inventoryCache: {fileID: 0}
+  inventoryUI: {fileID: 0}
+  inventorySlots: []
   items: []
 --- !u!1001 &1217696283
 PrefabInstance:
@@ -3855,7 +3855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &4875366365914599254
 PrefabInstance:
   m_ObjectHideFlags: 0
