@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToGameScene()
     {
-       SceneChange("Desert");   
+       SceneChange("Desert");
     }
 
     public void GoToMainMenu()
