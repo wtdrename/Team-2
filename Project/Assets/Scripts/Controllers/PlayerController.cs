@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     float verticalMove = 0f;
 
     private Vector3 KeyboardInputMovement;
-    public EnemyRadar enemyRadar;
+    public FieldOFView fieldOFView;
 
     public bool keyboardPlay;
 
@@ -79,15 +79,15 @@ public class PlayerController : MonoBehaviour
             {
                 Vector3 dir = moveDestination - transform.position;
                 
-                if (!enemyRadar.enemyContact)
+                if (!fieldOFView.getClosestEnemy())
                 {
                     dir.y = 0;
                     Quaternion rot = Quaternion.LookRotation(dir);
                     transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
                 }
-                else if (enemyRadar.enemyContact)
+                else if (fieldOFView.getClosestEnemy())
                 {
-                    transform.LookAt(enemyRadar.getClosestEnemy().transform.position);
+                    transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
                 }
 
 
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
             float rayLenght;
 
-            if (!enemyRadar.enemyContact)
+            if (!fieldOFView.getClosestEnemy())
             {
                 if (groundPlane.Raycast(CameraRay, out rayLenght))
                 {
@@ -122,10 +122,10 @@ public class PlayerController : MonoBehaviour
                     transform.LookAt(pointToLook);
                 }
             }
-            else if (enemyRadar.enemyContact)
+            else if (fieldOFView.getClosestEnemy())
             {
                
-                transform.LookAt(enemyRadar.getClosestEnemy().transform.position);
+                transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
             }
         }
        

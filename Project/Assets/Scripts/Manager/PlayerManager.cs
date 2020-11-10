@@ -191,7 +191,7 @@ public class PlayerManager : MonoBehaviour
         UpdateHealthSlider();
     }
 
-    #endregion Stats Updates
+    #endregion 
 
     #region Increasers
 
@@ -215,7 +215,7 @@ public class PlayerManager : MonoBehaviour
         playerStats.GiveExp(amount);
     }
 
-    #endregion Increasers
+    #endregion 
 
     #region Decreasers
 
