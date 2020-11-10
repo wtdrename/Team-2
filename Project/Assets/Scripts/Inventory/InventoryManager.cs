@@ -34,6 +34,7 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] 
     private GameObject      inventoryUI;
     private InventorySlot[] inventorySlots;
 
@@ -47,7 +48,7 @@ public class InventoryManager : MonoBehaviour
     public void LoadInventory(Transform invetoryTransform)
     {
         // Inventory should be first child object for "Menu Items" game object (you can find it in Scene via UI Canvas -> Top Menu -> Menu Items)
-        inventoryUI = invetoryTransform.GetChild(0).gameObject;
+        //inventoryUI = invetoryTransform.GetChild(0).gameObject;
         inventorySlots = invetoryTransform.GetComponentsInChildren<InventorySlot>(true);
         onChangedItemCall?.Invoke();
     }
@@ -107,7 +108,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ToggleInventory()
     {
-        onChangedItemCall?.Invoke();
+        //onChangedItemCall?.Invoke();
         if (inventoryUI.activeSelf == true)
         {
             inventoryUI.SetActive(false);
