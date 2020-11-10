@@ -73,16 +73,20 @@ public class GameManager : MonoBehaviour
     public void GoToRestartScene()
     {
         SceneChange("GameOver");
+        // player loses everything he earned
+        Destroy(InventoryManager.Instance.inventoryCache);
     }
 
     public void GoToGameScene()
     {
-       SceneChange("Desert");
+        SceneChange("Desert");
+        InventoryManager.Instance.onLevelStartedCall?.Invoke();
     }
 
     public void GoToMainMenu()
     {
         SceneChange("MainMenu");
+        InventoryManager.Instance.onLevelEndedCall?.Invoke();
     }
 
     private void SceneChange(string SceneName)
@@ -90,7 +94,9 @@ public class GameManager : MonoBehaviour
         //button animation and other things
         
         if(!isChangingToLoadScene)
+        {
             StartCoroutine(ChangeSceneOnLoad(SceneName));
+        }
     }
 
     private bool isChangingToLoadScene;
