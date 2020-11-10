@@ -38,7 +38,7 @@ public class FireManager : MonoBehaviour {
     [SerializeField][Tooltip("True for day.")]
     private bool m_dayTime = true;
     [SerializeField][Tooltip("The textured used on the terrain are fuels, can set fuel values for each texture.")]
-    private FireTerrainTexture[] m_terrainTextures;
+    private FireTerrainTexture[] m_terrainTextures = null;
     [SerializeField][Tooltip("The index of the terrain grass texture to replace grass with once burnt, this is used only if 'Remove Grass Once Burnt' is disabled.")]
     private int m_burntGrassTextureIndex = 0;
     [SerializeField][Tooltip("Enable detailed fire propagation simulation, this may have a small impact on performance!")]

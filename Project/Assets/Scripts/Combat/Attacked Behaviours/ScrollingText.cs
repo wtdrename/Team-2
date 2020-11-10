@@ -2,16 +2,14 @@
 
 public class ScrollingText : MonoBehaviour
 {
-
     public float duration = 1f;
     public float speed;
 
-    public Camera camera;
+    public new Camera camera;
     public TextMesh textMesh;
     public float startTime;
     public Vector3 originalposition;
 
-    // Start is called before the first frame update
     void Awake()
     {
         textMesh = GetComponent<TextMesh>();
@@ -20,7 +18,7 @@ public class ScrollingText : MonoBehaviour
         Vector3 cameraposition = camera.transform.localEulerAngles;
         transform.Rotate(cameraposition);
     }
-    // Update is called once per frame
+
     void Update()
     {
         if(Time.time -startTime < duration)

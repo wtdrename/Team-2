@@ -12,7 +12,7 @@ public class FireIgniter : MonoBehaviour {
     [SerializeField][Tooltip("Height of the fire grid, fire starts in the center of the grid")]
     private int m_gridHeight = 10;
     [SerializeField][Tooltip("Prefab of the fire to use")]
-    private GameObject m_firePrefab;
+    private GameObject m_firePrefab = null;
     [SerializeField][Tooltip("Delete this GameObject when there is a collision with it and the terrain or another GameObject?")]
     private bool m_destroyOnCollision = false;
     private bool m_fireIgnited = false;
