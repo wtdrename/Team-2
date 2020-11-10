@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 
 public class TouchFieldDrag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-
     [HideInInspector]
     public Vector2 TouchDist;
     [HideInInspector]

@@ -13,5 +13,4 @@ public static class ExtensionMethods
 
 		return dot >= dotThreshold;
 	}
-
 }
