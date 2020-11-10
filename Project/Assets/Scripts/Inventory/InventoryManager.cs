@@ -173,23 +173,3 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 }
-
-/*
- * 
-    public void AddItemToInventory(Item item)
-    {
-        if(list.Count < 9)
-        {
-            list.Add(item);
-        }
-        updatePanelSlots();
-    }
-
-    public void Remove(Item item)
-    {
-        list.Remove(item);
-        updatePanelSlots();
-
-    }
-
-*/
