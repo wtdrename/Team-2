@@ -2589,7 +2589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptySlots: 0
   inventoryCache: {fileID: 0}
-  inventoryUI: {fileID: 0}
+  inventoryUI: {fileID: 4376455314688921771}
   inventorySlots: []
   items: []
 --- !u!1001 &1217696283
