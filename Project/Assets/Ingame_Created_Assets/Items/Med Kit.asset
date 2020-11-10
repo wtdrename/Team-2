@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   itemName: HealthKit
-  itemSprite: {fileID: 0}
-  itemAmount: 10
+  itemSprite: {fileID: 21300000, guid: 0e8920cac5af55d43b9178ceb238db9e, type: 3}
+  itemAmount: 50
   isStackable: 1
   isConsumable: 1
-  stackSize: 1
+  stackSize: 0
   maxStackSize: 5
   maxAmmo: 0
   currentAmmo: 0
