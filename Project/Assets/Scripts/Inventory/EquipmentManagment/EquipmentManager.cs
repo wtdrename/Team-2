@@ -36,7 +36,7 @@ public class EquipmentManager : MonoBehaviour
 
     private void Update()
     {
-        if (UiTestSimulationItemInsert)
+        if (UiTestSimulationItemInsert)         // this is to simulate the script in inspector
         {
             if (UiTestSimulationItemInsert.itemType == ItemType.ARMOR)
                 EquipNewArmour(UiTestSimulationItemInsert);
