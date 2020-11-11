@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -24,6 +25,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public event EventHandler OnPlayerDeathEvent;
+
+    // subscribe to this whenever you want to do something when level starts
+    public UnityAction OnLevelStarted;
+    // subscribe to this whenever you want to do something when level ends
+    public UnityAction OnLevelEnded;
 
     void Start()
     {
@@ -80,13 +86,13 @@ public class GameManager : MonoBehaviour
     public void GoToGameScene()
     {
         SceneChange("Desert");
-        InventoryManager.Instance.onLevelStartedCall?.Invoke();
+        OnLevelStarted?.Invoke();
     }
 
     public void GoToMainMenu()
     {
         SceneChange("MainMenu");
-        InventoryManager.Instance.onLevelEndedCall?.Invoke();
+        OnLevelEnded?.Invoke();
     }
 
     private void SceneChange(string SceneName)

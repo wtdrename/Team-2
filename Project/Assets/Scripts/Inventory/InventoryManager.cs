@@ -31,12 +31,6 @@ public class InventoryManager : MonoBehaviour
     // whenever a change in the items occur, call this function
     public delegate void OnChangedItem();
     public OnChangedItem onChangedItemCall;
-    // call this whenever a level scene is loaded
-    public delegate void OnLevelStarted();
-    public OnLevelStarted onLevelStartedCall;
-    // call this whenever a level scene ended
-    public delegate void OnLevelEnded();
-    public OnLevelStarted onLevelEndedCall;
 
     #endregion
 
@@ -50,8 +44,8 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         onChangedItemCall  += UpdateInventorySlots;
-        onLevelStartedCall += InitiateInventoryCache;
-        onLevelEndedCall   += GetWeaponsFromCache;
+        GameManager.Instance.OnLevelStarted += InitiateInventoryCache;
+        GameManager.Instance.OnLevelEnded   += GetWeaponsFromCache;
 
         LoadInventory();
     }
