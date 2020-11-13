@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
     float horizontalMove = 0f;
     float verticalMove = 0f;
 
+    private Vector3 KeyboardInputMovement;
+    public FieldOFView fieldOFView;
+
+    public bool keyboardPlay;
+
     #endregion
 
     void Start()
@@ -34,47 +39,97 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+
         #region Joystick and Movement Controllers
-
         //gets the movement of the joystick
-        if (joystick.Horizontal >= 0.3f)
-        {
-            horizontalMove = speed;
-        }
-        else if(joystick.Horizontal <= -0.3f)
-        {
-            horizontalMove = -speed;
-        }
-        else
-        {
-            horizontalMove = 0f;
+        if (!keyboardPlay) {
+            if (joystick.Horizontal >= 0.3f)
+            {
+                horizontalMove = speed;
+            }
+            else if (joystick.Horizontal <= -0.3f)
+            {
+                horizontalMove = -speed;
+            }
+            else
+            {
+                horizontalMove = 0f;
+            }
+
+            if (joystick.Vertical >= 0.3f)
+            {
+                verticalMove = speed;
+            }
+            else if (joystick.Vertical <= -0.3f)
+            {
+                verticalMove = -speed;
+            }
+            else
+            {
+                verticalMove = 0f;
+            }
+
+            //gets the movement and moves the agent
+            Vector3 movement = new Vector3(horizontalMove, 0f, verticalMove);
+            Vector3 moveDestination = transform.position + movement;
+            agent.destination = moveDestination;
+            
+            if (movement != Vector3.zero)
+            {
+                Vector3 dir = moveDestination - transform.position;
+                
+                if (!fieldOFView.getClosestEnemy())
+                {
+                    dir.y = 0;
+                    Quaternion rot = Quaternion.LookRotation(dir);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
+                }
+                else if (fieldOFView.getClosestEnemy())
+                {
+                    transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
+                }
+
+
+            }
         }
 
-        if (joystick.Vertical >= 0.3f)
-        {
-            verticalMove = speed;
-        }
-        else if (joystick.Vertical <= -0.3f)
-        {
-            verticalMove = -speed;
-        }
-        else
-        {
-            verticalMove = 0f;
-        }
 
-        //gets the movement and moves the agent
-        Vector3 movement = new Vector3(horizontalMove, 0f, verticalMove);
-        Vector3 moveDestination = transform.position + movement;
-        agent.destination = moveDestination;
-        if(movement != Vector3.zero)
-        {
-            Vector3 dir = moveDestination - transform.position;
-            dir.y = 0;//This allows the object to only rotate on its y axis
-            Quaternion rot = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
-        }
 
+
+        #endregion
+
+        #region Mouse and Keyboard Controllers
+        // I dont have a smartphone, have to use keyboard input.
+        if (keyboardPlay)
+        {
+            KeyboardInputMovement.x = (Input.GetAxisRaw("Horizontal"));
+            KeyboardInputMovement.z = (Input.GetAxisRaw("Vertical"));
+
+            Vector3 moveDestination = transform.position + KeyboardInputMovement;
+            agent.destination = moveDestination;
+
+            Ray CameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+            float rayLenght;
+
+            if (!fieldOFView.getClosestEnemy())
+            {
+                if (groundPlane.Raycast(CameraRay, out rayLenght))
+                {
+                    Vector3 pointToLook = CameraRay.GetPoint(rayLenght);
+
+                    transform.LookAt(pointToLook);
+                }
+            }
+            else if (fieldOFView.getClosestEnemy())
+            {
+               
+                transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
+            }
+        }
+       
+        
         #endregion
 
         #region Rotation

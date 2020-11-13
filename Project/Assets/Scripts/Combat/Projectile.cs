@@ -12,26 +12,10 @@ public class Projectile : MonoBehaviour
     public void Setup(Vector3 shootDirection)
     {
         this.shootDir = shootDirection;
-        playerManager = PlayerManager.Instance;
-        if(vfxMuzzle != null)
-        {
-            var muzzle = Instantiate(vfxMuzzle, transform.position, Quaternion.identity);
-            muzzle.transform.forward = gameObject.transform.forward;
-            var psMuzzle = muzzle.GetComponent<ParticleSystem>();
-            if(psMuzzle != null)
-            {
-                psMuzzle.Play();
-                Destroy(muzzle, psMuzzle.main.duration);
-            }
-            else
-            {
-                var psChild = muzzle.GetComponent<ParticleSystem>();
-                Destroy(muzzle, psChild.main.duration);
-            }
-        }
+        playerManager = PlayerManager.Instance;     
         Destroy(gameObject, 5f);
     }
-
+    
     private void CollidedWithAttackable(GameObject target)
     {
         playerManager.OnProjectileCollided(target);
