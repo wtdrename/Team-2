@@ -23,32 +23,36 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 
-    public int maxSlots   = 12;
-    public int emptySlots = 12;
+    public static readonly   int maxSlots   = 12;
+    [SerializeField] private int emptySlots = 12;
 
     #region Events
 
-    //whenever a change in the items occur, call this function
+    // whenever a change in the items occur, call this function
     public delegate void OnChangedItem();
     public OnChangedItem onChangedItemCall;
 
     #endregion
 
-    private GameObject      inventoryUI;
-    private InventorySlot[] inventorySlots;
+    public Component inventoryCache = null;
+    [SerializeField] private GameObject      inventoryUI = null;
+    [SerializeField] private InventorySlot[] inventorySlots;
 
     [SerializeField]
     private List<Item_SO> items = new List<Item_SO>();
+
     private void Start()
     {
-        onChangedItemCall += UpdateInventorySlots;
+        onChangedItemCall  += UpdateInventorySlots;
+        GameManager.Instance.OnLevelStarted += InitiateInventoryCache;
+        GameManager.Instance.OnLevelEnded   += GetWeaponsFromCache;
+
+        LoadInventory();
     }
 
-    public void LoadInventory(Transform invetoryTransform)
+    public void LoadInventory()
     {
-        // Inventory should be first child object for "Menu Items" game object (you can find it in Scene via UI Canvas -> Top Menu -> Menu Items)
-        inventoryUI = invetoryTransform.GetChild(0).gameObject;
-        inventorySlots = invetoryTransform.GetComponentsInChildren<InventorySlot>(true);
+        inventorySlots = inventoryUI.GetComponentsInChildren<InventorySlot>(true);
         onChangedItemCall?.Invoke();
     }
 
@@ -103,6 +107,18 @@ public class InventoryManager : MonoBehaviour
                 emptySlots++;
             }
         }
+    }
+
+    public void InitiateInventoryCache()
+    {
+        inventoryCache = gameObject.AddComponent(typeof(InventoryCache));
+    }
+
+    public void GetWeaponsFromCache()
+    {
+        // todo
+
+        Destroy(inventoryCache);
     }
 
     public void ToggleInventory()
@@ -172,23 +188,3 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 }
-
-/*
- * 
-    public void AddItemToInventory(Item item)
-    {
-        if(list.Count < 9)
-        {
-            list.Add(item);
-        }
-        updatePanelSlots();
-    }
-
-    public void Remove(Item item)
-    {
-        list.Remove(item);
-        updatePanelSlots();
-
-    }
-
-*/

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -24,6 +25,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public event EventHandler OnPlayerDeathEvent;
+
+    // subscribe to this whenever you want to do something when level starts
+    public UnityAction OnLevelStarted;
+    // subscribe to this whenever you want to do something when level ends
+    public UnityAction OnLevelEnded;
 
     void Start()
     {
@@ -73,16 +79,20 @@ public class GameManager : MonoBehaviour
     public void GoToRestartScene()
     {
         SceneChange("GameOver");
+        // player loses everything he earned
+        Destroy(InventoryManager.Instance.inventoryCache);
     }
 
     public void GoToGameScene()
     {
-       SceneChange("Desert");   
+        SceneChange("Desert");
+        OnLevelStarted?.Invoke();
     }
 
     public void GoToMainMenu()
     {
         SceneChange("MainMenu");
+        OnLevelEnded?.Invoke();
     }
 
     private void SceneChange(string SceneName)
@@ -90,7 +100,9 @@ public class GameManager : MonoBehaviour
         //button animation and other things
         
         if(!isChangingToLoadScene)
+        {
             StartCoroutine(ChangeSceneOnLoad(SceneName));
+        }
     }
 
     private bool isChangingToLoadScene;

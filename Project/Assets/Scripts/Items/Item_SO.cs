@@ -10,14 +10,9 @@ public class Item_SO : ScriptableObject
 {
     #region Initializers
 
-
     public ItemType itemType = ItemType.HEALTH;
-
     public ArmourType armourType = ArmourType.EMPTY;
-
     public WeaponType weaponType = WeaponType.EMPTY;
-
-
 
     public string itemName;
     public Sprite itemSprite;
@@ -98,14 +93,17 @@ public class Item_SO : ScriptableObject
     {
 
     }
+
     public void AddItem(Item_SO item)
     {
 
     }
+
     public void EquipItem(Item_SO item)
     {
 
     }
+
     public void UnequipItem()
     {
 

@@ -13,16 +13,20 @@ MonoBehaviour:
   m_Name: Weapon
   m_EditorClassIdentifier: 
   itemType: 0
+  armourType: 5
+  weaponType: 2
   itemName: Weapon
-  itemSprite: {fileID: 0}
-  itemAmount: 0
+  itemSprite: {fileID: 21300000, guid: e30afddc9a6f4d6468955c2f4a5eb506, type: 3}
+  itemAmount: 1
   isStackable: 0
   isConsumable: 0
-  stackSize: 0
+  stackSize: 1
   maxStackSize: 1
-  maxAmmo: 0
+  maxAmmo: 200
   currentAmmo: 0
-  reloadTime: 0
-  shotsPerSec: 0
-  magazineSize: 0
+  reloadTime: 2
+  shotsPerSec: 3
+  magazineSize: 30
   ammoAmountInInv: 0
+  weaponDamage: 10
+  armourAmount: 0
