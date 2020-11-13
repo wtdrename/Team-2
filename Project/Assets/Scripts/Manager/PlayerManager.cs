@@ -86,6 +86,7 @@ public class PlayerManager : MonoBehaviour
 
         SkillTreeManager.Instance.UpdateAvailablePoints();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -122,7 +123,7 @@ public class PlayerManager : MonoBehaviour
         var item = other.GetComponent<ItemPickup>();
         if (item != null)
         {
-            var pickup = InventoryCache.Instance.AddItemToInventory(item.item);
+            var pickup = InventoryManager.Instance.AddItemToInventory(item.item);
             if (pickup)
             {
                 Debug.Log("[Player Manager] Item " + item.item.itemName + " picked up");
@@ -256,6 +257,7 @@ public class PlayerManager : MonoBehaviour
                 weapon.ammoAmountInInv--;
             }
 
+
             projectileManager.ShootWeapon(isWeaponRaycast);
             AudioManager.Instance.Play("Shoot");
 
@@ -294,20 +296,22 @@ public class PlayerManager : MonoBehaviour
 
     private void ReloadFinished()
     {
-        // if there is not enough ammo in the inventory, only load the amount u have 
+        //if there is not enough ammo in the inventory, only load the amount u have 
         if(weapon.ammoAmountInInv < weapon.magazineSize)
         {
             weapon.currentAmmo = weapon.ammoAmountInInv;
             weapon.ammoAmountInInv -= weapon.currentAmmo;
-        }
-        else // reset magazine and remove the ammo from the inventory
-        {
-            weapon.currentAmmo = weapon.magazineSize;
-            weapon.ammoAmountInInv -= weapon.magazineSize;
+            UpdateAmmoText();
+            reloading = false;
+            ResetShot();
+            return;
         }
 
-        reloading = false;
+        //reset magazine and remove the ammo from the inventory
+        weapon.currentAmmo = weapon.magazineSize;
+        weapon.ammoAmountInInv -= weapon.magazineSize;
         UpdateAmmoText();
+        reloading = false;
         ResetShot();
     }
 
