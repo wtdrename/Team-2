@@ -11,7 +11,7 @@ public class ProjectileManager : MonoBehaviour
 
     public Transform shootPosition;
     public Vector3 shootDir;
-public PlayerManager playerManager;
+    public PlayerManager playerManager;
 
     public FieldOFView fieldOFView;
     public GameObject vfxMuzzle;
@@ -19,6 +19,8 @@ public PlayerManager playerManager;
     private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
+        fieldOFView = GetComponent<FieldOFView>();
+
     }
 
     public void ShootWeapon(bool isRaycast)

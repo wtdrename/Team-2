@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
             touchField = FindObjectOfType<TouchFieldDrag>();
         }
         camera = Camera.main;
+
+        fieldOFView = GetComponent<FieldOFView>();
     }
 
     void Update()
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
             {
                 Vector3 dir = moveDestination - transform.position;
                 
-                if (!fieldOFView.getClosestEnemy())
+                if (fieldOFView.getClosestEnemy() == null)
                 {
                     dir.y = 0;
                     Quaternion rot = Quaternion.LookRotation(dir);

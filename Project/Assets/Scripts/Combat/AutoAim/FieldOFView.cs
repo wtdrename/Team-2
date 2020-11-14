@@ -70,8 +70,13 @@ public class FieldOFView : MonoBehaviour
 
     public Transform getClosestEnemy()
     {
+        if(visibleTargets == null)
+        {
+            return null;
+        }
+
         float closetDistance = viewRadius;
-         Transform trans = null;
+        Transform trans = null;
         foreach (Transform target in visibleTargets)
         {
             float currentDistance;

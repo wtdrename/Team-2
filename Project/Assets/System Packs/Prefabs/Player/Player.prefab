@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 1794017324}
   - component: {fileID: 1283330145}
   - component: {fileID: 1283330146}
+  - component: {fileID: 6523414964766829046}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -786,6 +787,7 @@ MonoBehaviour:
   projectileManager: {fileID: 0}
   weapon: {fileID: 11400000, guid: 055b387f9c083864982feacb3bd3be24, type: 2}
   ammoAmountText: {fileID: 0}
+  isWeaponRaycast: 0
 --- !u!114 &8677077845011682373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +807,8 @@ MonoBehaviour:
   speed: 0.4
   rotationSpeed: 8
   camera: {fileID: 0}
+  fieldOFView: {fileID: 0}
+  keyboardPlay: 0
 --- !u!114 &8677077845011682370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,6 +854,9 @@ MonoBehaviour:
   gunEndPosition: {fileID: 4705707753410310039}
   shootPosition: {fileID: 8677077844601199624}
   shootDir: {x: 0, y: 0, z: 0}
+  playerManager: {fileID: 0}
+  fieldOFView: {fileID: 0}
+  vfxMuzzle: {fileID: 0}
 --- !u!114 &1283330145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,6 +883,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: {fileID: 1576668814112229130, guid: c7b2aa33935e7fc41a3052881c1b1a2b, type: 3}
   textColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &6523414964766829046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677077844600963176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09f9fbe3b2afb94896e06ce815ce39f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 10
+  viewAngle: 15
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstableMask:
+    serializedVersion: 2
+    m_Bits: 512
+  visibleTargets: []
 --- !u!1 &8677077844600963178
 GameObject:
   m_ObjectHideFlags: 0
