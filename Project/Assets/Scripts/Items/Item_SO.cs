@@ -11,15 +11,15 @@ public class Item_SO : ScriptableObject
     #region Initializers
 
     public ItemType itemType = ItemType.HEALTH;
-    public ArmourType armourType = ArmourType.EMPTY;
+    public EquipmentType equipmentType = EquipmentType.EMPTY;
     public WeaponType weaponType = WeaponType.EMPTY;
 
     public string itemName;
     public Sprite itemSprite;
 
     public int itemAmount = 0;
-    public bool isStackable = true;
-    public bool isConsumable = true;
+    public bool isStackable = false;
+    public bool isConsumable = false;
 
     public int stackSize = 0;
     public int maxStackSize = 20;
@@ -38,14 +38,14 @@ public class Item_SO : ScriptableObject
 
     #endregion
 
-    public virtual Item_SO GetCopy()
+    public virtual Item_SO GetItem()
     {
         return this;
     }
 
-    public ItemType CurrentItemType
+    public ItemType GetItemType()
     {
-        get { return itemType; }
+        return itemType;
     }
 
     public void UseItem(Item_SO item)
@@ -62,10 +62,10 @@ public class Item_SO : ScriptableObject
                 PlayerManager.Instance.UpdateHealthSlider();
                 break;
             case ItemType.ARMOR:
-                //equiping armor
+                EquipmentManager.Instance.EquipItem(item);
                 break;
             case ItemType.WEAPON:
-                //equiping weapon
+                EquipmentManager.Instance.EquipItem(item);
                 break;
             case ItemType.AMMO:
                 if (item.currentAmmo == item.maxAmmo)
@@ -83,7 +83,7 @@ public class Item_SO : ScriptableObject
                 break;
         }
 
-        if (item.stackSize >= 1)
+        if (item.stackSize >= 1 && item.isStackable)
         {
             item.stackSize--;
         }
@@ -91,12 +91,12 @@ public class Item_SO : ScriptableObject
 
     public void RemoveItem(Item_SO item)
     {
-
+        InventoryManager.Instance.RemoveItemFromInventory(item);
     }
 
     public void AddItem(Item_SO item)
     {
-
+        InventoryManager.Instance.AddItemToInventory(item);
     }
 
     public void EquipItem(Item_SO item)
@@ -161,13 +161,15 @@ public class Item_SO : ScriptableObject
 
 */
 
-    public enum ArmourType
+    public enum EquipmentType
     {
-        HEAD_ITEM,
-        CHEST_ITEM,
-        TORSO_ITEM,
-        LEG_ITEM,
-        HAND_ITEM,
+        HELMET,
+        CHEST,
+        PANTS,
+        BOOTS,
+        HANDS,
+        WEAPON,
+        SIDEARM,
         EMPTY
     }
 

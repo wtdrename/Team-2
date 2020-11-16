@@ -47,12 +47,22 @@ public class InventoryManager : MonoBehaviour
         GameManager.Instance.OnLevelStarted += InitiateInventoryCache;
         GameManager.Instance.OnLevelEnded   += GetWeaponsFromCache;
 
+
+
         LoadInventory();
     }
 
     public void LoadInventory()
     {
-        inventorySlots = inventoryUI.GetComponentsInChildren<InventorySlot>(true);
+
+        inventorySlots = inventoryUI.GetComponentsInChildren<InventorySlot>();
+        if(items.Count != 0)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                inventorySlots[i].AddItemToSlot(items[i]);
+            }
+        }
         onChangedItemCall?.Invoke();
     }
 
@@ -98,13 +108,17 @@ public class InventoryManager : MonoBehaviour
 
     public void UpdateInventorySlots()
     {
-        emptySlots = 0;
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             if(inventorySlots[i].Item == null)
             {
-                inventorySlots[i].ClearSlot();
-                emptySlots++;
+                    inventorySlots[i].ClearSlot();
+                    emptySlots++;
+            }
+            else
+            {
+                inventorySlots[i].AddItemToSlot(items[i]);
+                emptySlots--;
             }
         }
     }
@@ -174,7 +188,7 @@ public class InventoryManager : MonoBehaviour
 
     public void RemoveItemFromInventory(Item_SO item)
     {
-        if(item.stackSize == 0)
+        if(item.stackSize == 0 || !item.isStackable)
         {
             items.Remove(item);
         }

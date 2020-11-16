@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -17,5 +18,9 @@ public class MenuController : MonoBehaviour
     public void ToggleInventory()
     {
         InventoryManager.Instance.ToggleInventory();
+    }
+    public void ToggleEquipment()
+    {
+        EquipmentManager.Instance.ToggleEquipment();
     }
 }

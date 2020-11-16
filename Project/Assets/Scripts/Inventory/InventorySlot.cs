@@ -1,17 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Item_SO Item { private set; get; }
+    public Item_SO Item;
 
     public Image icon;
 
     public Text itemAmount;
 
-    public bool isEmptySlot;
+    public bool isEmptySlot = true;
 
     public void AddItemToSlot(Item_SO newItem)
     {
@@ -27,7 +28,7 @@ public class InventorySlot : MonoBehaviour
         Item = newItem;
         icon.sprite = Item.itemSprite;
         icon.enabled = true;
-        UpdateStackSize();
+        //UpdateStackSize();
         isEmptySlot = false;
     }
 
@@ -48,22 +49,38 @@ public class InventorySlot : MonoBehaviour
     {
         if(Item != null)
         {
-            Item.UseItem(Item);
+            Item_SO tempItem = Item;
+
+            if (Item.stackSize <= 1 || !Item.isStackable)
+            {
+                ClearSlot();
+            }
+            tempItem.UseItem(tempItem);
+
             UpdateStackSize();
         }
 
-        if(Item.stackSize == 0)
+    }
+
+    public void UnequipItem()
+    {
+        if(Item != null)
         {
-            ClearSlot();
+            EquipmentManager.Instance.Unequip(Item, (int)Item.equipmentType);
         }
     }
 
     public void UpdateStackSize()
     {
+        if(Item == null)
+        {
+            return;
+        }
         if (Item.isStackable == true && Item.stackSize >= 1)
         {
             itemAmount.text = Item.stackSize.ToString();
             itemAmount.enabled = true;
         }
     }
+
 }

@@ -3,215 +3,207 @@ using UnityEngine.UI;
 
 public class EquipmentManager : MonoBehaviour
 {
+
+    #region Singleton
+
+    public static EquipmentManager Instance;
+
+    private void Awake()
+    {
+
+        if (Instance != null)
+        {
+            Debug.Log("[Equipment Manager] There is more than 1 instance of the equipment manager!");
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    #endregion
+
+    public delegate void OnEquipmentChanged(Item_SO newItem, Item_SO oldItem);
+    public OnEquipmentChanged onEquipmentChanged;
     #region References
 
-    private Item_SO HeadItemEquiped;
-    private Item_SO ChestItemEquiped;
-    private Item_SO TorsoItemEquiped;
-    private Item_SO LegsItemEquiped;
-    private Item_SO HandsItemEquiped;
-    private Item_SO PistolEquiped;
-    private Item_SO RifleEquiped;
+    private Item_SO[] currentEquipment;
 
-    public GameObject headSlotImage;
-    public GameObject ChestSlotImage;
-    public GameObject TorsoSlotImage;
-    public GameObject LegsSlotImage;
-    public GameObject HandSlotImage;
-    public GameObject PistolSlotImage;
-    public GameObject RifleSlotImage;
 
-    public GameObject InventoryUiPanel;
+    public GameObject equipmentUI;
 
     public Item_SO UiTestSimulationItemInsert;
+
+    public InventorySlot[] equipmentSlots;
 
     #endregion
 
 
     private void Start()
     {
-        InventoryUiPanel.SetActive(false);
-        //  DontDestroyOnLoad(gameObject);
+        if (equipmentUI.activeSelf == true)
+        {
+            equipmentUI.SetActive(false);
+        }
+
+        //setting up the equipment slots
+        int equipmentSlots = System.Enum.GetNames(typeof(EquipmentType)).Length;
+        currentEquipment = new Item_SO[equipmentSlots];
+
+        DontDestroyOnLoad(gameObject);
+
+        if (UiTestSimulationItemInsert)
+        {
+            if (UiTestSimulationItemInsert.itemType == ItemType.ARMOR)
+                EquipItem(UiTestSimulationItemInsert);
+            if (UiTestSimulationItemInsert.itemType == ItemType.WEAPON)
+                EquipItem(UiTestSimulationItemInsert);
+            UiTestSimulationItemInsert = null;
+        }
+
+        LoadEquipment();
     }
 
     private void Update()
     {
-        if (UiTestSimulationItemInsert)
+
+    }
+
+
+    public void LoadEquipment()
+    {
+        equipmentSlots = equipmentUI.GetComponentsInChildren<InventorySlot>();
+        UpdateEquipment();
+    }
+
+    public void UpdateEquipment()
+    {
+        for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            if (UiTestSimulationItemInsert.itemType == ItemType.ARMOR)
-                EquipNewArmour(UiTestSimulationItemInsert);
-            if (UiTestSimulationItemInsert.itemType == ItemType.WEAPON)
-                EquipNewWeapon(UiTestSimulationItemInsert);
-            UiTestSimulationItemInsert = null;
+            if (currentEquipment[i] == null)
+            {
+                equipmentSlots[i].ClearSlot();
+            }
+            else
+            {
+                equipmentSlots[i].AddItemToSlot(currentEquipment[i]);
+            }
         }
     }
 
-    public void EquipNewArmour(Item_SO item_so)
-    {       
-        IncreaseArmourStat(item_so.armourAmount);
+    public void EquipItem(Item_SO item)
+    {
+        int slotIndex = (int)item.equipmentType;
 
-
-        switch (item_so.armourType)
+        Item_SO oldItem = null;
+        item.RemoveItem(item);
+        //if equipment slot is full, unequip the old item and add it to inventory
+        if (currentEquipment[slotIndex] != null)
         {
-            case ArmourType.HEAD_ITEM:
+            oldItem = currentEquipment[slotIndex];
+            Unequip(oldItem, slotIndex);    
+        }
 
-                HeadItemEquiped = item_so;
-                headSlotImage.GetComponent<Image>().sprite = HeadItemEquiped.itemSprite;
+        //set the current equipped item to the equipment slot
+        currentEquipment[slotIndex] = item;
 
+        if (onEquipmentChanged != null)
+        {
+            onEquipmentChanged.Invoke(item, oldItem);
+        }
+
+
+        switch (item.itemType)
+        {
+            case ItemType.ARMOR:
+                IncreaseStat(item.itemType, item.itemAmount);
                 break;
 
-            case ArmourType.CHEST_ITEM:
-                ChestItemEquiped = item_so;
-                ChestSlotImage.GetComponent<Image>().sprite = ChestItemEquiped.itemSprite;
-                break;
-
-            case ArmourType.TORSO_ITEM://I believe that this item is irrelevant because torso and chest is the same body part
-
-                TorsoItemEquiped = item_so;
-                TorsoSlotImage.GetComponent<Image>().sprite = TorsoItemEquiped.itemSprite;
-                break;
-
-            case ArmourType.LEG_ITEM:
-
-                LegsItemEquiped = item_so;
-                LegsSlotImage.GetComponent<Image>().sprite = LegsItemEquiped.itemSprite;
-                break;
-
-            case ArmourType.HAND_ITEM:
-
-                HandsItemEquiped = item_so;
-                HandSlotImage.GetComponent<Image>().sprite = HandsItemEquiped.itemSprite;
+            case ItemType.WEAPON:
+                IncreaseStat(item.itemType, item.itemAmount);
                 break;
 
             default:
                 print("no other item type found");
                 break;
         }
+        item.RemoveItem(item);
+        UpdateEquipment();
     }
 
-    public void EquipNewWeapon(Item_SO item_so)
+    #region Unequipping
+
+    public void Unequip(Item_SO item, int slot)
     {
-        IncreaseDamageStat(item_so.weaponDamage);
-
-        switch (item_so.weaponType)
+        if(currentEquipment[slot] != null)
         {
-            case WeaponType.PISTOL:
+            equipmentSlots[slot].ClearSlot();
+            currentEquipment[slot] = null;
 
-                PistolEquiped = item_so;
-                PistolSlotImage.GetComponent<Image>().sprite = PistolEquiped.itemSprite;
-                break;
+            if (onEquipmentChanged != null)
+            {
+                onEquipmentChanged.Invoke(null, item);
+            }
 
-            case WeaponType.RIFLE:
+            switch (item.itemType)
+            {
+                case ItemType.ARMOR:
+                    DecreaseStat(item.itemType, item.itemAmount);
+                    break;
 
-                RifleEquiped = item_so;
-                RifleSlotImage.GetComponent<Image>().sprite = RifleEquiped.itemSprite;
-                break;
+                case ItemType.WEAPON:
+                    DecreaseStat(item.itemType, item.itemAmount);
+                    break;
+
+                default:
+                    print("no other item type found");
+                    break;
+            }
+            item.AddItem(item);
         }
+        else
+        {
+            Debug.Log("[Equipment Manager] There is no item to Unequip!");
+        }
+        UpdateEquipment();
     }
 
-    #region GearRemoval
-
-    public void RemoveHeadGear()
-    {
-        if (HeadItemEquiped)
-        {
-            DecreaseArmourStat(HeadItemEquiped.armourAmount);
-            headSlotImage.GetComponent<Image>().sprite = null;
-            HeadItemEquiped = null;
-        }
-    }
-
-    public void RemoveChestGear()
-    {
-        if (ChestItemEquiped)
-        {
-            DecreaseArmourStat(ChestItemEquiped.armourAmount);
-            ChestSlotImage.GetComponent<Image>().sprite = null;
-            ChestItemEquiped = null;
-        }
-    }
-
-    public void RemoveTorsoGear()
-    {
-        if (TorsoItemEquiped)
-        {
-            DecreaseArmourStat(TorsoItemEquiped.armourAmount);
-            TorsoSlotImage.GetComponent<Image>().sprite = null;
-            TorsoItemEquiped = null;
-        }
-    }
-
-    public void RemoveLegGear()
-    {
-        if (LegsItemEquiped)
-        {
-            DecreaseArmourStat(LegsItemEquiped.armourAmount);
-            LegsSlotImage.GetComponent<Image>().sprite = null;
-            LegsItemEquiped = null;
-        }
-    }
-
-    public void RemoveHandGear()
-    {
-        if (HandsItemEquiped)
-        {
-            DecreaseArmourStat(HandsItemEquiped.armourAmount);
-            HandSlotImage.GetComponent<Image>().sprite = null;
-            HandsItemEquiped = null;
-        }
-    }
-
-    public void RemovePistolGear()
-    {
-        if (PistolEquiped)
-        {
-            DecreaseDamageStat(PistolEquiped.weaponDamage);
-            PistolSlotImage.GetComponent<Image>().sprite = null;
-            PistolEquiped = null;
-        }
-    }
-
-    public void RemoveRifleGear()
-    {
-        if (RifleEquiped)
-        {
-            DecreaseDamageStat(RifleEquiped.weaponDamage);
-            RifleSlotImage.GetComponent<Image>().sprite = null;
-            RifleEquiped = null;
-        }
-    }
-
-    #endregion GearRemoval
+    #endregion 
 
     #region StatsChangers
 
-    public void IncreaseDamageStat(int amount)
+    public void IncreaseStat(ItemType itemType, int amount)
     {
-        GameManager.Instance.stats.IncreaseDamage(amount);
+        if (itemType == ItemType.ARMOR)
+        {
+            GameManager.Instance.stats.IncreaseArmour(amount);
+
+        }
+        else if (itemType == ItemType.WEAPON)
+        {
+            GameManager.Instance.stats.IncreaseDamage(amount);
+        }
     }
 
-    public void DecreaseDamageStat(int amount)
+    public void DecreaseStat(ItemType itemType, int amount)
     {
-        GameManager.Instance.stats.DecreaseDamage(amount);
-    }
-
-    public void IncreaseArmourStat(int amount)
-    {
-        GameManager.Instance.stats.IncreaseArmour(amount);
-    }
-
-    public void DecreaseArmourStat(int amount)
-    {
-        GameManager.Instance.stats.DecreaseArmour(amount);
+        if (itemType == ItemType.ARMOR)
+        {
+            GameManager.Instance.stats.DecreaseArmour(amount);
+        }
+        else if (itemType == ItemType.WEAPON)
+        {
+            GameManager.Instance.stats.DecreaseDamage(amount);
+        }
     }
 
     #endregion StatsChangers
 
-    public void OpenCloseUiPanel()
+    public void ToggleEquipment()
     {
-        if (InventoryUiPanel.activeInHierarchy)
-            InventoryUiPanel.SetActive(false);
+        if (equipmentUI.activeInHierarchy)
+            equipmentUI.SetActive(false);
         else
-            InventoryUiPanel.SetActive(true);
+            equipmentUI.SetActive(true);
     }
 }
