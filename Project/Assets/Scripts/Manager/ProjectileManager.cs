@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.VFX;
+﻿using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
@@ -16,24 +13,34 @@ public class ProjectileManager : MonoBehaviour
     public FieldOFView fieldOFView;
     public GameObject vfxMuzzle;
 
+    public AttackDefenition baseAttack;
+   float coolDownTimer;
+
     private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
         fieldOFView = GetComponent<FieldOFView>();
-
     }
 
+    private void Update()
+    {
+        if (coolDownTimer >= 0)
+            coolDownTimer -= Time.deltaTime;
+        
+    }
     public void ShootWeapon(bool isRaycast)
     {
-
-       if (fieldOFView.getClosestEnemy())
-       {
-            if (isRaycast)
-                ShootRaycastBullet();
-            else if (!isRaycast)
-                ShootProjectileBullet();
+        if (fieldOFView.getClosestEnemy() && coolDownTimer<=0)
+        {
+           if (Vector3.Distance(transform.position, fieldOFView.getClosestEnemy().position) < baseAttack.range)
+            {
+                if (isRaycast)
+                    ShootRaycastBullet();
+                else if (!isRaycast)
+                    ShootProjectileBullet();
+                coolDownTimer= baseAttack.coolDown;
+            }
         }
-       
     }
 
     public void ShootProjectileBullet()
@@ -55,30 +62,34 @@ public class ProjectileManager : MonoBehaviour
             if (raycastHit.transform.gameObject.GetComponent<IAttackable>() != null)
             {
                 playerManager.OnProjectileCollided(raycastHit.transform.gameObject);
+                CreateWeaponTracer(gunEndPosition.transform.position, fieldOFView.getClosestEnemy().position);
                 MuzzleFlashAnimation();
-            }            
-        }      
+            }
+        }
+    }
+
+    private void CreateWeaponTracer(Vector3 startPos, Vector3 targetPos)
+    {
+        // Vector3 dir=( targetPos-startPos).normalized;
     }
 
     public void MuzzleFlashAnimation()
     {
-        
-            if (vfxMuzzle != null)
+        if (vfxMuzzle != null)
+        {
+            var muzzle = Instantiate(vfxMuzzle, gunEndPosition.position, Quaternion.identity);
+            muzzle.transform.forward = gameObject.transform.forward;
+            var psMuzzle = muzzle.GetComponent<ParticleSystem>();
+            if (psMuzzle != null)
             {
-                var muzzle = Instantiate(vfxMuzzle, gunEndPosition.position, Quaternion.identity);
-                muzzle.transform.forward = gameObject.transform.forward;
-                var psMuzzle = muzzle.GetComponent<ParticleSystem>();
-                if (psMuzzle != null)
-                {
-                    psMuzzle.Play();
-                    Destroy(muzzle, psMuzzle.main.duration);
-                }
-                else
-                {
-                    var psChild = muzzle.GetComponent<ParticleSystem>();
-                    Destroy(muzzle, psChild.main.duration);
-                }
+                psMuzzle.Play();
+                Destroy(muzzle, psMuzzle.main.duration);
             }
-        
+            else
+            {
+                var psChild = muzzle.GetComponent<ParticleSystem>();
+                Destroy(muzzle, psChild.main.duration);
+            }
+        }
     }
 }

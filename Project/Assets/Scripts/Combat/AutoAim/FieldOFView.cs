@@ -11,19 +11,17 @@ public class FieldOFView : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstableMask;
 
+    public GameObject bullEyePrefab;
+    GameObject BulleyeSprite;
+
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
 
     private void Start()
     {
-        StartCoroutine("FindTargetWithDelay", .2f);
-    }
-    private void Update()
-    {
-        if (getClosestEnemy())
-            print("Enemy visible");
-        else
-            print("not visible");
+        BulleyeSprite= Instantiate(bullEyePrefab, transform.position, Quaternion.identity);
+        StartCoroutine("FindTargetWithDelay", .1f);
+        BulleyeSprite.SetActive(true);
     }
     IEnumerator FindTargetWithDelay(float delay)
     {
@@ -50,11 +48,16 @@ public class FieldOFView : MonoBehaviour
 
                 if(!Physics.Raycast(transform.position, dirToTarget, distanceToTarget, obstableMask)) // if no obstacles in the way
                 {
+                    BulleyeSprite.SetActive(true);
                     visibleTargets.Add(target);
                 }
+               
             }
 
         }
+
+        if (visibleTargets.Count <= 0)
+            BulleyeSprite.SetActive(false);
     }
 
     public Vector3 DirFromAngle(float angleInDegrees,bool angleIsGlobal)
@@ -85,7 +88,9 @@ public class FieldOFView : MonoBehaviour
             {
                 closetDistance = currentDistance;
                 trans = target.transform;
+                BulleyeSprite.transform.position = trans.transform.position + Vector3.up * 2;
             }
+            
         }
         
         return trans;
