@@ -1,4 +1,5 @@
-﻿using UnityEditorInternal;
+﻿using System;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -22,6 +23,9 @@ public class EnemyController : MonoBehaviour, IPooledObject
     public  float aggroDistance;
     private float distanceFromPlayer;
     public  float gizmoRadius = 5f;
+
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -88,8 +92,15 @@ public class EnemyController : MonoBehaviour, IPooledObject
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
             animationController.EnemyDiesAnimation();
             agent.enabled = false;
+            ReportDeathToPlayer();
         }
     }
+
+    void ReportDeathToPlayer()
+    {
+        player.GetComponent<PlayerQuest>().IncrementKillQuestGoal(enemyStats.stats.NpcName);
+    }
+
 
     #endregion
 

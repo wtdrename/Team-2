@@ -903,6 +903,8 @@ MonoBehaviour:
   obstableMask:
     serializedVersion: 2
     m_Bits: 512
+  bullEyeSprite: {fileID: 986404281041548220, guid: 2006c2417b5d64a4698ce720afb991d4,
+    type: 3}
   visibleTargets: []
 --- !u!1 &8677077844600963178
 GameObject:
