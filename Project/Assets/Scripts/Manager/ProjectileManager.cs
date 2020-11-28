@@ -13,7 +13,6 @@ public class ProjectileManager : MonoBehaviour
     public FieldOFView fieldOFView;
     public GameObject vfxMuzzle;
 
-    public AttackDefenition baseAttack;
    float coolDownTimer;
 
     private void Start()
@@ -32,13 +31,13 @@ public class ProjectileManager : MonoBehaviour
     {
         if (fieldOFView.getClosestEnemy() && coolDownTimer<=0)
         {
-           if (Vector3.Distance(transform.position, fieldOFView.getClosestEnemy().position) < baseAttack.range)
+           if (Vector3.Distance(transform.position, fieldOFView.getClosestEnemy().position) < playerManager.baseAttack.range)
             {
                 if (isRaycast)
                     ShootRaycastBullet();
                 else if (!isRaycast)
                     ShootProjectileBullet();
-                coolDownTimer= baseAttack.coolDown;
+                coolDownTimer= playerManager.baseAttack.coolDown;
             }
         }
     }

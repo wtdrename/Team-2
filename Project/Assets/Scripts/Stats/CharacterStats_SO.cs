@@ -8,6 +8,9 @@ public class CharacterStats_SO : ScriptableObject
 {
     #region Definitions
 
+    [Header("Name")]
+    public string NpcName;
+
     [Header("Level")]
     public int level = 1;
     public int currentExp = 0;
