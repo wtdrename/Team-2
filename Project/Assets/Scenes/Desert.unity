@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -29016,6 +29016,12 @@ PrefabInstance:
       propertyPath: isWeaponRaycast
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9034490475034499573, guid: ed08e8c51a9e08b4b9d9089eded6c4c8,
+        type: 3}
+      propertyPath: missionInventory
+      value: 
+      objectReference: {fileID: 11400000, guid: 7beb3603ff4f1db47baad80c8d484aa6,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ed08e8c51a9e08b4b9d9089eded6c4c8, type: 3}
