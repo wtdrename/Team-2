@@ -64,6 +64,8 @@ public class PlayerManager : MonoBehaviour
     private bool reloading = false;
     public bool isWeaponRaycast;
 
+    public MissionInventory missionInventory;
+
     #endregion Initializations
 
     #region Start and Update
@@ -86,7 +88,7 @@ public class PlayerManager : MonoBehaviour
         UpdateAmmoText();
         RefreshStats();
         UpdateLevelText();
-
+        missionInventory.ResetBag();
         SkillTreeManager.Instance.UpdateAvailablePoints();
     }
 
@@ -126,17 +128,14 @@ public class PlayerManager : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ColectableItem")
-        {
+        if (other.gameObject.GetComponent<ItemPickup>())
+        {        
             var item = other.GetComponent<ItemPickup>();
-            if (item != null)
+            if (item)
             {
-                var pickup = InventoryManager.Instance.AddItemToInventory(item.item);
-                if (pickup)
-                {
-                    Debug.Log("[Player Manager] Item " + item.item.itemName + " picked up");
+                missionInventory.AddItem(item.item, 1);
                     Destroy(other.gameObject);
-                }
+                
             }
         }
     }
