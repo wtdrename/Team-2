@@ -66,7 +66,9 @@ namespace Manager
         private bool reloading = false;
         public bool isWeaponRaycast;
 
-        #endregion Initializations
+    public MissionInventory missionInventory;
+
+    #endregion Initializations
 
         #region Start and Update
 
@@ -79,15 +81,13 @@ namespace Manager
             OnLevelChanged += OnLevelChange;
             OnExpChanged += OnExpChange;
 
-            //onTakingDamage += TakingDamage;
-            //onHealing += IncreasingHealth;
-            attackButton.onClick.AddListener(Shooting);
-            weapon = Instantiate(weapon);
-
-            //updates all the UI
-            UpdateAmmoText();
-            RefreshStats();
-            UpdateLevelText();
+        //updates all the UI
+        UpdateAmmoText();
+        RefreshStats();
+        UpdateLevelText();
+        missionInventory.ResetBag();
+        SkillTreeManager.Instance.UpdateAvailablePoints();
+    }
 
             SkillTreeManager.Instance.UpdateAvailablePoints();
         }
@@ -124,22 +124,16 @@ namespace Manager
 
         #endregion Animations
 
-        #region Pickup via Collision
-
-        public void OnTriggerEnter(Collider other)
-        {
-            if (other.tag == "ColectableItem")
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<ItemPickup>())
+        {        
+            var item = other.GetComponent<ItemPickup>();
+            if (item)
             {
-                var item = other.GetComponent<ItemPickup>();
-                if (item != null)
-                {
-                    var pickup = InventoryManager.Instance.AddItemToInventory(item.item);
-                    if (pickup)
-                    {
-                        Debug.Log("[Player Manager] Item " + item.item.itemName + " picked up");
-                        Destroy(other.gameObject);
-                    }
-                }
+                missionInventory.AddItem(item.item, 1);
+                    Destroy(other.gameObject);
+                
             }
         }
 
