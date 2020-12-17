@@ -30,7 +30,7 @@ namespace UI
             }
         }
 
-        public void LoadItemImages()
+        public void LoadItemsImages()
         {
             //Todo
         }

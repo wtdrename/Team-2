@@ -25,6 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4fb3837-cac5-46c5-ac85-a78ef044df76" name="Default Changelist" comment="Minor Changes">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MissionInventory.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MissionInventory/Mission Inventory.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MissionInventory/MissionInventory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" afterDir="false" />
     </list>
@@ -100,7 +104,7 @@
       <workItem from="1607540283417" duration="2258000" />
       <workItem from="1607696859948" duration="11666000" />
       <workItem from="1608150757835" duration="116000" />
-      <workItem from="1608150969363" duration="5654000" />
+      <workItem from="1608150969363" duration="7024000" />
     </task>
     <task id="LOCAL-00001" summary="Minor Changes">
       <created>1608219883512</created>
