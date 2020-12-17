@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Manager;
+using TMPro;
 using UnityEngine;
 
 public class AttributeUI : MonoBehaviour

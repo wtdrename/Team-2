@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Manager;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EquipmentManager : MonoBehaviour

@@ -164,13 +164,11 @@
           </e>
           <e p="UI" t="Include">
             <e p="EnemyHealthBar.cs" t="Include" />
+            <e p="LoadData.cs" t="Include" />
             <e p="LoadSceneBar.cs" t="Include" />
             <e p="LookAtCamera.cs" t="Include" />
             <e p="StatusBar.cs" t="Include" />
             <e p="TopMenuController.cs" t="Include" />
-          </e>
-          <e p="Utilities" t="Include">
-            <e p="GameWonAction.cs" t="Include" />
           </e>
         </e>
         <e p="System Packs" t="Include">

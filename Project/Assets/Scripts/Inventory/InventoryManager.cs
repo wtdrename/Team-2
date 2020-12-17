@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Manager;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour

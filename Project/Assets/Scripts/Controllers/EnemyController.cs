@@ -1,4 +1,5 @@
 ﻿using System;
+using Manager;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;

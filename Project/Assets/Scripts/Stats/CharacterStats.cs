@@ -19,7 +19,7 @@ public class CharacterStats : MonoBehaviour
         }
         else
         {
-            Debug.Log("[Character Stats] There is no stats template attacked to " + gameObject.name);
+            Debug.Log("[Character Stats] There is no stats template attached to " + gameObject.name);
         }
     }
 
