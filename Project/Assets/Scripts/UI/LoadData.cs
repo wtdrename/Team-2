@@ -5,14 +5,14 @@ using UnityEngine.UI;
 namespace UI
 {
     /// <summary>
-    /// Load the data stored to the UI
+    /// Load the data stored to the in game UI
     /// </summary>
     public class LoadData 
     {
         public void LoadPlayerXp(float playerXp, TextMeshProUGUI playerXpText) 
             => playerXpText.SetText($"Current Xp: {playerXp.ToString()}");
-        public void LoadPlayerGold(float playerXp, TextMeshProUGUI playerGoldText) 
-            => playerGoldText.SetText($"Current Xp: {playerXp.ToString()}");
+        public void LoadPlayerGold(float playerGold, TextMeshProUGUI playerGoldText) 
+            => playerGoldText.SetText($"Current Gold: {playerGold.ToString()}");
 
         public void SetButtonText(GameManager.GameState gameState, Button button)
         {
@@ -29,6 +29,11 @@ namespace UI
                     break;
             }
         }
-    
+
+        public void LoadItemImages()
+        {
+            //Todo
+        }
+
     }
 }
