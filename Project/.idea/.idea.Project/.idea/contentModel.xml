@@ -7,81 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Level assets" t="Include">
-          <e p="FirePropagation" t="Include">
-            <e p="Demo" t="Include">
-              <e p="Prefabs" t="Include">
-                <e p="Standard Assets" t="Include">
-                  <e p="Utility" t="Include">
-                    <e p="FPSCounter.cs" t="Include" />
-                  </e>
-                </e>
-              </e>
-              <e p="Scripts" t="Include">
-                <e p="ControlsGUI.cs" t="Include" />
-                <e p="PlayerControls.cs" t="Include" />
-                <e p="UserGUI.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Scripts" t="Include">
-              <e p="FireBox.cs" t="Include" />
-              <e p="FireCell.cs" t="Include" />
-              <e p="FireGrassRemover.cs" t="Include" />
-              <e p="FireGrid.cs" t="Include" />
-              <e p="FireIgniter.cs" t="Include" />
-              <e p="FireManager.cs" t="Include" />
-              <e p="FireNode.cs" t="Include" />
-              <e p="FireNodeChain.cs" t="Include" />
-              <e p="FireTerrainTexture.cs" t="Include" />
-              <e p="FireVisualManager.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Sky" t="Include">
-            <e p="Hdri setup.txt" t="Include" />
-          </e>
-          <e p="Terrain" t="Include">
-            <e p="WorldMaterialsFree" t="Include">
-              <e p="WorldMatFree.shader" t="Include" />
-              <e p="WorldMatLiteFree.shader" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Models" t="Include">
-          <e p="Free Assets" t="Include">
-            <e p="GUI" t="Include">
-              <e p="Basic Skin" t="Include">
-                <e p="Demo_Assets" t="Include">
-                  <e p="Scripts" t="Include">
-                    <e p="GUI_Demo.cs" t="Include" />
-                  </e>
-                </e>
-              </e>
-            </e>
-          </e>
-          <e p="VFX" t="Include">
-            <e p="UnityEffects" t="Include">
-              <e p="Editor" t="Include">
-                <e p="PackageManagerAssembly" t="Include">
-                  <e p="PackageImportList.txt" t="Include" />
-                </e>
-              </e>
-              <e p="Shared" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="DecalDestroyer.cs" t="Include" />
-                  <e p="ExtinguishableFire.cs" t="Include" />
-                  <e p="GunAim.cs" t="Include" />
-                  <e p="GunShoot.cs" t="Include" />
-                  <e p="ParticleCollision.cs" t="Include" />
-                  <e p="ParticleExamples.cs" t="Include" />
-                  <e p="ParticleMenu.cs" t="Include" />
-                </e>
-                <e p="Shaders" t="Include">
-                  <e p="SurfaceShader_VC.shader" t="Include" />
-                </e>
-              </e>
-            </e>
-          </e>
-        </e>
         <e p="Scripts" t="Include">
           <e p="Animations" t="Include">
             <e p="EnemyAnimationController.cs" t="Include" />
@@ -236,11 +161,67 @@
             </e>
           </e>
         </e>
-        <e p="Testing Files" t="Include">
-          <e p="UI" t="Include">
-            <e p="Script" t="Include">
-              <e p="Slide.cs" t="Include" />
-              <e p="Togglescript.cs" t="Include" />
+        <e p="Visuals" t="Include">
+          <e p="Free Assets" t="Include">
+            <e p="UI" t="Include">
+              <e p="MainMenu UI" t="Include">
+                <e p="Basic Skin" t="Include">
+                  <e p="Demo_Assets" t="Include">
+                    <e p="Scripts" t="Include">
+                      <e p="GUI_Demo.cs" t="Include" />
+                    </e>
+                  </e>
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Terrain" t="Include">
+            <e p="WorldMatFree.shader" t="Include" />
+            <e p="WorldMatLiteFree.shader" t="Include" />
+          </e>
+          <e p="Testing Files" t="Include">
+            <e p="UI" t="Include">
+              <e p="Script" t="Include">
+                <e p="Slide.cs" t="Include" />
+                <e p="Togglescript.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="VFX" t="Include">
+            <e p="FirePropagation" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="FireBox.cs" t="Include" />
+                <e p="FireCell.cs" t="Include" />
+                <e p="FireGrassRemover.cs" t="Include" />
+                <e p="FireGrid.cs" t="Include" />
+                <e p="FireIgniter.cs" t="Include" />
+                <e p="FireManager.cs" t="Include" />
+                <e p="FireNode.cs" t="Include" />
+                <e p="FireNodeChain.cs" t="Include" />
+                <e p="FireTerrainTexture.cs" t="Include" />
+                <e p="FireVisualManager.cs" t="Include" />
+              </e>
+            </e>
+            <e p="UnityEffects" t="Include">
+              <e p="Editor" t="Include">
+                <e p="PackageManagerAssembly" t="Include">
+                  <e p="PackageImportList.txt" t="Include" />
+                </e>
+              </e>
+              <e p="Shared" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="DecalDestroyer.cs" t="Include" />
+                  <e p="ExtinguishableFire.cs" t="Include" />
+                  <e p="GunAim.cs" t="Include" />
+                  <e p="GunShoot.cs" t="Include" />
+                  <e p="ParticleCollision.cs" t="Include" />
+                  <e p="ParticleExamples.cs" t="Include" />
+                  <e p="ParticleMenu.cs" t="Include" />
+                </e>
+                <e p="Shaders" t="Include">
+                  <e p="SurfaceShader_VC.shader" t="Include" />
+                </e>
+              </e>
             </e>
           </e>
         </e>
