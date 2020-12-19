@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Manager;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="Character Stats", menuName ="Character Stats/Stats")]

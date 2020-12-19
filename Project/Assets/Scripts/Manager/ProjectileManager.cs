@@ -1,5 +1,4 @@
-﻿using Manager;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {

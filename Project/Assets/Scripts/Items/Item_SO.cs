@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Manager;
-using UnityEditor.Experimental.TerrainAPI;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Items/New Item")]

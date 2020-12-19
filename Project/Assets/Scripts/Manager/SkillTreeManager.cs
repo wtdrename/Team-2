@@ -1,5 +1,4 @@
-﻿using Manager;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class SkillTreeManager : MonoBehaviour

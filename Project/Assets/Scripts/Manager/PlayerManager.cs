@@ -3,10 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Manager
+
+public class PlayerManager : MonoBehaviour
 {
-    public class PlayerManager : MonoBehaviour
-    {
         #region Singleton
 
         public static PlayerManager Instance;
@@ -81,14 +80,11 @@ namespace Manager
             OnLevelChanged += OnLevelChange;
             OnExpChanged += OnExpChange;
 
-        //updates all the UI
-        UpdateAmmoText();
-        RefreshStats();
-        UpdateLevelText();
-        missionInventory.ResetBag();
-        SkillTreeManager.Instance.UpdateAvailablePoints();
-    }
-
+            //updates all the UI
+            UpdateAmmoText();
+            RefreshStats();
+            UpdateLevelText();
+            missionInventory.ResetBag();
             SkillTreeManager.Instance.UpdateAvailablePoints();
         }
 
@@ -124,16 +120,17 @@ namespace Manager
 
         #endregion Animations
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<ItemPickup>())
-        {        
-            var item = other.GetComponent<ItemPickup>();
-            if (item)
+        #region Pickup via Collision
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.GetComponent<ItemPickup>())
             {
-                missionInventory.AddItem(item.item, 1);
+                var item = other.GetComponent<ItemPickup>();
+                if (item)
+                {
+                    missionInventory.AddItem(item.item, 1);
                     Destroy(other.gameObject);
-                
+                }
             }
         }
 
@@ -368,5 +365,5 @@ namespace Manager
         }
 
         #endregion Save
-    }
+        
 }

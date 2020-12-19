@@ -1,5 +1,4 @@
-﻿using Manager;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterStats))]
 public class BasicTakingDamage : MonoBehaviour, IAttackable

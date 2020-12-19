@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-namespace Manager
-{
     public class GameManager : MonoBehaviour
     {
         #region Singleton
@@ -101,13 +99,13 @@ namespace Manager
             OnLevelEnded?.Invoke();
         }
 
-        private void SceneChange(string SceneName)
+        private void SceneChange(string sceneName)
         {
             //button animation and other things
         
             if(!_isChangingToLoadScene)
             {
-                StartCoroutine(ChangeSceneOnLoad(SceneName));
+                StartCoroutine(ChangeSceneOnLoad(sceneName));
             }
         }
 
@@ -145,4 +143,3 @@ namespace Manager
             OnPlayerDeathEvent?.Invoke(this, EventArgs.Empty);
         }
     }
-}
