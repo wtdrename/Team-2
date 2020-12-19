@@ -24,23 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4fb3837-cac5-46c5-ac85-a78ef044df76" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacked Behaviours/BasicTakingDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Attacked Behaviours/BasicTakingDamage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/MenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/MenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/EquipmentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/EquipmentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Item_SO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Item_SO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/ProjectileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/ProjectileManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/SkillTreeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/SkillTreeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/AttributeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/AttributeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stats/CharacterStats_SO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stats/CharacterStats_SO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d4fb3837-cac5-46c5-ac85-a78ef044df76" name="Default Changelist" comment="Minor Changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +35,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Dynex/Documents/GitHub/Team-2/Project/Assets/Scripts/Stats/AttributeUI.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -62,16 +47,17 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Manager/SkillTreeManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Attacked Behaviours/BasicTakingDamage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/MenuController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/EquipmentManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Items/Item_SO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AttributeUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Stats/CharacterStats_SO.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Manager/PlayerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Combat/AutoAim/FieldOFView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/MenuController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/EquipmentManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Items/Item_SO.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ic6IPyeMAEzsCEQXxAadDOKgr1" />
@@ -135,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608219883513</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Minor Changes">
+      <created>1608380622804</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608380622804</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
