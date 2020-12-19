@@ -24,20 +24,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4fb3837-cac5-46c5-ac85-a78ef044df76" name="Default Changelist" comment="">
+    <list default="true" id="d4fb3837-cac5-46c5-ac85-a78ef044df76" name="Default Changelist" comment="Minor Changes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Free Assets/Interactables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Free Assets/Misc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Self Created Models/Enviornment/Desert.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Self Created Models/Enviornment/Factory.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Self Created Models/Interactables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Desert.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Desert.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.progrids/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.progrids/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/GUI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/General Assets/Interactables.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/Interactables/Items.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/Interactables/Props.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/Items/ItemX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/Level Related/Level 1 - Desert.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/Level Related/Level 2 - Army Base.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Free Assets/UI/General UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/General Assets/Interactables.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/General Assets/Players.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/General Assets/Projectiles/Enemy.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/Interactables/Items.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/Interactables/Props.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/Items/ItemX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/Level Related/Level 1 - Desert.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/Level Related/Level 2 - Army Base.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/UI/General UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Self Created Models/UI/MainMenu UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Visuals/Testing Files/UI/Prefabs/Gray/Icons.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,18 +54,45 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Dynex/Documents/GitHub/Team-2/Project/Assets/Scripts/Stats/AttributeUI.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Manager/GameWonAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IGiveGold.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/IGiveXp.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/CharacterStats.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Manager/ProjectileManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Manager/SkillTreeManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Attacked Behaviours/BasicTakingDamage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Combat/Projectile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/AttributeUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Stats/CharacterStats_SO.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/LoadData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Manager/PlayerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Combat/AutoAim/FieldOFView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/MenuController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/EnemyController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/EquipmentManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Items/Item_SO.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ic6IPyeMAEzsCEQXxAadDOKgr1" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3502052" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -75,10 +109,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9456">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="9456" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -97,7 +131,25 @@
       <workItem from="1607539584111" duration="132000" />
       <workItem from="1607539997216" duration="249000" />
       <workItem from="1607540283417" duration="2258000" />
+      <workItem from="1607696859948" duration="11666000" />
+      <workItem from="1608150757835" duration="116000" />
+      <workItem from="1608150969363" duration="7024000" />
     </task>
+    <task id="LOCAL-00001" summary="Minor Changes">
+      <created>1608219883512</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608219883513</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Minor Changes">
+      <created>1608380622804</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608380622804</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +170,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
   </component>
 </project>
