@@ -161,6 +161,7 @@
             </e>
           </e>
         </e>
+        <e p="test.cs" t="Include" />
         <e p="Visuals" t="Include">
           <e p="Free Assets" t="Include">
             <e p="UI" t="Include">

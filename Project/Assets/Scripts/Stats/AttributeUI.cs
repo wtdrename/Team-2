@@ -6,7 +6,7 @@ public class AttributeUI : MonoBehaviour
 
     public AttributeUI_SO attribute;
 
-    private CharacterStats stats;
+    private CharacterStats _stats;
 
     public GameObject attributeAddButton;
 
@@ -14,35 +14,35 @@ public class AttributeUI : MonoBehaviour
     public TextMeshProUGUI amountOfAttribute;
     void Start()
     {
-        stats = PlayerManager.Instance.playerStats;
+        _stats = PlayerManager.Instance.playerStats;
         title.text = attribute.attributeName;
     }
     public void UpdateText()
     {
-        if (stats == null)
+        if (_stats == null)
         {
-            stats = PlayerManager.Instance.playerStats;
+            _stats = PlayerManager.Instance.playerStats;
         }
         switch (attribute.attributeType)
         {
             case TypeOfAttributes.HP:
-                amountOfAttribute.text = stats.GetMaxHealth().ToString();
+                amountOfAttribute.text = _stats.GetMaxHealth().ToString();
                 break;
 
             case TypeOfAttributes.SHIELD:
-                amountOfAttribute.text = stats.GetMaxShield().ToString();
+                amountOfAttribute.text = _stats.GetMaxShield().ToString();
                 break;
 
             case TypeOfAttributes.DAMAGE:
-                amountOfAttribute.text = stats.GetDamage().ToString();
+                amountOfAttribute.text = _stats.GetDamage().ToString();
                 break;
 
             case TypeOfAttributes.DEFENCE:
-                amountOfAttribute.text = stats.GetArmor().ToString();
+                amountOfAttribute.text = _stats.GetArmor().ToString();
                 break;
 
             case TypeOfAttributes.CRITCHANCE:
-                amountOfAttribute.text = stats.GetCriticalChance().ToString("#.00") + " %"; ;
+                amountOfAttribute.text = _stats.GetCriticalChance().ToString("#.00") + " %"; ;
                 break;
 
             case TypeOfAttributes.EMPTY:
@@ -58,30 +58,30 @@ public class AttributeUI : MonoBehaviour
 
     public void AddAttribute()
     {
-        if (stats == null)
+        if (_stats == null)
         {
-            stats = PlayerManager.Instance.playerStats;
+            _stats = PlayerManager.Instance.playerStats;
         }
         switch (attribute.attributeType)
         {
             case TypeOfAttributes.HP:
-                stats.stats.maxHealth += (int)attribute.addValue;
+                _stats.stats.maxHealth += (int)attribute.addValue;
                 break;
 
             case TypeOfAttributes.SHIELD:
-                stats.stats.maxShield += (int)attribute.addValue;
+                _stats.stats.maxShield += (int)attribute.addValue;
                 break;
 
             case TypeOfAttributes.DAMAGE:
-                stats.stats.baseDamage += (int)attribute.addValue;
+                _stats.stats.baseDamage += (int)attribute.addValue;
                 break;
 
             case TypeOfAttributes.DEFENCE:
-                stats.stats.baseArmor += (int)attribute.addValue;
+                _stats.stats.baseArmor += (int)attribute.addValue;
                 break;
 
             case TypeOfAttributes.CRITCHANCE:
-                stats.stats.criticalChance += attribute.addValue;
+                _stats.stats.criticalChance += attribute.addValue;
                 break;
 
             case TypeOfAttributes.EMPTY:
@@ -91,9 +91,9 @@ public class AttributeUI : MonoBehaviour
 
     public void OnClickAddAttribute()
     {
-        if (stats == null)
+        if (_stats == null)
         {
-            stats = PlayerManager.Instance.playerStats;
+            _stats = PlayerManager.Instance.playerStats;
         }
         SkillTreeManager.Instance.AddAttribute(this);
     }

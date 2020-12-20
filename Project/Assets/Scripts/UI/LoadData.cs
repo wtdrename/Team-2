@@ -4,32 +4,38 @@ using UnityEngine.UI;
 namespace UI
 {
     /// <summary>
-    /// Load the data stored to the in game UI
+    /// Load the data stored to the in-game UI
     /// </summary>
     public class LoadData 
     {
-        public void LoadPlayerXp(float playerXp, TextMeshProUGUI playerXpText) 
+        public void Xp(int playerXp, TextMeshProUGUI playerXpText) 
             => playerXpText.SetText($"Current Xp: {playerXp.ToString()}");
-        public void LoadPlayerGold(float playerGold, TextMeshProUGUI playerGoldText) 
+        public void Gold(int playerGold, TextMeshProUGUI playerGoldText) 
             => playerGoldText.SetText($"Current Gold: {playerGold.ToString()}");
 
-        public void SetButtonText(GameManager.GameState gameState, Button button)
+        public void Text(GameManager.GameState gameState, Button button, TextMeshProUGUI tittle)
         {
             switch (gameState)
             {
                 case GameManager.GameState.GameLoose:
-                    button.GetComponentInChildren<TextMeshProUGUI>().SetText("Exit");
+                    //Todo - Refactor
+                    button.GetComponentInChildren<TextMeshProUGUI>().SetText("Restart");
+                    tittle.SetText("You S*ck!");
                     break;
                 case GameManager.GameState.GamePause:
+                    //Todo - Refactor
                     button.GetComponentInChildren<TextMeshProUGUI>().SetText("Continue");
+                    tittle.SetText("Pause");
                     break;
                 case GameManager.GameState.GameWon:
+                    //Todo - Refactor
                     button.GetComponentInChildren<TextMeshProUGUI>().SetText("Next Level");
+                    tittle.SetText("Win Win Win");
                     break;
             }
         }
 
-        public void LoadItemsImages()
+        public void Images()
         {
             //Todo
         }
