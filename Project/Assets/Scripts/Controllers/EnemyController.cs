@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour, IPooledObject
 {
@@ -21,6 +22,7 @@ public class EnemyController : MonoBehaviour, IPooledObject
     private float distanceFromPlayer;
     public  float gizmoRadius = 5f;
 
+    public Image targetSprite;
     
 
 
@@ -41,6 +43,7 @@ public class EnemyController : MonoBehaviour, IPooledObject
     // Update is called once per frame
     void Update()
     {
+
         if (agent.enabled)
         {
             distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
@@ -164,4 +167,6 @@ public class EnemyController : MonoBehaviour, IPooledObject
         isAlive = true;
         agent.enabled = true;
     }
+
+
 }

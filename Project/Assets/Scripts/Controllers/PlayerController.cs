@@ -91,8 +91,10 @@ public class PlayerController : MonoBehaviour
                 {
                     transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
                 }
-
-
+            }
+            if(fieldOFView.getClosestEnemy() != null && !touchField.Pressed)
+            {
+                transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
             }
         }
 
@@ -139,7 +141,7 @@ public class PlayerController : MonoBehaviour
         if (touchField.Pressed)
         {
             Vector3 dir = touchField.TouchDist;
-            Vector3 rot = new Vector3 (0, dir.x);
+            Vector3 rot = new Vector3(0, dir.x);
             transform.Rotate(rot);
         }
 

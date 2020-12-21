@@ -787,7 +787,8 @@ MonoBehaviour:
   projectileManager: {fileID: 0}
   weapon: {fileID: 11400000, guid: 055b387f9c083864982feacb3bd3be24, type: 2}
   ammoAmountText: {fileID: 0}
-  isWeaponRaycast: 0
+  isWeaponRaycast: 1
+  missionInventory: {fileID: 0}
 --- !u!114 &8677077845011682373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,14 +897,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRadius: 10
-  viewAngle: 15
+  viewAngle: 99
   targetMask:
     serializedVersion: 2
     m_Bits: 256
   obstableMask:
     serializedVersion: 2
     m_Bits: 512
-  bullEyeSprite: {fileID: 986404281041548220, guid: 2006c2417b5d64a4698ce720afb991d4,
+  bullEyePrefab: {fileID: 986404281041548220, guid: 98b1942f671b538488487f04dc20f8ba,
     type: 3}
   visibleTargets: []
 --- !u!1 &8677077844600963178

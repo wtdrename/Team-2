@@ -84,7 +84,7 @@ public class PlayerManager : MonoBehaviour
             UpdateAmmoText();
             RefreshStats();
             UpdateLevelText();
-            missionInventory.ResetBag();
+            //missionInventory.ResetBag();
             SkillTreeManager.Instance.UpdateAvailablePoints();
         }
 

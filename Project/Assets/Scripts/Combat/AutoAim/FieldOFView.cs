@@ -18,7 +18,7 @@ public class FieldOFView : MonoBehaviour
 
     private void Start()
     {
-        BulleyeSprite= Instantiate(bullEyePrefab, transform.position, Quaternion.identity);
+        BulleyeSprite = Instantiate(bullEyePrefab, transform.position, Quaternion.identity);
         StartCoroutine("FindTargetWithDelay", .1f);
         BulleyeSprite.SetActive(true);
     }
@@ -45,18 +45,21 @@ public class FieldOFView : MonoBehaviour
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if(!Physics.Raycast(transform.position, dirToTarget, distanceToTarget, obstableMask)) // if no obstacles in the way
+                if (!Physics.Raycast(transform.position, dirToTarget, distanceToTarget, obstableMask)) // if no obstacles in the way
                 {
                     BulleyeSprite.SetActive(true);
                     visibleTargets.Add(target);
                 }
-               
+
             }
 
         }
 
         if (visibleTargets.Count <= 0)
+        {
             BulleyeSprite.SetActive(false);
+        }
+
     }
 
     public Vector3 DirFromAngle(float angleInDegrees,bool angleIsGlobal)
@@ -81,6 +84,7 @@ public class FieldOFView : MonoBehaviour
         Transform trans = null;
         foreach (Transform target in visibleTargets)
         {
+
             float currentDistance;
             currentDistance = Vector3.Distance(transform.position, target.transform.position);
             if (currentDistance < closetDistance)
