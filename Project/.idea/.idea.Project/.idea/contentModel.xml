@@ -98,6 +98,9 @@
             <e p="StatusBar.cs" t="Include" />
             <e p="TopMenuController.cs" t="Include" />
           </e>
+          <e p="Utility" t="Include">
+            <e p="TestPauseVictoryUI.cs" t="Include" />
+          </e>
         </e>
         <e p="System Packs" t="Include">
           <e p="Joystick Pack" t="Include">
@@ -161,7 +164,6 @@
             </e>
           </e>
         </e>
-        <e p="test.cs" t="Include" />
         <e p="Visuals" t="Include">
           <e p="Free Assets" t="Include">
             <e p="UI" t="Include">
