@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BasicPlayerShooting
   m_EditorClassIdentifier: 
   coolDown: 0
-  range: 10
+  range: 100
   criticalMultiplier: 2
   criticalChance: 1

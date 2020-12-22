@@ -3,20 +3,7 @@ guid: 2b2926090f35ae94c855bd8f3d52eff1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - healthBar: {instanceID: 0}
-  - healthBarText: {instanceID: 0}
-  - expBar: {instanceID: 0}
-  - expBarText: {instanceID: 0}
-  - playerStats: {instanceID: 0}
-  - levelText: {instanceID: 0}
-  - playerAnimator: {instanceID: 0}
-  - attackButton: {instanceID: 0}
-  - baseAttack: {instanceID: 0}
-  - projectileManager: {instanceID: 0}
-  - weapon: {instanceID: 0}
-  - ammoAmountText: {instanceID: 0}
-  - missionInventory: {fileID: 11400000, guid: 7beb3603ff4f1db47baad80c8d484aa6, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

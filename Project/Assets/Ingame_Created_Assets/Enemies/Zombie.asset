@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8617ba038f808b48bbf0725cf51ab1b, type: 3}
   m_Name: Zombie
   m_EditorClassIdentifier: 
-  NpcName: Zombie
   level: 1
   currentExp: 0
   maxExp: 100
