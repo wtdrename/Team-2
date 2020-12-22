@@ -76,26 +76,28 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = new Vector3(horizontalMove, 0f, verticalMove);
             Vector3 moveDestination = transform.position + movement;
             agent.destination = moveDestination;
-            
-            if (movement != Vector3.zero)
+
+
+            if (!fieldOFView.getClosestEnemy())
             {
-                Vector3 dir = moveDestination - transform.position;
-                
-                if (fieldOFView.getClosestEnemy() == null)
+                if (movement != Vector3.zero)
                 {
+                    Vector3 dir = moveDestination - transform.position;
                     dir.y = 0;
                     Quaternion rot = Quaternion.LookRotation(dir);
                     transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
                 }
-                else if (fieldOFView.getClosestEnemy())
-                {
-                    transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
-                }
-
-
+            } 
+            
+            else if (fieldOFView.getClosestEnemy())
+            {
+                transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
             }
-        }
+                
 
+          
+        }
+      
 
 
 
