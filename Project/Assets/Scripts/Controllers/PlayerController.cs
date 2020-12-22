@@ -87,12 +87,13 @@ public class PlayerController : MonoBehaviour
                     Quaternion rot = Quaternion.LookRotation(dir);
                     transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
                 }
-            } 
-            
+            }
+
             else if (fieldOFView.getClosestEnemy())
             {
                 transform.LookAt(fieldOFView.getClosestEnemy().transform.position);
             }
+            //
                 
 
           
