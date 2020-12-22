@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ObjectPooler))]
 public class SpawnController : MonoBehaviour
 {
-    private ObjectPooler objPooler;
+    private ObjectPooler _objPooler;
     public static SpawnController Instance { private set; get; }
 
     public EnemySpawnerSO[] waveList;
@@ -25,7 +25,7 @@ public class SpawnController : MonoBehaviour
     {
         Instance = this;
         
-        objPooler = ObjectPooler.Instance;
+        _objPooler = ObjectPooler.Instance;
         waveList[0].enemyCount = 0;
         StartCoroutine(StartWave());
 
@@ -52,13 +52,13 @@ public class SpawnController : MonoBehaviour
             randomNumber += difficultyRate;
             if (randomNumber <= 13)
             {
-                objPooler.SpawnFromPool("Low", spawnpoint, Quaternion.identity);
+                _objPooler.SpawnFromPool("Low", spawnpoint, Quaternion.identity);
             }else if(randomNumber >= 14 && randomNumber <= 18)
             {
-                objPooler.SpawnFromPool("Medium", spawnpoint, Quaternion.identity);
+                _objPooler.SpawnFromPool("Medium", spawnpoint, Quaternion.identity);
             }else
             {
-                objPooler.SpawnFromPool("High", spawnpoint, Quaternion.identity);
+                _objPooler.SpawnFromPool("High", spawnpoint, Quaternion.identity);
             }
 
             yield return new WaitForSeconds(wave.spawnDelay);
