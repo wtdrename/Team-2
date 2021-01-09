@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -17,13 +15,14 @@ public class EnemyController : MonoBehaviour, IPooledObject
 
     public AttackDefenition attack;
 
-    private float timeOfLastAttack;
+    private float _timeOfLastAttack;
 
-    private bool isAlive = true;
+    private bool _isAlive = true;
     public  float aggroDistance;
-    private float distanceFromPlayer;
+    private float _distanceFromPlayer;
     public  float gizmoRadius = 5f;
 
+    public Image targetSprite;
     
 
 
@@ -38,30 +37,31 @@ public class EnemyController : MonoBehaviour, IPooledObject
         enemyStats = GetComponent<CharacterStats>();
         UpdateHealthSlider();
 
-        timeOfLastAttack = 0.1f;
+        _timeOfLastAttack = 0.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (agent.enabled)
         {
-            distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
+            _distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            if (distanceFromPlayer <= aggroDistance)
+            if (_distanceFromPlayer <= aggroDistance)
             {
                 agent.SetDestination(player.transform.position);
                 animationController.EnemyMovement();
             }
-            else if (distanceFromPlayer > aggroDistance * 1.5)
+            else if (_distanceFromPlayer > aggroDistance * 1.5)
             {
                 agent.SetDestination(transform.position);
                 animationController.EnemyMovement();
             }
 
-            float timeSinceLastAttack = Time.time - timeOfLastAttack;
+            float timeSinceLastAttack = Time.time - _timeOfLastAttack;
             bool attackOnCoolDown = timeSinceLastAttack < attack.coolDown;
-            bool attackInRange = distanceFromPlayer < attack.range;
+            bool attackInRange = _distanceFromPlayer < attack.range;
             agent.isStopped = attackOnCoolDown;
             if (!attackOnCoolDown && attackInRange)
             {
@@ -69,7 +69,7 @@ public class EnemyController : MonoBehaviour, IPooledObject
 
                 animationController.EnemyAttackAnimation();
                 transform.LookAt(player.transform);
-                timeOfLastAttack = Time.time;
+                _timeOfLastAttack = Time.time;
             }
         }
     }
@@ -85,9 +85,9 @@ public class EnemyController : MonoBehaviour, IPooledObject
     //called on DestroyObject script
     public void Dying()
     {
-        if (isAlive)
+        if (_isAlive)
         {
-            isAlive = false;
+            _isAlive = false;
             SpawnController.Instance.actualEnemiesAlive--;
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
             animationController.EnemyDiesAnimation();
@@ -164,7 +164,9 @@ public class EnemyController : MonoBehaviour, IPooledObject
     public void OnObjectSpawn() 
     {
         gameObject.SetActive(true);
-        isAlive = true;
+        _isAlive = true;
         agent.enabled = true;
     }
+
+
 }

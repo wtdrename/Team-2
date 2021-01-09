@@ -36,7 +36,7 @@ public class FieldOfViewEditor : Editor
         Handles.color = Color.green;
 
         if (fow.getClosestEnemy()) 
-        Handles.DrawLine(fow.transform.position, fow.getClosestEnemy().position);
+        Handles.DrawLine(fow.transform.position, fow.getClosestEnemy().transform.position);
     }
 
     

@@ -1,44 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\mysha\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\mysha\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Project.1787885652.00" t="ExcludeRecursive" />
-    <e p="C:\Users\mysha\Documents\Unity Projects\Team-2\Project" t="IncludeRecursive">
+    <e p="C:\Users\Dynex\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Dynex\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_Project.-838848542.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dynex\Documents\GitHub\Team-2\Project" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Joystick Pack" t="Include">
-          <e p="Examples" t="Include">
-            <e p="JoystickPlayerExample.cs" t="Include" />
-            <e p="JoystickSetterExample.cs" t="Include" />
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="Base" t="Include">
-              <e p="Joystick.cs" t="Include" />
-            </e>
-            <e p="Editor" t="Include">
-              <e p="DynamicJoystickEditor.cs" t="Include" />
-              <e p="FloatingJoystickEditor.cs" t="Include" />
-              <e p="JoystickEditor.cs" t="Include" />
-              <e p="VariableJoystickEditor.cs" t="Include" />
-            </e>
-            <e p="Joysticks" t="Include">
-              <e p="DynamicJoystick.cs" t="Include" />
-              <e p="FixedJoystick.cs" t="Include" />
-              <e p="FloatingJoystick.cs" t="Include" />
-              <e p="VariableJoystick.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Samples" t="Include">
-          <e p="Terrain Tools" t="Include">
-            <e p="0.1.0-preview" t="Include">
-              <e p="Terrain Assets" t="Include">
-                <e p="ThirdPartyNotices.txt" t="Include" />
-              </e>
-            </e>
-          </e>
-        </e>
         <e p="Scripts" t="Include">
           <e p="Animations" t="Include">
             <e p="EnemyAnimationController.cs" t="Include" />
@@ -52,9 +20,16 @@
               <e p="BasicTakingDamage.cs" t="Include" />
               <e p="ScrollingText.cs" t="Include" />
             </e>
+            <e p="AutoAim" t="Include">
+              <e p="EditorScripts" t="Include">
+                <e p="FieldOfViewEditor.cs" t="Include" />
+              </e>
+              <e p="FieldOFView.cs" t="Include" />
+            </e>
             <e p="Destructed Behaviours" t="Include">
               <e p="DestroyedScrollingText.cs" t="Include" />
               <e p="DestroyObject.cs" t="Include" />
+              <e p="OnDeathChanceToDrop.cs" t="Include" />
               <e p="OnDeathGive.cs" t="Include" />
             </e>
             <e p="IAttackable.cs" t="Include" />
@@ -64,6 +39,7 @@
           <e p="Controllers" t="Include">
             <e p="CameraController.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
+            <e p="MenuController.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
             <e p="TouchFieldDrag.cs" t="Include" />
           </e>
@@ -75,6 +51,8 @@
           </e>
           <e p="ExtentionMethods.cs" t="Include" />
           <e p="Inventory" t="Include">
+            <e p="EquipmentManager.cs" t="Include" />
+            <e p="InventoryCache.cs" t="Include" />
             <e p="InventoryManager.cs" t="Include" />
             <e p="InventorySlot.cs" t="Include" />
           </e>
@@ -92,7 +70,17 @@
             <e p="ProjectileManager.cs" t="Include" />
             <e p="SkillTreeManager.cs" t="Include" />
           </e>
-          <e p="MenuController.cs" t="Include" />
+          <e p="MissionInventory" t="Include">
+            <e p="MissionInventory.cs" t="Include" />
+          </e>
+          <e p="QuestManager" t="Include">
+            <e p="PlayerQuest.cs" t="Include" />
+            <e p="Quest.cs" t="Include" />
+            <e p="QuestGoal.cs" t="Include" />
+            <e p="QuestListDisplay.cs" t="Include" />
+            <e p="QuestManager.cs" t="Include" />
+            <e p="UIQuestStatus.cs" t="Include" />
+          </e>
           <e p="Stats" t="Include">
             <e p="AttributeUI.cs" t="Include" />
             <e p="AttributeUI_SO.cs" t="Include" />
@@ -104,67 +92,140 @@
           </e>
           <e p="UI" t="Include">
             <e p="EnemyHealthBar.cs" t="Include" />
+            <e p="LoadData.cs" t="Include" />
             <e p="LoadSceneBar.cs" t="Include" />
             <e p="LookAtCamera.cs" t="Include" />
             <e p="StatusBar.cs" t="Include" />
             <e p="TopMenuController.cs" t="Include" />
           </e>
+          <e p="Utility" t="Include">
+            <e p="TestPauseVictoryUI.cs" t="Include" />
+          </e>
         </e>
-        <e p="Testing Files" t="Include">
-          <e p="UI" t="Include">
-            <e p="Script" t="Include">
-              <e p="Slide.cs" t="Include" />
-              <e p="Togglescript.cs" t="Include" />
+        <e p="System Packs" t="Include">
+          <e p="Joystick Pack" t="Include">
+            <e p="Examples" t="Include">
+              <e p="JoystickPlayerExample.cs" t="Include" />
+              <e p="JoystickSetterExample.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Base" t="Include">
+                <e p="Joystick.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="DynamicJoystickEditor.cs" t="Include" />
+                <e p="FloatingJoystickEditor.cs" t="Include" />
+                <e p="JoystickEditor.cs" t="Include" />
+                <e p="VariableJoystickEditor.cs" t="Include" />
+              </e>
+              <e p="Joysticks" t="Include">
+                <e p="DynamicJoystick.cs" t="Include" />
+                <e p="FixedJoystick.cs" t="Include" />
+                <e p="FloatingJoystick.cs" t="Include" />
+                <e p="VariableJoystick.cs" t="Include" />
+              </e>
             </e>
           </e>
-          <e p="UnityEffects" t="Include">
-            <e p="Editor" t="Include">
-              <e p="PackageManagerAssembly" t="Include">
-                <e p="PackageImportList.txt" t="Include" />
+          <e p="Terrain_Tools" t="Include">
+            <e p="Terrain Tools" t="Include">
+              <e p="0.1.0-preview" t="Include">
+                <e p="Terrain Assets" t="Include">
+                  <e p="ThirdPartyNotices.txt" t="Include" />
+                </e>
               </e>
             </e>
-            <e p="Shared" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="DecalDestroyer.cs" t="Include" />
-                <e p="ExtinguishableFire.cs" t="Include" />
-                <e p="GunAim.cs" t="Include" />
-                <e p="GunShoot.cs" t="Include" />
-                <e p="ParticleCollision.cs" t="Include" />
-                <e p="ParticleExamples.cs" t="Include" />
-                <e p="ParticleMenu.cs" t="Include" />
-              </e>
+          </e>
+          <e p="TextMesh Pro" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="LiberationSans - OFL.txt" t="Include" />
+            </e>
+            <e p="Resources" t="Include">
+              <e p="LineBreaking Following Characters.txt" t="Include" />
+              <e p="LineBreaking Leading Characters.txt" t="Include" />
               <e p="Shaders" t="Include">
-                <e p="SurfaceShader_VC.shader" t="Include" />
+                <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+                <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+                <e p="TMP_Bitmap.shader" t="Include" />
+                <e p="TMP_SDF Overlay.shader" t="Include" />
+                <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+                <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+                <e p="TMP_SDF-Mobile.shader" t="Include" />
+                <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+                <e p="TMP_SDF-Surface.shader" t="Include" />
+                <e p="TMP_SDF.shader" t="Include" />
+                <e p="TMP_Sprite.shader" t="Include" />
+                <e p="TMPro.cginc" t="Include" />
+                <e p="TMPro_Properties.cginc" t="Include" />
+                <e p="TMPro_Surface.cginc" t="Include" />
               </e>
+            </e>
+            <e p="Sprites" t="Include">
+              <e p="EmojiOne Attribution.txt" t="Include" />
             </e>
           </e>
         </e>
-        <e p="TextMesh Pro" t="Include">
-          <e p="Fonts" t="Include">
-            <e p="LiberationSans - OFL.txt" t="Include" />
-          </e>
-          <e p="Resources" t="Include">
-            <e p="LineBreaking Following Characters.txt" t="Include" />
-            <e p="LineBreaking Leading Characters.txt" t="Include" />
-            <e p="Shaders" t="Include">
-              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
-              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
-              <e p="TMP_Bitmap.shader" t="Include" />
-              <e p="TMP_SDF Overlay.shader" t="Include" />
-              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
-              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
-              <e p="TMP_SDF-Mobile.shader" t="Include" />
-              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
-              <e p="TMP_SDF-Surface.shader" t="Include" />
-              <e p="TMP_SDF.shader" t="Include" />
-              <e p="TMP_Sprite.shader" t="Include" />
-              <e p="TMPro.cginc" t="Include" />
-              <e p="TMPro_Properties.cginc" t="Include" />
-              <e p="TMPro_Surface.cginc" t="Include" />
+        <e p="Visuals" t="Include">
+          <e p="Free Assets" t="Include">
+            <e p="UI" t="Include">
+              <e p="MainMenu UI" t="Include">
+                <e p="Basic Skin" t="Include">
+                  <e p="Demo_Assets" t="Include">
+                    <e p="Scripts" t="Include">
+                      <e p="GUI_Demo.cs" t="Include" />
+                    </e>
+                  </e>
+                </e>
+              </e>
             </e>
           </e>
-          <e p="Sprites" t="Include">
-            <e p="EmojiOne Attribution.txt" t="Include" />
+          <e p="Terrain" t="Include">
+            <e p="WorldMatFree.shader" t="Include" />
+            <e p="WorldMatLiteFree.shader" t="Include" />
+          </e>
+          <e p="Testing Files" t="Include">
+            <e p="UI" t="Include">
+              <e p="Script" t="Include">
+                <e p="Slide.cs" t="Include" />
+                <e p="Togglescript.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="VFX" t="Include">
+            <e p="FirePropagation" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="FireBox.cs" t="Include" />
+                <e p="FireCell.cs" t="Include" />
+                <e p="FireGrassRemover.cs" t="Include" />
+                <e p="FireGrid.cs" t="Include" />
+                <e p="FireIgniter.cs" t="Include" />
+                <e p="FireManager.cs" t="Include" />
+                <e p="FireNode.cs" t="Include" />
+                <e p="FireNodeChain.cs" t="Include" />
+                <e p="FireTerrainTexture.cs" t="Include" />
+                <e p="FireVisualManager.cs" t="Include" />
+              </e>
+            </e>
+            <e p="UnityEffects" t="Include">
+              <e p="Editor" t="Include">
+                <e p="PackageManagerAssembly" t="Include">
+                  <e p="PackageImportList.txt" t="Include" />
+                </e>
+              </e>
+              <e p="Shared" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="DecalDestroyer.cs" t="Include" />
+                  <e p="ExtinguishableFire.cs" t="Include" />
+                  <e p="GunAim.cs" t="Include" />
+                  <e p="GunShoot.cs" t="Include" />
+                  <e p="ParticleCollision.cs" t="Include" />
+                  <e p="ParticleExamples.cs" t="Include" />
+                  <e p="ParticleMenu.cs" t="Include" />
+                </e>
+                <e p="Shaders" t="Include">
+                  <e p="SurfaceShader_VC.shader" t="Include" />
+                </e>
+              </e>
+            </e>
           </e>
         </e>
       </e>
